@@ -19,4 +19,10 @@ public class MainController {
 	public String map() {
 		return "directions"; 
 	}
+	
+	@GetMapping("/brand")
+	public String brandPage() {
+		return "brand"; 
+	}
+	
 }

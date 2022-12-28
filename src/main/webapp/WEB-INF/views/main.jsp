@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kepla</title>
+<title>Kapla</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
 	rel="stylesheet">
@@ -36,7 +36,7 @@ span a {
 
 .mainNav {
 	position: absolute;
-	margin-top: 12em;
+	margin-top: 5em;
 	top: 0;
 	width: 100%;
 	z-index: 3;
@@ -61,35 +61,20 @@ span a {
 	<video id="main_video" src="/img/mainVideo.mp4" autoplay loop muted="muted" width="100%" height="100%"></video>
 
 	<!-- 헤더 -->
-	<div class="header">
-
+	<div>
+		<header>
 		<jsp:include page="header.jsp"></jsp:include>
-		<header style="position: relative; text-align: right; color: white; margin-top: 3em;">
-			
-			<span><button type="button" class="btn btn-outline-light border-none" data-bs-toggle="modal" data-bs-target="#loginModal">
- 				로그인
-			</button></span> 
-			<span><button type="button" class="btn btn-outline-light border-none" data-bs-toggle="modal" data-bs-target="#signUpModal">
- 				회원가입
-			</button></span> 
-			<span><button type="button" class="btn btn-outline-light border-none" data-bs-toggle="modal" data-bs-target="#cartModal">
- 				장바구니
-			</button></span> 
-			<span><a>고객센터</a></span>
 		</header>
 	</div>
 	
 	<!-- 네비 -->
 	<div class="mainNav">
 		<nav>
-			<span><a>Brand</a></span>
-			<span><a>Shop</a></span> 
-			<span><a style="font-family: Lobster; font-size: 30px;">kepla</a></span>
-			<span><a>Event</a></span> 
-			<span><a href="/map">Store</a></span>
+		<jsp:include page="nav.jsp"></jsp:include>
 		</nav>
 	</div>
 	
+	<!-- 푸터 -->
 	<div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
