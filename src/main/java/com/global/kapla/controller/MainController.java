@@ -25,4 +25,9 @@ public class MainController {
 		return "brand"; 
 	}
 	
+	@GetMapping("/signup")
+	public String signUpPage() {
+		return "signUp"; 
+	}
+	
 }

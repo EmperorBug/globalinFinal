@@ -67,10 +67,6 @@
 
 </style>
 <body>
-
-<%@ include file="modals/loginModal.jsp" %>
-<%@ include file="modals/signUpModal.jsp" %>
-<%@ include file="modals/cartModal.jsp" %>
 	<!-- 최상위단 배너부분 -->
 	<div class="top_banner">
 		<h1 align="center">Store Information</h1>

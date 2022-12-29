@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kepla</title>
+<title>Kapla</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
 	rel="stylesheet">
@@ -36,7 +36,7 @@ span a {
 
 .mainNav {
 	position: absolute;
-	margin-top: 12em;
+	margin-top: 5em;
 	top: 0;
 	width: 100%;
 	z-index: 3;
@@ -61,29 +61,28 @@ span a {
 	<video id="main_video" src="/img/mainVideo.mp4" autoplay loop muted="muted" width="100%" height="100%"></video>
 
 	<!-- 헤더 -->
-	<div class="header">
+	<div>
+		<header>
 		<jsp:include page="header.jsp"></jsp:include>
+		</header>
 	</div>
 	
 	<!-- 네비 -->
 	<div class="mainNav">
 		<nav>
-			<span><a>Brand</a></span>
-			<span><a>Shop</a></span> 
-			<span><a style="font-family: Lobster; font-size: 30px;">kepla</a></span>
-			<span><a>Event</a></span> 
-			<span><a href="/map">Store</a></span>
+		<jsp:include page="nav.jsp"></jsp:include>
 		</nav>
 	</div>
 	
+	<!-- 푸터 -->
 	<div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript">
 		document.getElementById('main_video').play();
 	</script>
-	<jsp:include page="modals/loginModal.jsp"></jsp:include>
-	<jsp:include page="modals/signUpModal.jsp"></jsp:include>
-	<jsp:include page="modals/cartModal.jsp"></jsp:include>
+	<%@ include file="modals/loginModal.jsp" %>
+	<%@ include file="modals/signUpModal.jsp" %>
+	<%@ include file="modals/cartModal.jsp" %>
 </body>
 </html>
