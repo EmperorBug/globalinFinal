@@ -9,10 +9,15 @@ tmp/
 *.bak
 *.swp
 *~.nib
-local.properties
+*.properties
 .settings/
 .loadpath
 .recommenders
+.classpath
+.project
+.settings
+spring-*/src/main/java/META-INF/MANIFEST.MF
+target/
 
 # External tool builders
 .externalToolBuilders/
