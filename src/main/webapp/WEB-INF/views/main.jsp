@@ -81,8 +81,8 @@ span a {
 	<script type="text/javascript">
 		document.getElementById('main_video').play();
 	</script>
-	<%@ include file="modals/loginModal.jsp" %>
-	<%@ include file="modals/signUpModal.jsp" %>
-	<%@ include file="modals/cartModal.jsp" %>
+	<jsp:include page="modals/loginModal.jsp" ></jsp:include>
+	<jsp:include page="modals/signUpModal.jsp" ></jsp:include>
+	<jsp:include page="modals/cartModal.jsp" ></jsp:include>
 </body>
 </html>
