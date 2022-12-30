@@ -32,7 +32,7 @@
 				</button>
 			</span> 
 			<span>
-				<button type="button" class="btn btn-outline-light border-none" data-bs-toggle="modal" data-bs-target="#signUpModal">
+				<button type="button" class="btn btn-outline-light border-none" data-bs-toggle="modal" onclick="location.href='signup'">
  				회원가입
 				</button>
 			</span> 
@@ -46,9 +46,8 @@
 			</span>
 		</header>
 	</div>
-	<%@ include file="modals/loginModal.jsp" %>
-	<%@ include file="modals/signUpModal.jsp" %>
-	<%@ include file="modals/cartModal.jsp" %>
+	<jsp:include page="modals/loginModal.jsp" ></jsp:include>
+	<jsp:include page="modals/cartModal.jsp" ></jsp:include>
 	<!-- 작성자 : 김형우 -->
 	<!-- include file, modal 담당 : 박진영 -->
 	<!-- 버튼 디자인 담당 : 김도형 -->

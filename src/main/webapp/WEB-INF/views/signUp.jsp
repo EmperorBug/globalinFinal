@@ -8,7 +8,6 @@
 <title>회원 가입</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="css/signup.css">
 </head>
 <style>
 	
@@ -39,7 +38,7 @@
 	}
 	
 	article {
-		margin-top : 5em;
+		margin-top : 2em;
 	}
 	
 	span a {
@@ -52,6 +51,9 @@
 		text-align: center;
 	}
 
+	.form-floating {
+ 		margin-bottom: 5px;
+	}
 </style>
 <body>
 	<!-- 최상위단 배너부분 -->
@@ -97,6 +99,6 @@
 		<jsp:include page="footer.jsp"></jsp:include>
 	</footer>
 	</div>
-	<!-- directions.jsp 작성자 : 김형우 -->
+	<!-- signUp.jsp 작성자 : 박진영 -->
 </body>
 </html>

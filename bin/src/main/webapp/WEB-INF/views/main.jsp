@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kapla</title>
+<title>kapla - 카플라</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
 	rel="stylesheet">
@@ -81,8 +81,5 @@ span a {
 	<script type="text/javascript">
 		document.getElementById('main_video').play();
 	</script>
-	<%@ include file="modals/loginModal.jsp" %>
-	<%@ include file="modals/signUpModal.jsp" %>
-	<%@ include file="modals/cartModal.jsp" %>
 </body>
 </html>

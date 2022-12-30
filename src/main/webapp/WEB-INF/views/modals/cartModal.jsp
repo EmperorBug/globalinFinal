@@ -21,7 +21,7 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
-	<!-- Modal -->
+	<!-- Modal 작성 박진영-->
 	<div class="modal fade" id="cartModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
