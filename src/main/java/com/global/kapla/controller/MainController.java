@@ -25,11 +25,6 @@ public class MainController {
 		return "brand"; 
 	}
 	
-	@GetMapping("/itemlist")
-	public String itemListPage() {
-		return "itemlist"; 
-	}
-	
 	@GetMapping("/signup")
 	public String signUpPage() {
 		return "signUp"; 
