@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kepla Nav</title>
 <style>
-		.mainNav {
+	
+	.mainNav {
 	position: absolute;
 	margin-top: 5em;
 	top: 0;
@@ -29,7 +30,7 @@
 	<div class="mainNav">
 		<nav>
 			<span><a href="/brand">Brand</a></span>
-			<span><a href="">Shop</a></span> 
+			<span><a href="/itemlist">Shop</a></span> 
 			<span><a href="/" style="font-family: Lobster; font-size: 30px;">kapla</a></span>
 			<span><a href="">Event</a></span> 
 			<span><a href="/map">Store</a></span>
