@@ -8,14 +8,12 @@
 <title>Kepla Nav</title>
 <style>
 		.mainNav {
-	position: absolute;
-	margin-top: 5em;
+	/* 고정위치 삭제 -박진영- */
 	top: 0;
 	width: 100%;
 	z-index: 3;
 	color : white;
 	text-align: center;
-	
 	}
 </style>
 <link
@@ -36,6 +34,6 @@
 		</nav>
 	</div>
 	<!-- nav 작성자 : 김도형 -->
-	<!-- 수정 : 김형우 -->
+	<!-- 수정 : 김형우 박진영-->
 </body>
 </html>

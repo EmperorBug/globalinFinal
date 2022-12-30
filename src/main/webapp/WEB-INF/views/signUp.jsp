@@ -38,21 +38,10 @@
 		color : black;
 	}
 	
-	div.mainNav {
-	position: absolute;
-	margin-top: 5em;
-	top: 0;
-	width: 100%;
-	color : white;
-	text-align: center;
-	
-	}
-	
 	article {
 		margin-top : 5em;
 	}
 	
-
 	span a {
 		margin: 2em;
 		text-decoration: none;
@@ -68,13 +57,8 @@
 	<!-- 최상위단 배너부분 -->
 	<div class="top_banner">
 		<h1 align="center">Sign Up</h1>
-		<h2 align="center">회원 가입</h2>
 	</div>
 	<hr>
-	<!-- 헤더 include 부분 -->
-	<div class="header">
-		<jsp:include page="header.jsp"></jsp:include>
-	</div>
 	<!-- 네비게이터 include 부분 -->	
 	<div class="mainNav">
 		<nav>

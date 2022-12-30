@@ -19,31 +19,38 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/signin.css">
 </head>
 <body>
-	<!-- Modal -->
+	<!-- Modal 작성 박진영-->
 	<div class="modal fade" id="loginModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">로그인</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Sign in</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<form action="" >
-					E-Mail 
-					<input type="email">
-					<br>
-					PW 
-					<input type="password">
-				</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<main class="form-signin">
+						<form>
+						  <div class="form-floating">
+							<input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+							<label for="floatingInput">ID</label>
+						  </div>
+						  <div class="form-floating">
+							<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+							<label for="floatingPassword">Password</label>
+						  </div>
+						  <div class="checkbox mb-3">
+							<label>
+							  <input type="checkbox" value="remember-me"> Remember me
+							</label>
+						  </div>
+						  <button class="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
+						</form>
+					  </main>
 				</div>
 			</div>
 		</div>
