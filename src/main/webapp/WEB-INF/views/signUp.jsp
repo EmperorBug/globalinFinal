@@ -20,7 +20,7 @@
 	#direction_text {
 		text-align : center;
 	}
-	#map {
+	#form-signup {
 		 width : 500px;
 		 height : 350px;
 		 margin : auto;		
@@ -28,7 +28,6 @@
 	div.header {
 	position: absolute;
 	top: 0;
-	z-index: 3;
 	width: 100%;
 	}
 	.header span {
@@ -44,14 +43,13 @@
 	margin-top: 5em;
 	top: 0;
 	width: 100%;
-	z-index: 3;
 	color : white;
 	text-align: center;
 	
 	}
 	
 	article {
-		margin-top : 10em;
+		margin-top : 5em;
 	}
 	
 
@@ -85,10 +83,8 @@
 	</div>
 	<!-- 회원가입 article 부분 -->
 	<article>
-		<main class="form-signup">
+		<main class="form-signup" id="form-signup">
 			<form>
-			  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-		  
 			  <div class="form-floating">
 				<input type="text" class="form-control" id="floatingInput" placeholder="ID" name="ID">
 				<label for="floatingInput">ID</label>
@@ -98,15 +94,14 @@
 				<label for="floatingPassword">Password</label>
 			  </div>
 			  <div class="form-floating">
+				<input type="text" class="form-control" id="floatingInput" placeholder="name" name="NAME">
+				<label for="floatingInput">Name</label>
+			  </div>
+			  <div class="form-floating">
 				<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="MAIL">
 				<label for="floatingInput">Email address</label>
 			  </div>
-			  <div class="checkbox mb-3">
-				<label>
-				  <input type="checkbox" value="remember-me"> Remember me
-				</label>
-			  </div>
-			  <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+			  <button class="w-100 btn btn-lg btn btn-dark" type="submit">Sign up</button>
 			</form>
 		  </main>
 	</article>
