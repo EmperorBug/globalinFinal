@@ -34,6 +34,7 @@ public class ApiController {
 	 */
 	@GetMapping("/kakaoLogin")
 	public String kakaoLogin(@RequestParam String code, HttpSession session) throws Exception {
+		session.invalidate();
 		log.info("코드는 : "+code);
 		
 		//로그인코드로 엑세스토큰 받아오기
