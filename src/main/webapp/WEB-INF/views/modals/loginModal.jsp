@@ -19,6 +19,10 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+	
+	<!-- 카카오 js -->
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+    integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>	
 </head>
 <body>
 	<!-- Modal 작성 박진영-->
@@ -48,11 +52,28 @@
 							</label>
 						  </div>
 						  <button class="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
+						  
+						  <!--카카오 로그인 버튼 작성 김도형  -->
+						  <button class="w-100 btn btn-lg" style="background-color: #FEE500; margin-top: 5px" onclick="loginWithKakao()" type="button">
+						  	<img alt="말풍선 아이콘" src="/img/pngegg.png" width="22px">
+						  	카카오 로그인
+						  </button>      
 						</form>
 					  </main>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+	loginWithKakao = () => {
+		
+        //발급받은 앱키를 입력
+        Kakao.init('635bed4d6fec96cfc9b8dd8e27301c1f');
+        Kakao.Auth.authorize({
+            redirectUri: 'http://localhost:8282/api/kakaoLogin',
+        });
+	}
+	</script>
 </body>
 </html>

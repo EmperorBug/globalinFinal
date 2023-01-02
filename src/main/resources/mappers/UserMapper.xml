@@ -6,18 +6,24 @@
 
 <sql id="user">
 	user_no,
-	user_id,
+	id,
 	password,
 	name,
 	email,
 	address,
-	user_type,
 	reg_date
 
 </sql>
 
-   <select resultType="UserVO" id="getList">
+   <select resultType="UserVO" id="getUser">
    			select <include refid="user"/> from KAPLA_USER
    </select>
     
+    <select id="findUser" resultType="int">
+    	select count(*) from KAPLA_USER where id=#{id}
+    </select>
+    
+    <insert id="insertUser">
+    	insert into KAPLA_USER (user_no, id, password, email) values ( user_seq.nextval, #{id}, #{password}, #{email} )
+    </insert>
 </mapper>

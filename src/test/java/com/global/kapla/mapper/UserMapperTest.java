@@ -19,7 +19,9 @@ class UserMapperTest {
 	private UserMapper mapper;
 	@Test
 	void test() {
-		List<UserVO> list = mapper.getList();
+		UserVO vo = new UserVO();
+		vo.setId("asdf");
+		UserVO list = mapper.getUser(vo);
 		
 		log.info("결과 : "+list);
 

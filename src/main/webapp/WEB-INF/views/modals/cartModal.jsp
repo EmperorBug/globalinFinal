@@ -19,23 +19,124 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+<style>
+	#sum {
+		text-align: left;
+	}
+	#space {
+		width: 40%;
+	}
+	#space2 {
+		width: 80%;
+	}
+	.list-group-item {
+		display: flex;
+	}
+	.itemimg {
+		flex: 1;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		width: 30%;
+		height: 100%;
+	}
+	
+	.detailcontainer {
+		flex: 3;
+		display:flex;
+		flex-wrap: wrap;
+		width: 65%;
+		height: 100%;
+		align-items: flex-end;
+		text-align: center;
+	}
+	.itemname {
+		width: 100%;
+	}
+	.itemcost {
+		flex: 2;
+	}
+	input[type='number']{
+		flex: 1;
+		text-align: center;
+		size: 3;
+	} 
+	.itemsum {
+		flex: 2;
+	}
+</style>
 </head>
 <body>
 	<!-- Modal 작성 박진영-->
 	<div class="modal fade" id="cartModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-dialog-scrollable">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">장바구니</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+					<div id="space2"></div>
+					<span class="badge bg-primary rounded-pill">갯수</span>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body">장바구니</div>
+				<div class="modal-body" >
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							<img src="/item_img/1.Bombshell.png" class="itemimg">
+							<div class="detailcontainer">
+								<div class="itemname">
+									샘플상품명
+								</div>
+								<div class="itemcost">
+									가격
+								</div>
+								<input type="number" name="itemcount" min="1" max="200">
+								<div class="itemsum">
+									합계
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<img src="/item_img/1.Bombshell.png" class="itemimg">
+							<div class="detailcontainer">
+								<div class="itemname">
+									샘플상품명
+								</div>
+								<div class="itemcost">
+									개당 가격
+								</div>
+								<input type="number" name="itemcount" min="1" max="200">
+								<div class="itemsum">
+									합계
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<img src="/item_img/1.Bombshell.png" class="itemimg">
+							<div class="detailcontainer">
+								<div class="itemname">
+									샘플상품명
+								</div>
+								<div class="itemcost">
+									개당 가격
+								</div>
+								<input type="number" name="itemcount" min="1" max="200">
+								<div class="itemsum">
+									합계
+								</div>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
 				<div class="modal-footer">
+					<div id="sum">
+						총계 XX
+					</div>
+					<div id="space"></div>
 					<button type="button" class="btn btn-secondary"
-						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+						data-bs-dismiss="modal">더 담기</button>
+					<button type="button" class="btn btn-dark">주문서 작성</button>
 				</div>
 			</div>
 		</div>
