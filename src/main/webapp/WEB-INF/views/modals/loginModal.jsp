@@ -48,11 +48,27 @@
 							</label>
 						  </div>
 						  <button class="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
+						  
+						  <!--카카오 로그인 버튼 작성 김도형  -->
+						  <button class="w-100 btn btn-lg" style="background-color: #FEE500; margin-top: 5px" onclick="loginWithKakao()">
+						  	<img alt="말풍선 아이콘" src="/img/pngegg.png" width="22px">
+						  	카카오 로그인
+						  </button>      
 						</form>
 					  </main>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+	loginWithKakao = () => {
+        //발급받은 앱키를 입력
+        Kakao.init('635bed4d6fec96cfc9b8dd8e27301c1f');
+        Kakao.Auth.authorize({
+            redirectUri: 'http://localhost:8282/api/kakaoLogin',
+        });
+	}
+	</script>
 </body>
 </html>
