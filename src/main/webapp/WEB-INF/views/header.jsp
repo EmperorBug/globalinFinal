@@ -32,7 +32,7 @@
 				</button>
 			</span> 
 			<span>
-				<button type="button" class="btn btn-outline-light border-none" data-bs-toggle="modal" onclick="location.href='signup'">
+				<button type="button" class="btn btn-outline-light border-none" onclick="location.href='signup'">
  				회원가입
 				</button>
 			</span> 
@@ -42,7 +42,9 @@
 				</button>
 			</span> 
 			<span>
-				<a>고객센터</a>
+				<button type="button" class="btn btn-outline-light border-none" onclick="location.href='customercenter'">
+					고객센터
+				</button>
 			</span>
 		</header>
 	</div>
