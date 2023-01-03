@@ -29,11 +29,12 @@
 	#space2 {
 		width: 80%;
 	}
-	.list-group-item {
-		display: flex;
+	.space3 {
+		display: block;
+		height: 25px;
 	}
+
 	.itemimg {
-		flex: 1;
 		margin: 0;
 		padding: 0;
 		display: inline-block;
@@ -42,27 +43,35 @@
 	}
 	
 	.detailcontainer {
-		flex: 3;
-		display:flex;
-		flex-wrap: wrap;
-		width: 65%;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		width: 68%;
 		height: 100%;
-		align-items: flex-end;
 		text-align: center;
 	}
 	.itemname {
 		width: 100%;
+		display: block;
 	}
+
+	.horizontalcontainer {
+		display: flex;
+		justify-content: space-between;
+		width: 105%;
+	}
+
 	.itemcost {
-		flex: 2;
+		display: inline-block;
 	}
+
 	input[type='number']{
-		flex: 1;
 		text-align: center;
 		size: 3;
-	} 
+	}
+
 	.itemsum {
-		flex: 2;
+		display: inline-block;
 	}
 </style>
 </head>
@@ -75,7 +84,7 @@
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">Cart</h5>
 					<div id="space2"></div>
-					<span class="badge bg-primary rounded-pill">갯수</span>
+					<span class="badge bg-primary rounded-pill">N항목</span>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
@@ -85,29 +94,18 @@
 							<img src="/item_img/1.Bombshell.png" class="itemimg">
 							<div class="detailcontainer">
 								<div class="itemname">
-									샘플상품명
+									상품명
 								</div>
-								<div class="itemcost">
-									가격
+								<div class="space3">
 								</div>
-								<input type="number" name="itemcount" min="1" max="200">
-								<div class="itemsum">
-									합계
-								</div>
-							</div>
-						</li>
-						<li class="list-group-item">
-							<img src="/item_img/1.Bombshell.png" class="itemimg">
-							<div class="detailcontainer">
-								<div class="itemname">
-									샘플상품명
-								</div>
-								<div class="itemcost">
-									개당 가격
-								</div>
-								<input type="number" name="itemcount" min="1" max="200">
-								<div class="itemsum">
-									합계
+								<div class="horizontalcontainer">
+									<div class="itemcost">
+										가격
+									</div>
+									<input type="number" name="itemcount" min="1" max="200">
+									<div class="itemsum">
+										합계
+									</div>
 								</div>
 							</div>
 						</li>
@@ -115,14 +113,56 @@
 							<img src="/item_img/1.Bombshell.png" class="itemimg">
 							<div class="detailcontainer">
 								<div class="itemname">
-									샘플상품명
+									상품명
 								</div>
-								<div class="itemcost">
-									개당 가격
+								<div class="space3">
 								</div>
-								<input type="number" name="itemcount" min="1" max="200">
-								<div class="itemsum">
-									합계
+								<div class="horizontalcontainer">
+									<div class="itemcost">
+										가격
+									</div>
+									<input type="number" name="itemcount" min="1" max="200">
+									<div class="itemsum">
+										합계
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<img src="/item_img/1.Bombshell.png" class="itemimg">
+							<div class="detailcontainer">
+								<div class="itemname">
+									상품명
+								</div>
+								<div class="space3">
+								</div>
+								<div class="horizontalcontainer">
+									<div class="itemcost">
+										가격
+									</div>
+									<input type="number" name="itemcount" min="1" max="200">
+									<div class="itemsum">
+										합계
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="list-group-item">
+							<img src="/item_img/1.Bombshell.png" class="itemimg">
+							<div class="detailcontainer">
+								<div class="itemname">
+									상품명
+								</div>
+								<div class="space3">
+								</div>
+								<div class="horizontalcontainer">
+									<div class="itemcost">
+										가격
+									</div>
+									<input type="number" name="itemcount" min="1" max="200">
+									<div class="itemsum">
+										합계
+									</div>
 								</div>
 							</div>
 						</li>

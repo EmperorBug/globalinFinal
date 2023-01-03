@@ -64,7 +64,7 @@
 	<!-- 네비게이터 include 부분 -->	
 	<div class="mainNav">
 		<nav>
-			<jsp:include page="nav.jsp"></jsp:include>
+			<jsp:include page="./include/nav.jsp"></jsp:include>
 		</nav>
 	</div>
 	<!-- 회원가입 article 부분 -->
@@ -92,7 +92,7 @@
 	<!-- Footer include 부분  -->
 	<div class="footer">
 	<footer>
-		<jsp:include page="footer.jsp"></jsp:include>
+		<jsp:include page="./include/footer.jsp"></jsp:include>
 	</footer>
 	</div>
 	<!-- signUp.jsp 작성자 : 박진영 -->
