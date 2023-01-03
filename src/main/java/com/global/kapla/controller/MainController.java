@@ -38,4 +38,9 @@ public class MainController {
 		return "signUp"; 
 	}
 	
+	@GetMapping("/favorite")
+	public String favoritePage() {
+		return "favorite"; 
+	}
+	
 }
