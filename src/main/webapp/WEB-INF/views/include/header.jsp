@@ -15,6 +15,11 @@
 	width: 100%;
 }
 
+
+.btn.btn-outline-light.border-none {
+	border: none;
+	box-shadow: none;
+}
 </style>
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
@@ -63,8 +68,8 @@
 			</span>
 		</header>
 	</div>
-	<jsp:include page="modals/loginModal.jsp" ></jsp:include>
-	<jsp:include page="modals/cartModal.jsp" ></jsp:include>
+	<jsp:include page="../modals/loginModal.jsp" ></jsp:include>
+	<jsp:include page="../modals/cartModal.jsp" ></jsp:include>
 	<!-- 작성자 : 김형우 -->
 	<!-- include file, modal 담당 : 박진영 -->
 	<!-- 버튼 디자인 담당 : 김도형 -->
