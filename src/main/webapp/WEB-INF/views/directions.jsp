@@ -75,12 +75,12 @@
 	<hr>
 	<!-- 헤더 include 부분 -->
 	<div class="header">
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="./include/header.jsp"></jsp:include>
 	</div>
 	<!-- 네비게이터 include 부분 -->	
 	<div class="mainNav">
 		<nav>
-			<jsp:include page="nav.jsp"></jsp:include>
+			<jsp:include page="./include/nav.jsp"></jsp:include>
 		</nav>
 	</div>
 	<!-- 지도를 표시할 article 부분 -->
@@ -114,7 +114,7 @@
 	<!-- Footer include 부분  -->
 	<div class="footer">
 	<footer>
-		<jsp:include page="footer.jsp"></jsp:include>
+		<jsp:include page="./include/footer.jsp"></jsp:include>
 	</footer>
 	</div>
 	<!-- directions.jsp 작성자 : 김형우 -->

@@ -188,12 +188,12 @@
 	</div> -->
 	<!-- 헤더 include 부분 -->
 	<div class="header">
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="./include/header.jsp"></jsp:include>
 	</div>
 	<!-- 네비게이터 include 부분 -->	
 	<div class="mainNav">
 		<nav>
-			<jsp:include page="nav.jsp"></jsp:include>
+			<jsp:include page="./include/nav.jsp"></jsp:include>
 		</nav>
 	</div>
 	<hr>
@@ -484,7 +484,7 @@
 	<!-- Footer include 부분  -->
 	<div class="footer">
 	<footer>
-		<jsp:include page="footer.jsp"></jsp:include>
+		<jsp:include page="./include/footer.jsp"></jsp:include>
 	</footer>
 	</div>
 
