@@ -16,6 +16,60 @@
 <%@ include file="modals/cartModal.jsp" %>
 <style>
 	
+		 .menu_bar {
+            width: 100%;
+            margin: auto;
+        }
+
+        article ul {
+            font-size: 0;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        article ul li {
+            display: inline-block;
+            position: relative;
+            width : 25%;
+        }
+
+        article ul li a {
+            color: black;
+            display: block;
+            font-size: 14px;
+            padding: 15px 14px;
+            transition: 0.3s linear;
+             text-decoration: none;
+        }
+
+        article ul li:hover { background: #a4e68e; }
+
+        article ul li ul {
+            display: none;
+            position: absolute;
+            width: 100%;
+        }
+
+        article ul li ul li {
+            border-top: 1px solid yellow;
+            display: block;
+            width : 100%;
+        }
+
+        article ul li ul li:first-child { border-top: none; }
+
+        article ul li ul li a {
+            background: yellow;
+            display: block;
+            padding: 10px 14px;
+           
+        }
+
+        article ul li ul li a:hover { background: white; }
+
+        article .fa.fa-angle-down { margin-left: 6px; }
+	
 	img {
 	    height: auto;
 	    max-width: 100%;
@@ -25,10 +79,10 @@
 	}
 
 	
-	.top_banner {
+	/* .top_banner {
 		text-align : center;
 		margin-top: 2em;
-	}
+	} */
 	
 	.brandArticle {
 		text-align : center;
@@ -40,7 +94,7 @@
 	}
 
 	div.header {
-	position: absolute;
+	position: relative;
 	top: 0;
 	z-index: 3;
 	width: 100%;
@@ -50,8 +104,8 @@
 	}
 	
 	div.mainNav {
-	position: absolute;
-	margin-top: 5em;
+	position: relative;
+	margin-top: 4em;
 	top: 0;
 	width: 100%;
 	z-index: 3;
@@ -60,8 +114,8 @@
 	
 	}
 	
-	article {
-		margin-top : 10em;
+	article .list_top_margin {
+		margin-top : 7em;
 	}
 	
 
@@ -123,18 +177,15 @@
 	}
 	/* detail들 간에는 inline-block으로 정렬되게 함*/
  
-	
-	
 
 </style>
 </head>
 <body>
 	<!-- 최상위단 배너부분 -->
-	<div class="top_banner">
+	<!-- <div class="top_banner">
 		<h1>kapla</h1>
 		<h2>ITEM VIEW</h2>
-	</div>
-	<hr>
+	</div> -->
 	<!-- 헤더 include 부분 -->
 	<div class="header">
 		<jsp:include page="header.jsp"></jsp:include>
@@ -145,12 +196,39 @@
 			<jsp:include page="nav.jsp"></jsp:include>
 		</nav>
 	</div>
-	
+	<hr>
 	<!-- 상품 쇼핑 페이지 본문 내용 Article -->
 	<div class="itemList">
 		<article>
 			<section class="section_line">
-			<div class="populated_padding item_widget_container" >
+		    <div class="menu_bar populated_padding">
+		        <ul>
+		            <li><a href="#">Oil Perfume<br>오일 퍼퓸</a></li>
+		            <li><a href="#">Hand Perfume<br>핸드 퍼퓸<br></a></li>
+		            <li><a href="#">Home & Travel<br>홈 & 여행<i class='fa fa-angle-down'></i></a>
+		                <ul>
+		                    <li><a href="#">디퓨저</a></li>
+		                    <li><a href="#">카 디퓨저</a></li>
+		                    <li><a href="#">캔들</a></li>
+		                </ul>
+		            </li>
+		            <li><a href="#">Hand Perfume<br>기프트<br></a></li>
+		        </ul>
+		    </div>
+		    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+			<script>
+			    $('article li').hover(
+			        function() {
+			            $('ul', this).stop().slideDown(200);
+			        },
+			        function() {
+			            $('ul', this).stop().slideUp(200);
+			        }
+			    );
+			</script>
+			<!-- 메뉴바 부분 -->
+			
+			<div class="populated_padding item_widget_container list_top_margin" >
 			<!-- flex 정렬시켜줄 역할을 하는 div, 컨테이너로 묶는다. -->
 				<div class="items populated_padding item_flex_width item_detail">
 				<!--
@@ -395,6 +473,9 @@
 					</div>
 				</div>
 				<!-- container END -->	
+			
+			</div>
+
 			</section>
 			
 		</article>
@@ -438,4 +519,3 @@
  -->
 </body>
 </html>
-

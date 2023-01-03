@@ -38,18 +38,17 @@
 					</button>
 				</span> 
 			</c:if>
-			
 			<c:if test="${id != null }">
-				<span>
-					<button type="button" class="btn btn-outline-light border-none" onclick="location.href='/user/logout'">
-	 				로그아웃
-					</button>
-				</span> 
-				<span>
-					<button type="button" class="btn btn-outline-light border-none" onclick="location.href='signup'">
-	 				마이페이지
-					</button>
-				</span> 
+			<span>
+				<button type="button" class="btn btn-outline-light border-none" onclick="location.href='/user/logout'">
+	 			로그아웃
+				</button>
+			</span> 
+			<span>
+				<button type="button" class="btn btn-outline-light border-none" onclick="location.href='signup'">
+	 			마이페이지
+				</button>
+			</span> 
 			</c:if>
 			<span>
 				<button type="button" class="btn btn-outline-light border-none" data-bs-toggle="modal" data-bs-target="#cartModal">
