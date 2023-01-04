@@ -43,4 +43,9 @@ public class MainController {
 		return "favorite"; 
 	}
 	
+	@GetMapping("/cart")
+	public String cartPage() {
+		return "cart"; 
+	}
+	
 }

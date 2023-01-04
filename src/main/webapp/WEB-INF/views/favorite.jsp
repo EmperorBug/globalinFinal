@@ -40,6 +40,7 @@
 	article {
 		margin-top : 2em;
 		width: 50%;
+		margin: auto;
 	}
 	
 	span a {
@@ -56,56 +57,12 @@
  		margin-bottom: 5px;
 	}
 
-	#space {
-		width: 40%;
-	}
-	#space2 {
-		width: 80%;
-	}
-	.space3 {
-		display: block;
-		height: 25px;
-	}
-
 	.itemimg {
-		margin: 0;
-		padding: 0;
-		display: inline-block;
-		width: 30%;
-		height: 100%;
-	}
-	
-	.detailcontainer {
-		margin: 0;
-		padding: 0;
-		display: inline-block;
-		width: 68%;
-		height: 100%;
-		text-align: center;
-	}
-	.itemname {
-		width: 100%;
-		display: block;
-	}
-
-	.horizontalcontainer {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-	}
-
-	.itemcost {
-		display: inline-block;
-	}
-
-	input[type='number']{
-		text-align: center;
-		size: 3;
-	}
-
-	.itemsum {
-		display: inline-block;
-	}
+	margin: 0;
+	padding: 0;
+	width: 150px;
+	height: 150px;
+}
 </style>
 <body>
 	<!-- 최상위단 배너부분 -->
@@ -121,84 +78,89 @@
 	</div>
 	<!-- 찜 목록 article 부분 -->
 	<article>
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item">
-				<img src="/item_img/1.Bombshell.png" class="itemimg">
-				<div class="detailcontainer">
-					<div class="itemname">
-						상품명
-					</div>
-					<div class="space3">
-					</div>
-					<div class="horizontalcontainer">
-						<div class="itemcost">
-							가격
-						</div>
-						<input type="number" name="itemcount" min="1" max="200">
-						<div class="itemsum">
-							합계
-						</div>
-					</div>
-				</div>
-			</li>
-			<li class="list-group-item">
-				<img src="/item_img/1.Bombshell.png" class="itemimg">
-				<div class="detailcontainer">
-					<div class="itemname">
-						상품명
-					</div>
-					<div class="space3">
-					</div>
-					<div class="horizontalcontainer">
-						<div class="itemcost">
-							가격
-						</div>
-						<input type="number" name="itemcount" min="1" max="200">
-						<div class="itemsum">
-							합계
-						</div>
-					</div>
-				</div>
-			</li>
-			<li class="list-group-item">
-				<img src="/item_img/1.Bombshell.png" class="itemimg">
-				<div class="detailcontainer">
-					<div class="itemname">
-						상품명
-					</div>
-					<div class="space3">
-					</div>
-					<div class="horizontalcontainer">
-						<div class="itemcost">
-							가격
-						</div>
-						<input type="number" name="itemcount" min="1" max="200">
-						<div class="itemsum">
-							합계
-						</div>
-					</div>
-				</div>
-			</li>
-			<li class="list-group-item">
-				<img src="/item_img/1.Bombshell.png" class="itemimg">
-				<div class="detailcontainer">
-					<div class="itemname">
-						상품명
-					</div>
-					<div class="space3">
-					</div>
-					<div class="horizontalcontainer">
-						<div class="itemcost">
-							가격
-						</div>
-						<input type="number" name="itemcount" min="1" max="200">
-						<div class="itemsum">
-							합계
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
+		<table class="table table-hover">
+			<thead class="table-light">
+			  <tr>
+				<th>
+					체크
+				</th>
+				<th>
+					상품
+				</th>
+				<th>
+					옵션 정보
+				</th>
+				<th>
+					수량
+				</th>
+				<th>
+					금액
+				</th>
+				<th>
+					할인/적립
+				</th>
+				<th>
+					합계금액
+				</th>
+				<th>
+					배송비
+				</th>
+			  </tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						체크
+					</td>
+					<td>
+						<img src="/item_img/1.Bombshell.png" class="itemimg">
+					</td>
+					<td>
+						옵션 정보
+					</td>
+					<td>
+						수량
+					</td>
+					<td>
+						금액
+					</td>
+					<td>
+						할인/적립
+					</td>
+					<td>
+						합계금액
+					</td>
+					<td>
+						배송비
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>
+						체크
+					</td>
+					<td>
+						상품
+					</td>
+					<td>
+						옵션 정보
+					</td>
+					<td>
+						수량
+					</td>
+					<td>
+						금액
+					</td>
+					<td>
+						<button type="button" class="btn btn-secondary">더 담기</button>
+					</td>
+					<td colspan="2">
+						<button type="submit" class="btn btn-dark">주문서 작성</button>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
 	</article>
 	<br>
 	<hr>
