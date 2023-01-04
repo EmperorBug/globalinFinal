@@ -26,7 +26,7 @@
 		 margin : auto;		
 	}
 	div.header {
-	position: absolute;
+	position: relative;
 	top: 0;
 	z-index: 3;
 	width: 100%;
@@ -40,7 +40,7 @@
 	}
 	
 	div.mainNav {
-	position: absolute;
+	position: relative;
 	margin-top: 5em;
 	top: 0;
 	width: 100%;
@@ -67,12 +67,8 @@
 
 </style>
 <body>
-	<!-- 최상위단 배너부분 -->
-	<div class="top_banner">
-		<h1 align="center">Store Information</h1>
-		<h2 align="center">매장 안내</h2>
-	</div>
-	<hr>
+
+	
 	<!-- 헤더 include 부분 -->
 	<div class="header">
 		<jsp:include page="./include/header.jsp"></jsp:include>
@@ -82,6 +78,12 @@
 		<nav>
 			<jsp:include page="./include/nav.jsp"></jsp:include>
 		</nav>
+	</div>
+	<hr>
+	<!-- 상단 배너부분 -->
+	<div class="top_banner">
+		<h1 align="center">Store Information</h1>
+		<h2 align="center">매장 안내</h2>
 	</div>
 	<!-- 지도를 표시할 article 부분 -->
 	<article>

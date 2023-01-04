@@ -9,7 +9,6 @@
 <title>Kapla</title>
 <style>
 .header {
-	position: absolute;
 	top: 0;
 	z-index: 3;
 	width: 100%;

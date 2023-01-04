@@ -16,7 +16,7 @@
 
 	.top_banner {
 		text-align : center;
-		margin-top: 2em;
+		/* margin-top: 2em; */
 	}
 	
 	.brandArticle {
@@ -29,7 +29,7 @@
 	}
 
 	div.header {
-	position: absolute;
+	position: relative;
 	top: 0;
 	z-index: 3;
 	width: 100%;
@@ -39,7 +39,7 @@
 	}
 	
 	div.mainNav {
-	position: absolute;
+	position: relative;
 	margin-top: 5em;
 	top: 0;
 	width: 100%;
@@ -64,12 +64,7 @@
 </style>
 </head>
 <body>
-	<!-- 최상위단 배너부분 -->
-	<div class="top_banner">
-		<h1>BRAND STORY</h1>
-		<h2>브랜드 스토리</h2>
-	</div>
-	<hr>
+
 	<!-- 헤더 include 부분 -->
 	<div class="header">
 		<jsp:include page="./include/header.jsp"></jsp:include>
@@ -80,6 +75,13 @@
 			<jsp:include page="./include/nav.jsp"></jsp:include>
 		</nav>
 	</div>
+	<hr>
+	<!-- 최상위단 배너부분 -->
+	<div class="top_banner">
+		<h1>BRAND STORY</h1>
+		<h2>브랜드 스토리</h2>
+	</div>
+	
 	
 	<!-- 브랜드페이지 본문 내용 Article -->
 	<div class="brandArticle">
