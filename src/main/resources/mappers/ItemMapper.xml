@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.global.kapla.mapper.ItemMapper">
+
+	<select id="getList" resultType="com.global.kapla.vo.ItemVO">
+		<![CDATA[
+        	select * from kapla_item, kapla_item_image where kapla_item.item_no = kapla_item_image.item_no order by kapla_item.item_no
+    	]]>	
+	</select>
+	
+	<select id="productView" resultType="com.global.kapla.vo.ItemVO">
+		<![CDATA[
+        	select * from kapla_item where item_no = #{item_no} 
+    	]]>	
+	</select>
+	
+	
+</mapper>
