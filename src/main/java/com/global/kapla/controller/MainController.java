@@ -38,4 +38,18 @@ public class MainController {
 		return "favorite"; 
 	}
 	
+	@GetMapping("/cart")
+	public String cartPage() {
+		return "cart"; 
+	}
+
+	@GetMapping("/admin")
+	public String adminPage() {
+		return "admin";
+	}
+
+	@GetMapping("/event")
+	public String eventPage() {
+		return "event";
+	}
 }
