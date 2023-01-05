@@ -47,5 +47,14 @@ public class MainController {
 	public String cartPage() {
 		return "cart"; 
 	}
-	
+
+	@GetMapping("/admin")
+	public String adminPage() {
+		return "admin";
+	}
+
+	@GetMapping("/event")
+	public String eventPage() {
+		return "event";
+	}
 }
