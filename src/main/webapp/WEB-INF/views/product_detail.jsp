@@ -19,7 +19,7 @@
 	.header button {
 		color : black;
 	}
-
+	
 	div.header {
 	position: relative;
 	top: 0;
@@ -45,6 +45,10 @@
 		margin-top : 5em;
 	}
 	
+	img {
+		max-width : 100%;
+		height : auto;
+	}	
 
 	span a {
 		margin: 2em;
@@ -65,24 +69,50 @@
 	}
 	
 	.product_section {
-		width : 50%;
+		width : 100%;
+		display : inline-block;
 	}
-	
+	/* 제품 섹션 */
+
 	.image_section {
 		width : 50%;
 		text-align: center;
 	}
+	/* 이미지 섹션 */
 	
 	.detail_section {
+		width : 50%;
 		text-align: center;
 		font-family: sans-serif;
+		padding : 20px;
+	}
+
+	.product_status {
+		font-size : 16px;
+	}
+		
+	.product_name  {
+		font-size : large;
+		font-weight: 700;
 	}
 	
-	img {
-		max-width : 100%;
-		height : auto;
-	}	
+	.product_buy_phase {
+		margin-top: 20px;
+	}
 	
+	.product_buy_button {
+		color : black;
+		border-style: solid;
+		border-width : 1px 1px 1px 1px;
+		box-shadow: none;
+		padding : 10px;
+	}
+	
+	.populated_padding {
+		padding : 10px;
+	}
+	/* 각 div간 바깥쪽에 padding을 10씩 부여시켰다. */
+		
 
 </style>
 </head>
@@ -109,21 +139,25 @@
 				</div>
 				<!-- 상품 이미지 div -->
 				<div class="product_section detail_section">
-					<div class="product_status">
-						<h4>
+					<div class="product_status populated_padding">
 						${product_view.item_status}					
-						</h4>
 					</div>
-					<div class="product_name">
-						<h3>
-						상품명 : ${product_view.name}	
-						</h3>
+					<div class="product_name populated_padding">
+						${product_view.name}	
 					</div>
-					<div class="product_price">
+					<div class="product_price populated_padding">
 						<h4>
-						가격 : ${product_view.price}					
+						${product_view.price} 원			
 						</h4>
 					</div>
+					<div class="product_buy_phase populated_padding">
+						<span class="product_buy_button">
+							<a href="/product_buy">
+	 							구매하기
+	 						</a>
+						</span> 
+					</div>
+					
 				</div>
 				<!-- 상품 설명 div -->
 			</div>
