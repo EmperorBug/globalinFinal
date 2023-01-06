@@ -5,16 +5,36 @@ import org.springframework.stereotype.Service;
 
 import com.global.kapla.mapper.UserMapper;
 import com.global.kapla.service.UserService;
+import com.global.kapla.vo.KakaoVO;
 import com.global.kapla.vo.UserVO;
 
-
+/**
+ * 2023.01.03
+ * @author gimdohyeong
+ * 유저 서비스 구
+ */
 @Service
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private UserMapper mapper;
 	
-	public UserVO joinForm(UserVO vo) {
-		return mapper.getUser(vo);
+	public int register(UserVO vo) {
+		return mapper.insertUser(vo);
 	}
+
+	@Override
+	public UserVO login(UserVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.login(vo);
+	}
+
+	@Override
+	public UserVO userInfo(String userId) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.getUser(userId);
+	}
+ 
+	
+	
 }

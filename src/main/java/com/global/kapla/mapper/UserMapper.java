@@ -7,10 +7,12 @@ import com.global.kapla.vo.UserVO;
 @Mapper
 public interface UserMapper {
 	
-	public UserVO getUser(UserVO vo);
+	public UserVO login(UserVO vo);
 	
 	//유저 id체크
 	public int findUser(UserVO vo);
 	
 	public int insertUser(UserVO vo);
+	
+	public UserVO getUser(String id);
 }

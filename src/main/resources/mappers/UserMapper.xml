@@ -16,12 +16,19 @@
 </sql>
 
    <select resultType="UserVO" id="getUser">
-   			select <include refid="user"/> from KAPLA_USER
+   			select <include refid="user"/> from KAPLA_USER where id = #{id}
    </select>
     
+    <!-- 이미 가입되어있는지 확인 -->
     <select id="findUser" resultType="int">
     	select count(*) from KAPLA_USER where id=#{id}
     </select>
+    
+    <!--  로그인 처리  -->
+    <select id="login" resultType="UserVO">
+    	select <include refid="user"/> from KAPLA_USER where id = #{id} and password = #{password} 
+    </select>
+    
     
     <insert id="insertUser">
     	insert into KAPLA_USER (user_no, id, password, email) values ( user_seq.nextval, #{id}, #{password}, #{email} )

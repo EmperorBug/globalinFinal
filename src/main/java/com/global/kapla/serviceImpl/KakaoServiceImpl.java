@@ -91,7 +91,6 @@ public class KakaoServiceImpl implements KakaoService{
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            
             Gson gson = new Gson();
              vo = gson.fromJson(result, KakaoVO.class);
              //vo에 이메일추가 (카카오api에서 kakao_account안에 이메일 담에서 보내서 한번 꺼내야함
@@ -122,8 +121,8 @@ public class KakaoServiceImpl implements KakaoService{
 		if (check_user == 0) {
 			userMapper.insertUser(vo);
 		}
-		
-		vo = userMapper.getUser(vo);
+		System.out.println(password);
+		vo = userMapper.login(vo);
 		return vo;
 	}
 

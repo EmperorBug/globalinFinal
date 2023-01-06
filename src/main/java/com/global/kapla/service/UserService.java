@@ -6,5 +6,8 @@ import com.global.kapla.vo.UserVO;
 
 public interface UserService {
 	
-	public UserVO joinForm(UserVO vo);
+	public int register(UserVO vo);
+	public UserVO login(UserVO vo) throws Exception;
+	
+	public UserVO userInfo(String userId) throws Exception;
 }
