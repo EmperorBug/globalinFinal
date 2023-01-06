@@ -105,7 +105,7 @@
 		<article>
 			<div class="section_line">
 				<div class="product_section image_section image_file_property">
-					<img src="/item_img/9.Signature.png">
+					<img src="${product_view.url}">
 				</div>
 				<!-- 상품 이미지 div -->
 				<div class="product_section detail_section">

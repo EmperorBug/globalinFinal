@@ -12,7 +12,7 @@
 	
 	<select id="productView" resultType="com.global.kapla.vo.ItemVO">
 		<![CDATA[
-        	select * from kapla_item where item_no = #{item_no} 
+        	select * from kapla_item, kapla_item_image where kapla_item.item_no = kapla_item_image.item_no and kapla_item.item_no = #{item_no} 
     	]]>	
 	</select>
 	
