@@ -64,6 +64,15 @@
             color: black;
         }
 
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .items{
+            width: 500px;
+            height: 500px;
+        }
 
     </style>
 </head>
@@ -88,14 +97,21 @@
 <!-- 브랜드페이지 본문 내용 Article -->
 <div class="brandArticle">
     <article>
-        <div>
-            <%--(이벤트 배너 이미지1 넣기)--%>
-            <img src="/event_img/january1.png" width="500", height="500">
+        <div class="container">
+            <div class="items">
+                <%--(이벤트 배너 이미지1 넣기)--%>
+                <a href="/product/itemlist">
+                    <img src="/event_img/january1.png" width="500" , height="500">
+                </a>
+            </div>
+            <div class="items">
+                <%--(이벤트 배너 이미지2 넣기)--%>
+                <a href="/product/itemlist">
+                    <img src="/event_img/february1.png" width="500" , height="500">
+                </a>
+            </div>
         </div>
-        <div>
-            <%--(이벤트 배너 이미지2 넣기)--%>
-                <img src="/event_img/february1.png" width="500", height="500">
-        </div>
+
     </article>
 </div>
 <hr>
