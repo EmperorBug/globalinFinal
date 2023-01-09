@@ -106,6 +106,15 @@
 	.itemsum {
 		display: inline-block;
 	}
+
+	article {
+		text-align: center;
+	}
+
+	.table {
+		text-align: center;
+		margin-left: 50%;
+	}
 </style>
 <body>
 	<!-- 최상위단 배너부분 -->
@@ -121,13 +130,55 @@
 	</div>
 	<!-- 찜 목록 article 부분 -->
 	<article>
-		<table>
+		<table class="table">
 			<thead>
-
+				<tr>
+					<th>체크박스</th>
+					<th colspan="3">상품정보</th>
+					<th>수량</th>
+					<th>가격</th>
+					<th>할인</th>
+					<th>상품합계</th>
+					<th>배송비</th>
+				</tr>
 			</thead>
 			<tbody>
-				
+				<tr>
+					<td>체크박스</td>
+					<td>상품사진</td>
+					<td>상품정보1</td>
+					<td>상품정보2</td>
+					<td>수량</td>
+					<td>가격</td>
+					<td>할인</td>
+					<td>상품합계</td>
+					<td>배송비</td>
+				</tr>
+				<tr>
+					<td>체크박스</td>
+					<td>상품사진</td>
+					<td>상품정보1</td>
+					<td>상품정보2</td>
+					<td>수량</td>
+					<td>가격</td>
+					<td>할인</td>
+					<td>상품합계</td>
+					<td>배송비</td>
+				</tr>
 			</tbody>
+			<tfoot>
+				<tr>
+					<tr>
+						<td>선택삭제</td>
+						<td>선택찜</td>
+						<td colspan="3"></td>
+						<td></td>
+						<td></td>
+						<td>선택주문</td>
+						<td>전체주문</td>
+					</tr>
+				</tr>
+			</tfoot>
 		</table>
 		<ul class="list-group list-group-flush">
 			<li class="list-group-item">
