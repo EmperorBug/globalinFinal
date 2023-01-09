@@ -112,9 +112,43 @@
 		padding : 10px;
 	}
 	/* 각 div간 바깥쪽에 padding을 10씩 부여시켰다. */
+	
+	.spreadBtn {
+		text-align: left;
+	}
+	
+	.spreadBtn table {
+		width : 100%;
+	}
+	.spreadBtn table th {
+		width : 25%;
+	}
+	
+	.spreadBtn table th,td {
+		padding : 10px;
+	}
+	
+	.spreadBtn table th {
+		border-width: 1px;
+	}
+	
+	.spreadBtn table td {
+		border-width: 1px;
+	}
+	
+	.product_detail_table {
+		border : 1px solid black;
+		border-collapse: collapse;
 		
+	}
+	
+	.spreadBtn p {
+		
+		text-align: left;
+	}
 
 </style>
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 </head>
 <body>
 
@@ -157,7 +191,53 @@
 	 						</a>
 						</span> 
 					</div>
-					
+					<hr>
+					<div class="spreadBtn populated_padding">
+					<details>
+					<summary>제품 세부 정보</summary>
+						<table class="product_detail_table">
+							<tr>
+								<th>전성분</th>
+								<td>
+									<span>
+										레몬 오일,레몬 테르펜,라임 테르펜,매그롤란(태산목꽃추출물),다이프로필렌글라이콜,테트라메틸아세틸옥타하이드로나프탈렌,에틸리날룰
+										<br>
+										(제품을 구성하는 주요 성분은 변경될 수 있습니다.)
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>사용방법</th>
+								<td>설명2</td>
+							</tr>
+							<tr>
+								<th>주의사항</th>
+								<td>설명3</td>
+							</tr>
+							<tr>
+								<th>상세정보</th>
+								<td>설명4</td>
+							</tr>
+						</table>
+					</details>					
+					</div>
+					<!-- 제품 세부 정보 div -->
+					<hr>
+					<div class="spreadBtn populated_padding">
+					<details>
+						<summary>배송 & 반품</summary>
+						<p>
+							배송비 : 3,000원 (4만원 이상 구매 시 무료배송)(로젠택배)
+							<br>
+							교환&반품비 : 6,000원
+							<br>
+							배송기간 : 보통 1~3일 정도 소요
+							<br>
+							(지역 택배사 사정에 따라 약간의 지연 될 수 있음.) 
+						</p>
+					</details>
+					</div>
+					<!-- 배송, 반품 설명 div -->
 				</div>
 				<!-- 상품 설명 div -->
 			</div>
