@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,54 +118,21 @@
 			<table class="orderTable">
 				<caption>상품정보</caption>
 				<tr>
-					<th>상품이름</th>
-					<th>상품이름</th>
-					<th>상품이름</th>
-					<th>상품이름</th>
-					<th>상품이름</th>
+					<th>상품/옵션정보</th>
+					<th>수량</th>
+					<th>상품금액</th>
+					<th>할인/적립</th>
+					<th>합계금액</th>
 				</tr>
-				<tr>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-				</tr>
-				<tr>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-				</tr>
-				<tr>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-				</tr>
-				<tr>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-				</tr>
-				<tr>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-				</tr>
-				<tr>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-					<td>asdasdsad</td>
-				</tr>
+				<c:forEach items="${cart_list }" var="item">
+					<tr>
+						<td>${item.item }</td>
+						<td>${item.quantity }</td>
+						<td>${item.price }</td>
+						<td>${item.discount }</td>
+						<td>${item.sumPrice }</td>
+					</tr>
+				</c:forEach>
 			</table>
 					
 			<table class="orderTable">
@@ -242,7 +211,9 @@
 					</td>
 				</tr>
 			</table>
-			<div class="totalPrice"> 최종결제금액 <h3 id="total_price" data-price="50000">50,000원</h3></div>
+			
+				<div class="totalPrice"> 
+					최종결제금액 <h3 id="total_price" data-price="${total_price }"><fmt:formatNumber pattern="###,###" value="${total_price }"/></h3></div>
 			<div style="text-align: center;">
 				<button type="button" class="btn btn-primary" style="padding: 20px; width: 226px; margin-top: 20px" id="pay_btn">결제</button>
 			</div>
@@ -259,7 +230,7 @@ const form = document.getElementById('order_form');
 	            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
 	            
 	           console.log(data);
-	           form.addr.value = '('+data.zonecode+')'+data.address;
+	           form.addr.value = '('+data.zonecode+')　'+data.address;
 	           form.addr2.focus();
 	        }
 	    }).open();
