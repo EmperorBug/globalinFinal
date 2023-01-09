@@ -71,31 +71,8 @@
 		margin: 0;
 		padding: 0;
 		display: inline-block;
-		width: 30%;
-		height: 100%;
-	}
-	
-	.detailcontainer {
-		margin: 0;
-		padding: 0;
-		display: inline-block;
-		width: 68%;
-		height: 100%;
-		text-align: center;
-	}
-	.itemname {
-		width: 100%;
-		display: block;
-	}
-
-	.horizontalcontainer {
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-	}
-
-	.itemcost {
-		display: inline-block;
+		width: 50px;
+		height: 50px;
 	}
 
 	input[type='number']{
@@ -103,14 +80,16 @@
 		size: 3;
 	}
 
-	.itemsum {
-		display: inline-block;
+	.table {
+		text-align: center;
+		margin-left: 12.5%;
 	}
 </style>
+
 <body>
 	<!-- 최상위단 배너부분 -->
 	<div class="top_banner">
-		<h1 align="center">Favorite</h1>
+		<h1 align="center">Cart</h1>
 	</div>
 	<hr>
 	<!-- 네비게이터 include 부분 -->	
@@ -120,93 +99,79 @@
 		</nav>
 	</div>
 	<!-- 찜 목록 article 부분 -->
-	<article>
-		<table>
-			<thead>
-
-			</thead>
-			<tbody>
-				
-			</tbody>
-		</table>
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item">
-				<img src="/item_img/1.Bombshell.png" class="itemimg">
-				<div class="detailcontainer">
-					<div class="itemname">
-						상품명
-					</div>
-					<div class="space3">
-					</div>
-					<div class="horizontalcontainer">
-						<div class="itemcost">
-							가격
-						</div>
-						<input type="number" name="itemcount" min="1" max="200">
-						<div class="itemsum">
-							합계
-						</div>
-					</div>
-				</div>
-			</li>
-			<li class="list-group-item">
-				<img src="/item_img/1.Bombshell.png" class="itemimg">
-				<div class="detailcontainer">
-					<div class="itemname">
-						상품명
-					</div>
-					<div class="space3">
-					</div>
-					<div class="horizontalcontainer">
-						<div class="itemcost">
-							가격
-						</div>
-						<input type="number" name="itemcount" min="1" max="200">
-						<div class="itemsum">
-							합계
-						</div>
-					</div>
-				</div>
-			</li>
-			<li class="list-group-item">
-				<img src="/item_img/1.Bombshell.png" class="itemimg">
-				<div class="detailcontainer">
-					<div class="itemname">
-						상품명
-					</div>
-					<div class="space3">
-					</div>
-					<div class="horizontalcontainer">
-						<div class="itemcost">
-							가격
-						</div>
-						<input type="number" name="itemcount" min="1" max="200">
-						<div class="itemsum">
-							합계
-						</div>
-					</div>
-				</div>
-			</li>
-			<li class="list-group-item">
-				<img src="/item_img/1.Bombshell.png" class="itemimg">
-				<div class="detailcontainer">
-					<div class="itemname">
-						상품명
-					</div>
-					<div class="space3">
-					</div>
-					<div class="horizontalcontainer">
-						<div class="itemcost">
-							가격
-						</div>
-						<input type="number" name="itemcount" min="1" max="200">
-						<div class="itemsum">
-							합계
-						</div>
-					</div>
-				</div>
-			</li>
-		</ul>
+	<article class="w-100">
+		<form action="order" method="post">
+			<table class="table table-hover w-75" >
+				<thead class="table-light">
+					<tr>
+						<th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkAll"></th>
+						<th colspan="3">상품정보</th>
+						<th>수량</th>
+						<th>가격</th>
+						<th>할인</th>
+						<th>상품합계</th>
+						<th>배송비</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkList"></td>
+						<td><img src="/item_img/1.Bombshell.png" class="itemimg"></td>
+						<td>상품명</td>
+						<td>상품정보</td>
+						<td><input type="number" name="itemcount" min="1" max="200"></td>
+						<td>가격</td>
+						<td>할인</td>
+						<td>상품합계</td>
+						<td>배송비</td>
+					</tr>
+					<tr>
+						<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkList"></td>
+						<td><img src="/item_img/1.Bombshell.png" class="itemimg"></td>
+						<td>상품명</td>
+						<td>상품정보</td>
+						<td><input type="number" name="itemcount" min="1" max="200"></td>
+						<td>가격</td>
+						<td>할인</td>
+						<td>상품합계</td>
+						<td>배송비</td>
+					</tr>
+					<tr>
+						<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkList"></td>
+						<td><img src="/item_img/1.Bombshell.png" class="itemimg"></td>
+						<td>상품명</td>
+						<td>상품정보</td>
+						<td><input type="number" name="itemcount" min="1" max="200"></td>
+						<td>가격</td>
+						<td>할인</td>
+						<td>상품합계</td>
+						<td>배송비</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<tr>
+							<td colspan="3"></td>
+							<td>총 상품금액</td>
+							<td>\</td>
+							<td>총 배송비</td>
+							<td>\</td>
+							<td>총 합계</td>
+							<td>\</td>
+						</tr>
+					</tr>
+					<tr>
+						<tr>
+							<td><button type="button" class="btn btn-danger">선택삭제</button></td>
+							<td><button type="button" class="btn btn-primary">선택찜</button></td>
+							<td colspan="5"></td>
+							<td><button type="button" class="btn btn-secondary">선택주문</button></td>
+							<td><button class="btn btn-lg btn-dark" type="submit">전체주문</button></td>
+						</tr>
+					</tr>
+				</tfoot>
+			</table>
+		</form>
 	</article>
 	<br>
 	<hr>

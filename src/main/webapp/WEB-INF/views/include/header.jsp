@@ -55,7 +55,7 @@
 			</span> 
 			</c:if>
 			<span>
-				<button type="button" class="btn btn-outline-light border-none" data-bs-toggle="modal" data-bs-target="#cartModal">
+				<button type="button" class="btn btn-outline-light border-none" onclick="location.href='cart'">
  				장바구니
 				</button>
 			</span> 
@@ -67,7 +67,6 @@
 		</header>
 	</div>
 	<jsp:include page="../modals/loginModal.jsp" ></jsp:include>
-	<jsp:include page="../modals/cartModal.jsp" ></jsp:include>
 	<!-- 작성자 : 김형우 -->
 	<!-- include file, modal 담당 : 박진영 -->
 	<!-- 버튼 디자인 담당 : 김도형 -->

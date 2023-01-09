@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.global.kapla.mapper.UserMapper;
 import com.global.kapla.service.KakaoService;
-import com.global.kapla.util.KaplaUtils;
+import com.global.kapla.util.KaplaCode;
 import com.global.kapla.vo.KakaoVO;
 import com.global.kapla.vo.UserVO;
 import com.google.gson.Gson;
@@ -108,7 +108,7 @@ public class KakaoServiceImpl implements KakaoService{
 		
 		
 		String id		 	= 	"KAKAOLOGIN_"+kakaoVO.getId();
-		String password 	=	Base64.getEncoder().encodeToString((kakaoVO.getId()+ KaplaUtils.ADMIN_CODE).getBytes());
+		String password 	=	Base64.getEncoder().encodeToString((kakaoVO.getId()+ KaplaCode.ADMIN_CODE).getBytes());
 		String email		=	kakaoVO.getKakao_account().get("email").getAsString();
 		
 		UserVO vo = new UserVO();
