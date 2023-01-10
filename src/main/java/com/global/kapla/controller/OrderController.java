@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.global.kapla.service.OrderService;
 import com.global.kapla.service.UserService;
@@ -26,12 +27,12 @@ public class OrderController {
 	@Autowired
 	OrderService orderServoce;
 	
-	@GetMapping("/order")
+	@PostMapping("/order")
 	public String order (HttpServletRequest request, Model model) throws Exception {
 		
 		HttpSession session = request.getSession(false);
 		
-		if (session.getAttribute("id") == null) return KaplaCode.REDIRECT_LOGIN;
+		if (session.getAttribute("id").equals(null)) return KaplaCode.REDIRECT_LOGIN;
 		
 		String user_id = (String) session.getAttribute("id");
 		UserVO userVO = userService.userInfo(user_id);
