@@ -9,8 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/c179c056d7.js" crossorigin="anonymous"></script>
 </head>
-<style>
+<style>	
 	
 	.top_banner {
 		text-align : center;
@@ -51,7 +52,7 @@
 	}
 	
 	article {
-		margin-top : 10em;
+		margin-top : 5em;
 	}
 	
 
@@ -63,6 +64,14 @@
 	
 	.way_to_come {
 		text-align: center;
+	}
+
+	.fa-solid {
+		color : green;
+		font-size : 1em;
+	}	
+	.icon {
+		font-size : 1.2em;
 	}
 
 </style>
@@ -105,9 +114,24 @@
 	</script>
 	<!-- 오시는길 text 부분 -->
 	<div class="way_to_come">
-		<h2>찾아오시는길</h2>
-		<h3>쌍문역 4번출구 도보 15분</h3>
-		<h4>추후 수정예정</h4>
+		
+		<div class="icon">
+			<i class="fa-solid fa-store"></i>
+			<span>롯데백화점 쌍문점</span>
+		</div>
+		<div class="icon">
+			<i class="fa-solid fa-location-pin"></i>
+			<span>매장주소 : 서울 도봉구 둘리길 둘리뮤지엄 2층 카플라</span>
+		</div>
+		<div class="icon">
+			<i class="fa-solid fa-phone-flip"></i>
+			<span>전화번호 : 010-2601-2281</span>			
+		</div>
+		<div class="icon">
+			<i class="fa-solid fa-circle-dot"></i>
+			<span>영업시간 : 09:30 ~ 18:20</span>
+		</div>
+		
 	</div>
 	</article>
 	
