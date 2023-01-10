@@ -201,6 +201,12 @@
 							<input type="text" name="comment">
 						</td>
 					</tr>					
+					<tr>
+						<td>회원정보 반영</td>
+						<td>
+							<input type="checkbox" name="remember">
+						</td>
+					</tr>					
 				</table>
 			</form>
 			<table class="orderTable">
