@@ -181,7 +181,7 @@
 					</div>
 					<div class="product_price populated_padding">
 						<h4>
-						${product_view.price} 원			
+						<fmt:formatNumber value="${product_view.price}" pattern="#,###" /> 원		
 						</h4>
 					</div>
 					<div class="product_buy_phase populated_padding">
