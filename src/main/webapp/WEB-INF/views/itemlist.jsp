@@ -44,7 +44,8 @@
              text-decoration: none;
         }
 
-        article ul li:hover { background: #a4e68e; }
+        /* article ul li:hover { background: #a4e68e; } */
+        /* 갖다댔을때 뜨는 색 */
 
         article ul li ul {
             display: none;
@@ -53,7 +54,7 @@
         }
 
         article ul li ul li {
-            border-top: 1px solid yellow;
+            border-top: 1px solid white;
             display: block;
             width : 100%;
         }
@@ -61,7 +62,7 @@
         article ul li ul li:first-child { border-top: none; }
 
         article ul li ul li a {
-            background: yellow;
+            background: #E6E6E6;
             display: block;
             padding: 10px 14px;
            
