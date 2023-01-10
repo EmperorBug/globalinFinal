@@ -57,8 +57,9 @@ span a {
 	<video id="main_video" src="./img/mainVideo.mp4" autoplay loop muted="muted" width="100%" height="100%"></video>
 
 	<!-- 헤더 -->
-	<jsp:include page="./include/header.jsp"></jsp:include>
-
+	<div class="headerMain">
+		<jsp:include page="./include/header.jsp"></jsp:include>
+	</div>
 	
 	<!-- 네비 -->
 	<div class="mainNav">
