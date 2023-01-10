@@ -18,6 +18,11 @@ import com.global.kapla.service.UserService;
 import com.global.kapla.util.KaplaCode;
 import com.global.kapla.vo.UserVO;
 
+/**
+ * オーダページ
+ * @author gimdohyeong
+ *　
+ */
 @Controller
 public class OrderController {
 

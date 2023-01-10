@@ -7,9 +7,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<jsp:include page="/include/js"/>
+<link
+	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+	<!-- 카카오 js -->
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+    integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>	
 <style>
 
 	.top_banner {
@@ -98,6 +114,10 @@
 
 	.totalPrice h3 {
 		display: inline-block;
+	}
+	
+	.form-check-input {
+		margin-left: 0;
 	}
 }
 </style>
@@ -203,8 +223,10 @@
 					</tr>					
 					<tr>
 						<td>회원정보 반영</td>
-						<td>
-							<input type="checkbox" name="remember">
+						<td class="form-switch">
+							<input type="checkbox" name="remember" id="remember" class="form-check-input">
+							<label for="remember"><p>배송 정보를 저장합니다.</p></label>
+							
 						</td>
 					</tr>					
 				</table>
