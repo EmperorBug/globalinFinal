@@ -1,0 +1,113 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+html, body {
+	margin: 0;
+}
+
+/* header */
+.header {
+	position: relative;
+	top: 0;
+	z-index: 3;
+	width: 100%;
+}
+.headerMain {
+	position: absolute;
+	top: 0;
+	z-index: 3;
+	width: 100%;
+}
+.border-none {
+	border: none;
+}
+.border-none:focus {
+	outline: none !important;
+	box-shadow: none !important;
+}
+/* nav */
+.mainNav {
+	/* 고정위치 삭제 -박진영- */
+	top: 0;
+	width: 100%;
+	z-index: 3;
+	color : white;
+	text-align: center;
+}
+
+.homeBtn {
+	font-family: 'Lobster', cursive;
+	font-size: 30px;
+}	
+
+/* cartModal */
+	
+#sum {
+	text-align: left;
+}
+
+#space {
+	width: 40%;
+}
+
+#space2 {
+	width: 80%;
+}
+
+.space3 {
+	display: block;
+	height: 25px;
+}
+
+
+
+.detailcontainer {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	width: 68%;
+	height: 100%;
+	text-align: center;
+}
+
+.itemname {
+	width: 100%;
+	display: block;
+}
+
+.horizontalcontainer {
+	display: flex;
+	justify-content: space-between;
+	width: 105%;
+}
+
+.itemcost {
+	display: inline-block;
+}
+
+input[type='number'] {
+	text-align: center;
+	size: 3;
+}
+
+.itemsum {
+	display: inline-block;
+}
+
+/*
+	main.jsp
+	김도형
+	23.01.10
+ */ 
+.#main_video {
+	position: relative; 
+	top: 0; 
+	left: 0; 
+	object-fit: cover;
+}
+.headerMenu {
+	position: relative; 
+	text-align: right; 
+	color: white; 
+	margin-top: 3em;
+}

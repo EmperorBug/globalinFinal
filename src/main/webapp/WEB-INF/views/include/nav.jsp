@@ -15,7 +15,7 @@
 		<nav>
 			<span><a href="/brand">Brand</a></span>
 			<span><a href="/product/itemlist">Shop</a></span> 
-			<span><a href="/" style="font-family: Lobster; font-size: 30px;">kapla</a></span>
+			<span><a href="/" class="homeBtn">kapla</a></span>
 			<span><a href="/event">Event</a></span>
 			<span><a href="/map">Store</a></span>
 		</nav>

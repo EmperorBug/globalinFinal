@@ -2,9 +2,8 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 
-		<!-- 헤더 -->
-		<div class="header">
-		<header style="position: relative; text-align: right; color: white; margin-top: 3em;">
+		<div class="headerMain">
+		<header class="headerMenu">
 			<c:if test="${id == null }">
 				<span>
 					<button type="button" class="btn btn-outline-light border-none" data-bs-toggle="modal" data-bs-target="#loginModal">
@@ -19,7 +18,7 @@
 			</c:if>
 			<c:if test="${id != null }">
 			<span>
-				<button type="button" class="btn btn-outline-light border-none" onclick="location.href='/user/logout'">
+				<button type="button" class="btn btn-outline-light border-none" >
 	 			로그아웃
 				</button>
 			</span> 

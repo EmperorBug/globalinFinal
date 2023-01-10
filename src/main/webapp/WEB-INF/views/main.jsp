@@ -8,13 +8,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kapla - 카플라</title>
 <link
-	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
-	rel="stylesheet">
-<link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
+<link href="/css/main.css" rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -40,12 +38,7 @@ span a {
 	font-size: 30px;
 }
 
-.#main_video {
-	position: relative; 
-	top: 0; 
-	left: 0; 
-	object-fit: cover;
-}
+
 
 .mainNav {
 	position: absolute;
@@ -57,12 +50,6 @@ span a {
 	text-align: center;
 }
 
-.header {
-	position: absolute;
-	top: 0;
-	z-index: 3;
-	width: 100%;
-}
 
 </style>
 </head>
@@ -70,11 +57,8 @@ span a {
 	<video id="main_video" src="./img/mainVideo.mp4" autoplay loop muted="muted" width="100%" height="100%"></video>
 
 	<!-- 헤더 -->
-	<div>
-		<header>
-		<jsp:include page="./include/header.jsp"></jsp:include>
-		</header>
-	</div>
+	<jsp:include page="./include/header.jsp"></jsp:include>
+
 	
 	<!-- 네비 -->
 	<div class="mainNav">
