@@ -2,7 +2,6 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 
-		<div class="headerMain">
 		<header class="headerMenu">
 			<c:if test="${id == null }">
 				<span>
@@ -39,7 +38,6 @@
 				</button>
 			</span>
 		</header>
-	</div>
 	<jsp:include page="../modals/loginModal.jsp" ></jsp:include>
 	<!-- 작성자 : 김형우 -->
 	<!-- include file, modal 담당 : 박진영 -->
