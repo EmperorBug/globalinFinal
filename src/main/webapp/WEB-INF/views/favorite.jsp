@@ -113,7 +113,7 @@
 						체크
 					</td>
 					<td>
-						<img src="/item_img/1.Bombshell.png" class="itemimg">
+						<img src="/item_img/101.Pure Perfume Oil.png" class="itemimg">
 					</td>
 					<td>
 						옵션 정보

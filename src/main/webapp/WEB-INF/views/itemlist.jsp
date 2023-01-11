@@ -10,12 +10,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kapla - 카플라</title>
-<link href="/css/main.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
 	rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <%@ include file="modals/loginModal.jsp" %>
 <%@ include file="modals/cartModal.jsp" %>
 <style>
@@ -44,11 +44,11 @@
             font-size: 14px;
             padding: 15px 14px;
             transition: 0.3s linear;
-             text-decoration: none;
+            text-decoration: none;
         }
 
         /* article ul li:hover { background: #a4e68e; } */
-        /* 갖다댔을때 뜨는 색 */
+        /* 메뉴에 갖다댔을때 뜨는 색 */
 
         article ul li ul {
             display: none;
@@ -104,7 +104,7 @@
 	
 	div.mainNav {
 	position: relative;
-	margin-top: 4em;
+	margin-top: 3em;
 	top: 0;
 	width: 100%;
 	z-index: 3;
@@ -231,9 +231,9 @@
 							<img src="${product.url}">
 						</a>
 					</div>
-					<div class="populated_padding item_status item_detail">
-						<h4 class="item_heading_title">
-							${product.item_status} 
+					<div class="populated_padding item_detail">
+						<h4 class ="item_status" id="item_status">
+							${product.item_status}
 						</h4>
 					</div>
 					<div class="populated_padding linked_item_list item_detail">
@@ -245,7 +245,7 @@
 					</div>
 					<div class="populated_padding item_price item_detail">
 						<h4 class="item_heading_title">
-						<fmt:formatNumber value="${product.price}" pattern="#,###" /> 원
+							<fmt:formatNumber value="${product.price}" pattern="#,###" /> 원
 						</h4>
 					</div>
 				</div>
@@ -265,6 +265,25 @@
 	</footer>
 	</div>
 
+	<script>
+	window.onload = function(){
+		
+		const elements = document.getElementsByClassName('item_status');
+		
+		for(let i=0; i < elements.length; i++)  {
+			  console.log(elements[i].innerText);
+			  if(elements[i].innerText == "Limited Edition"){
+			  	elements[i].style.color = "#00ff00";
+			  }
+			  else if(elements[i].innerText == "Signature"){
+				  elements[i].style.color = "#ff0000"; 
+			  }
+			  else {
+				  elements[i].style.color = "#ffffff";	  
+			  }
+			}
+	};
+	</script>
 
  
 </body>

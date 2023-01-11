@@ -116,7 +116,7 @@
 				<tbody>
 					<tr>
 						<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkList"></td>
-						<td><img src="/item_img/1.Bombshell.png" class="itemimg"></td>
+						<td><img src="/item_img/101.Pure Perfume Oil.png" class="itemimg"></td>
 						<td>상품명</td>
 						<td>상품정보</td>
 						<td><input type="number" name="itemcount" min="1" max="200"></td>
@@ -127,7 +127,7 @@
 					</tr>
 					<tr>
 						<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkList"></td>
-						<td><img src="/item_img/1.Bombshell.png" class="itemimg"></td>
+						<td><img src="/item_img/101.Pure Perfume Oil.png" class="itemimg"></td>
 						<td>상품명</td>
 						<td>상품정보</td>
 						<td><input type="number" name="itemcount" min="1" max="200"></td>
@@ -138,7 +138,7 @@
 					</tr>
 					<tr>
 						<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkList"></td>
-						<td><img src="/item_img/1.Bombshell.png" class="itemimg"></td>
+						<td><img src="/item_img/101.Pure Perfume Oil.png" class="itemimg"></td>
 						<td>상품명</td>
 						<td>상품정보</td>
 						<td><input type="number" name="itemcount" min="1" max="200"></td>
