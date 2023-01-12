@@ -25,9 +25,9 @@ html, body {
 	outline: none !important;
 	box-shadow: none !important;
 }
-/* nav */
+
+/******************* nav ****************/
 .mainNav {
-	/* 고정위치 삭제 -박진영- */
 	top: 0;
 	width: 100%;
 	z-index: 3;
@@ -39,8 +39,18 @@ html, body {
 	font-family: 'Lobster', cursive;
 	font-size: 30px;
 }	
+article {
+	margin-top : 10em;
+}
 
-/* cartModal */
+
+span a {
+	margin: 2em;
+	text-decoration: none;
+	color : black;
+}
+
+/************ cartModal ***************/
 	
 #sum {
 	text-align: left;
@@ -105,9 +115,74 @@ input[type='number'] {
 	left: 0; 
 	object-fit: cover;
 }
-.headerMenu {
+.headerMenu{
 	position: relative; 
 	text-align: right; 
 	color: white; 
 	margin-top: 3em;
+}
+/*
+	order.jsp
+	김도형
+	23.01.10
+ */ 
+ .form-check-input {
+ 	margin-left: 0 !important;
+ }
+ .orderMain {
+		margin: 0 auto;
+		width: 60%
+		
+}
+
+.orderTable {
+	border-top : 2px solid #cecece;
+	border-bottom : 2px solid #cecece;
+	caption-side: top;
+	width: 100%;
+	
+}
+.wrap {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.orderTable td:first-child {
+	background-color: #f4f4f4;
+	border: solid #e4e4e4;
+	border-width : 0 1px 0 1px;
+	padding: 7px 10px 7px 15px;
+	width: 226px
+}
+
+.orderTable td:last-child {
+	padding: 7px 10px 7px 15px;
+}	
+
+.totalPrice {
+	text-align: right;
+	border: solid #e4e4e4;
+	margin-top: 20px;
+	padding: 25px 30px 10px 15px;
+}
+
+.totalPrice h3 {
+	display: inline-block;
+}
+
+/* login페이지 */
+.loginMain {
+	margin: 0 auto;
+	width: 40%;
+	padding-top: 8em;
+}
+
+.form-floating {
+	margin : 10px 0;
+}
+
+.loginFormBtn {
+	padding: 15px 0;
+	width: 49%;
 }

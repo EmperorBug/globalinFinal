@@ -9,6 +9,8 @@ public class KaplaCode {
 
 	public static final String ADMIN_CODE = "264d108af973302d9e67e875491e4c45";
 	
-	//추후 로그인페이지 만든후 변경예정
-	public static final String REDIRECT_LOGIN = "redirect:/";
+	//메인페이지 리다이렉트
+	public static final String REDIRECT_MAIN = "redirect:/";
+	
+	public static final String REDIRECT_LOGIN = "redirect:/user/login";
 }

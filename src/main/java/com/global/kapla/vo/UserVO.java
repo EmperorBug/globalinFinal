@@ -1,6 +1,7 @@
 package com.global.kapla.vo;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -22,4 +23,6 @@ public class UserVO {
 	private String 	email;
 	private String 	address;
 	private Date 	reg_date;
+	
+	private List<AuthVO> authList;
 }

@@ -30,7 +30,7 @@ public class MainController {
 	
 	@GetMapping("/signup")
 	public String signUpPage() {
-		return "signUp"; 
+		return "user/signUp"; 
 	}
 	
 	@GetMapping("/favorite")
