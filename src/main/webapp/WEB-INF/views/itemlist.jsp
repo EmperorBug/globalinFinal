@@ -10,6 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>kapla - 카플라</title>
+<link href="/css/main.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
 	rel="stylesheet">
@@ -138,7 +139,7 @@
 	h4 {
 		text-align : center;
 		margin : 0;
-		line-height : 100px;
+		line-height : 1.2em;
 	}
 	
 	h4 .item_price {
@@ -232,7 +233,7 @@
 						</a>
 					</div>
 					<div class="populated_padding item_detail">
-						<h4 class ="item_status" id="item_status">
+						<h4 class ="item_status">
 							${product.item_status}
 						</h4>
 					</div>
@@ -271,15 +272,21 @@
 		const elements = document.getElementsByClassName('item_status');
 		
 		for(let i=0; i < elements.length; i++)  {
-			  console.log(elements[i].innerText);
 			  if(elements[i].innerText == "Limited Edition"){
-			  	elements[i].style.color = "#00ff00";
+			  	 elements[i].style.color = "#00ff00";
+			  	 /* db에서 불러온 Limited Edition은 연두색 */
 			  }
 			  else if(elements[i].innerText == "Signature"){
 				  elements[i].style.color = "#ff0000"; 
+			  	  /* db에서 불러온 Signature는 빨간색 (수정가능) */
+			  }
+			  else if(elements[i].innerText == "New"){
+				  elements[i].style.color = "#ffff00"; 
+			  	  /* db에서 불러온 New는 주황색 (수정가능) */
 			  }
 			  else {
 				  elements[i].style.color = "#ffffff";	  
+				  /* db에서 불러온 /는 흰색으로 */
 			  }
 			}
 	};
