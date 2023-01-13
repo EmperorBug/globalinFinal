@@ -52,4 +52,11 @@ public class MainController {
 	public String eventPage() {
 		return "event";
 	}
+	
+	@GetMapping("/customerservice")
+	public String customerService() {
+		
+		return "customerservice";
+	}
+	
 }
