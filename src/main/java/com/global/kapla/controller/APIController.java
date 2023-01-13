@@ -1,15 +1,20 @@
 package com.global.kapla.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.global.kapla.service.KakaoService;
 import com.global.kapla.service.UserService;
+import com.global.kapla.util.KaplaCode;
 import com.global.kapla.vo.KakaoVO;
 import com.global.kapla.vo.UserVO;
 
@@ -18,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/api")
 @Controller
-public class ApiController {
+public class APIController {
 
 	@Autowired
 	KakaoService kakaoService;
@@ -33,8 +38,9 @@ public class ApiController {
 	 * @throws Exception 
 	 */
 	@GetMapping("/kakaoLogin")
-	public String kakaoLogin(@RequestParam String code, HttpSession session) throws Exception {
+	public String kakaoLogin(@RequestParam String code, HttpSession session, HttpServletResponse response) throws Exception {
 		
+		int result_code = 200;
 		//로그인코드로 엑세스토큰 받아오기
 		String access = kakaoService.getToken(code);
 		
@@ -44,6 +50,7 @@ public class ApiController {
 		UserVO userVO = kakaoService.login(kakaoVO);
 		
 		session.setAttribute("id", userVO.getId());
-		return "redirect:/";
+		return KaplaCode.REDIRECT_MAIN;
 	}
+	
 }

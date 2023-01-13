@@ -1,0 +1,31 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import './main.css';
+
+/* 
+*	2023.01.11 
+*	김도형 
+*	main페이지 전용 css파일 
+*/
+.header {
+	position: absolute;
+	top: 0;
+	z-index: 3;
+	width: 100%;
+}
+
+
+
+.mainNav {
+	position: absolute;
+	top: 5em;
+	width: 100%;
+	z-index: 3;
+	text-align: center;
+}
+
+span a {
+	margin: 2em;
+	text-decoration: none;
+	color : white;
+}

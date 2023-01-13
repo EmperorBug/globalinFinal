@@ -12,7 +12,7 @@
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
-<link href="/css/main.css" rel="stylesheet">
+<link href="/css/index.css" rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -20,11 +20,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-	<!-- 카카오 js -->
-<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
-    integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
+
 <style>
-html, body {
+/* html, body {
 	margin: 0;
 }
 
@@ -40,26 +38,29 @@ span a {
 
 
 
-.mainNav {
-	position: absolute;
-	margin-top: 5em;
-	top: 0;
-	width: 100%;
-	z-index: 3;
+	.mainNav {
+		position: absolute;
+		margin-top: 5em;
+		top: 0;
+		width: 100%;
+		z-index: 3;
+		color: white;
+		text-align: center;
+	}
+ */
+.btn {
 	color: white;
-	text-align: center;
 }
-
-
+.btn:hover {
+	color: white;
+}
 </style>
 </head>
 <body>
 	<video id="main_video" src="./img/mainVideo.mp4" autoplay loop muted="muted" width="100%" height="100%"></video>
 
 	<!-- 헤더 -->
-	<div class="headerMain">
 		<jsp:include page="./include/header.jsp"></jsp:include>
-	</div>
 	
 	<!-- 네비 -->
 	<div class="mainNav">
@@ -72,6 +73,7 @@ span a {
 	<div>
 		<jsp:include page="./include/footer.jsp"></jsp:include>
 	</div>
+	
 	<script type="text/javascript">
 		document.getElementById('main_video').play();
 	</script>
