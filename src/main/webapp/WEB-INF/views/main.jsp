@@ -22,22 +22,19 @@
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <style>
-/* html, body {
-	margin: 0;
-}
+	/* html, body {
+		margin: 0;
+	}
+	
+	span a {
+		margin: 2em;
+		text-decoration: none;
+		color : white;
+	}
 
-span a {
-	margin: 2em;
-	text-decoration: none;
-	color : white;
-}
-
-.main {
-	font-size: 30px;
-}
-
-
-
+	.main {
+		font-size: 30px;
+	}
 	.mainNav {
 		position: absolute;
 		margin-top: 5em;
@@ -48,12 +45,10 @@ span a {
 		text-align: center;
 	}
  */
-.btn {
-	color: white;
-}
-.btn:hover {
-	color: white;
-}
+	.btn { color: white; }
+	.btn:hover { color: white; }
+	
+	
 </style>
 </head>
 <body>

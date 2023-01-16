@@ -3,128 +3,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>고객센터</title>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
-            rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
-    <style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>고객센터</title>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<link href="/css/main.css" rel="stylesheet">
+<style>
+	
+	  
+	
+	  .header button { color: black; }
+	
+	  div.header {
+	       position: relative;
+	       top: 0;
+	       z-index: 3;
+	       width: 100%;
+	   }
 
-		dl, ol, ul, li  { list-style: none; }
-		li a { text-decoration: none; }
-		em { font-style: normal; font-weight: normal; text-align: left;}
+      .header span { color: black; }
 
-        .header button { color: black; }
+      div.mainNav {
+          position: relative;
+          margin-top: 5em;
+          top: 0;
+          width: 100%;
+          z-index: 3;
+          color: white;
+          text-align: center;
+      }
 
-        div.header {
-            position: relative;
-            top: 0;
-            z-index: 3;
-            width: 100%;
-        }
+      article { margin-top: 0em; }
 
-        .header span { color: black; }
-
-        div.mainNav {
-            position: relative;
-            margin-top: 5em;
-            top: 0;
-            width: 100%;
-            z-index: 3;
-            color: white;
-            text-align: center;
-        }
-
-        article { margin-top: 0em; }
-
-        span a {
-            margin: 2em;
-            text-decoration: none;
-            color: black;
-        }
-
-		.contents { min-height: 400px; padding : 0 0 80px 0; }
-		/* 최상위 div class */
-
-		.sub_content {
-			padding : 45px 0 0 0;
-			position : relative;
-			width : 1200px;
-		 	margin : 0 auto;
-		 	min-height: 50em;
-		}
-		
-		.sub_menu { padding : 7px 0 6px 10px; font-size : 14px;}
-		.sub_menu a:hover { background : #f8f8f8; color:#1a2e2d; font-weight: bold; }
-
-		.sub_menu_box {
-		    padding: 0 0 14px 10px;
-   		    border-bottom: 1px solid #ececec;
-   		    min-height : 250px;
-		}
-		.sub_menu_box h4 { padding : 0 0 14px 10px; border-bottom: 1px solid #ececec; }
-		
-		.side_cont { float : left; width : 200px; }
-		
-		.info_box { padding : 0 0 0 10px; }
-		.info_box dl { margin : 30px 0 0 0 ; }
-		.info_box dt { padding : 8px 0 10px 0; }
-		
-		/* 왼쪽 부분 css */
-		
-		.content {
-			position : relative;
-			float: left;
-   		    width: 960px;
-   			padding: 0 0 0 40px;
-		}
-		
-		.board_zone_sec { position: relative; }
-		.board_zone_list { min-height : 500px; }
-				
-		.date_check_box {
-		    margin: 0 0 35px 0;
-		    padding: 20px 20px 20px 30px;
-		    border: 3px solid #eeeeee;
-		}
-		
-		.btn_date_check {
-		    display: inline-block;
-		    min-width: 100px;
-		    height: 31px;
-		    color: #ffffff;
-		    font-weight: bold;
-		    border: 1px solid #1a2e2d;
-		    background: #1a2e2d;
-		    text-align: center;
-		}
-		
-		.date_faq_list { display: inline-block; width: 70%; }
-		
-		.date_faq_list h2 { padding: 0 0 10px 0; font-size: 1.25em; font-weight: bold; }
-		
-		.date_faq_list input[type="text"] { width: 70%;  padding: 0 10px;
-	    outline: none; font-size: 12px; height: 31px; }
-
-		.date_faq_txt {
-		    display: inline-block;
-		    width: 23%;
-		    padding: 10px 0 10px 50px;
-		    border-left: 1px solid #dbdbdb;
-		    font-size: 13px;
-		}
-		
-		/* 오른쪽 부분 css */
+      span a {
+          margin: 2em;
+          text-decoration: none;
+          color: black;
+      }
 
 
-    </style>
+  </style>
 </head>
 <body>
 

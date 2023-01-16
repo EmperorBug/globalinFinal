@@ -88,18 +88,11 @@
 		padding : 20px;
 	}
 
-	.product_status {
-		font-size : 16px;
-	}
+	.product_status { font-size : 16px; }
 		
-	.product_name  {
-		font-size : large;
-		font-weight: 700;
-	}
+	.product_name  { font-size : large; font-weight: 700; }
 	
-	.product_buy_phase {
-		margin-top: 20px;
-	}
+	.product_buy_phase { margin-top: 20px; }
 	
 	.product_buy_button {
 		color : black;
@@ -118,35 +111,16 @@
 		text-align: left;
 	}
 	
-	.spreadBtn table {
-		width : 100%;
-	}
-	.spreadBtn table th {
-		width : 25%;
-	}
+	.spreadBtn p { text-align: left; }
+	.spreadBtn table { width : 100%; }
+	.spreadBtn table th { width : 25%; }
+	.spreadBtn table th,td { padding : 10px; }
+	.spreadBtn table th { border-width: 1px; }
+	.spreadBtn table td { border-width: 1px; }
 	
-	.spreadBtn table th,td {
-		padding : 10px;
-	}
+	.product_detail_table { border : 1px solid black; border-collapse: collapse; }
 	
-	.spreadBtn table th {
-		border-width: 1px;
-	}
 	
-	.spreadBtn table td {
-		border-width: 1px;
-	}
-	
-	.product_detail_table {
-		border : 1px solid black;
-		border-collapse: collapse;
-		
-	}
-	
-	.spreadBtn p {
-		
-		text-align: left;
-	}
 
 </style>
 <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>

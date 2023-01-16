@@ -26,19 +26,12 @@
             margin: auto;
         }
 
-        article ul {
-            font-size: 0;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
+        article ul { font-size: 0; margin: 0; padding: 0; text-align: center; }
         article ul li {
             display: inline-block;
             position: relative;
             width : 25%;
         }
-
         article ul li a {
             color: black;
             display: block;
@@ -47,10 +40,8 @@
             transition: 0.3s linear;
             text-decoration: none;
         }
-
         /* article ul li:hover { background: #a4e68e; } */
         /* 메뉴에 갖다댔을때 뜨는 색 */
-
         article ul li ul {
             display: none;
             position: absolute;
@@ -140,6 +131,7 @@
 		text-align : center;
 		margin : 0;
 		line-height : 1.2em;
+		font-size: 1em;
 	}
 	
 	h4 .item_price {
