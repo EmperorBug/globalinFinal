@@ -7,10 +7,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import com.global.kapla.security.CustomUserDetailsService;
 
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 @Configuration
 @EnableWebSecurity	//시큐리티 필터가 스프링 필터체인에 등록
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -19,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	CustomUserDetailsService customUserDetailsService;
 	
+	private final AuthenticationSuccessHandler customSuccessHandler;
+	private final AuthenticationFailureHandler customFailureHandler;
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		/*
@@ -29,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.authorizeHttpRequests()
 			.antMatchers("/admin/**").hasAnyRole("ADMIN")
-			.antMatchers("/**").permitAll();
+			.antMatchers("/**").permitAll();	
 		
 		//스프링 기본 로그인폼으로 띄움
 		//스프링에서 파라미터로 넘겨받는 기본값은 username, password다
@@ -37,9 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.formLogin()
 		.loginPage("/user/login")
 		.usernameParameter("id")	//기본값 username을 id로 변경 jsp에서도 바꿔줘야함
-		.defaultSuccessUrl("/");
-		
-		
+		.successHandler(customSuccessHandler)
+		.failureHandler(customFailureHandler);
 	}
 
 	@Override

@@ -23,13 +23,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 	//UserDetailsService 구현해주면
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		log.info("username  : "+username);
 		//스프링 시큐리티가 이 메소드를 제일 먼저 호출함.
 		//스프링 시큐리티는 필터쪽에서 동작.
 		log.warn("Load User by UserVO number : "+username);
 		UserVO vo = userMapper.getUser(username);
 		
-		
 		log.warn("queried User by UserVO mapper : "+vo);
+		log.info("detail"+new UserDetailsVO(vo));
 		return vo == null ? null : new UserDetailsVO(vo);
 		
 		

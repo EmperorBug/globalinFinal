@@ -4,6 +4,7 @@ package com.global.kapla.mapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.global.kapla.vo.UserVO;
 
@@ -18,10 +19,13 @@ class UserMapperTest {
 	@Test
 	void test() {
 		UserVO vo = new UserVO();
-		vo.setId("asdf");
+		vo.setId("testuser3");
 		UserVO list = mapper.login(vo);
 		
-		log.info("결과 : "+list);
+		log.info(new BCryptPasswordEncoder().encode("test123@"));
+		log.info(list.getPassword());
+		boolean pwd = new BCryptPasswordEncoder().matches("test123@", list.getPassword());
+		log.info("결과 : "+pwd);
 
 	}
 

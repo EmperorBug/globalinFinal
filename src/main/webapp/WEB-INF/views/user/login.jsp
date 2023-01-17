@@ -28,6 +28,10 @@
 	<div class="wrap">
 		<main class="loginMain">
 			<form action="/user/login" method="post">
+			testuser3
+			test123@
+			${error }
+			${exception }
 			<p>로그인</p>
 			  <div class="form-floating">
 				<input type="text" class="form-control" id="id" placeholder="name@example.com" name="id">

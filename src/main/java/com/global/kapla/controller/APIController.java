@@ -40,7 +40,6 @@ public class APIController {
 	@GetMapping("/kakaoLogin")
 	public String kakaoLogin(@RequestParam String code, HttpSession session, HttpServletResponse response) throws Exception {
 		
-		int result_code = 200;
 		//로그인코드로 엑세스토큰 받아오기
 		String access = kakaoService.getToken(code);
 		
