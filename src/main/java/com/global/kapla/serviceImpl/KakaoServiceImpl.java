@@ -121,7 +121,6 @@ public class KakaoServiceImpl implements KakaoService{
 		if (check_user == 0) {
 			userMapper.insertUser(vo);
 		}
-		System.out.println(password);
 		vo = userMapper.login(vo);
 		return vo;
 	}
