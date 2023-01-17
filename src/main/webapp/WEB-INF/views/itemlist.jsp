@@ -148,7 +148,7 @@
 		width : 15em;		
 	}
 	
-	/* item 한 div의 크기는 450px, 250px으로 고정시켰다. */
+	/* item 한 div의 크기는 30em(최대시 480px), 15em(최대시 240px)으로 고정시켰다. */
 	
 	.item_widget_container {
 		display : flex;
@@ -157,17 +157,12 @@
 	}
 	/* 플렉스 정렬 */
 	
-	.item_flex_width {
-		position : relative;
-		width : 25%;
-	}
+	.item_flex_width { position : relative; width : 25%; }
 	/* 각각의 품목 25%씩 너비를 줌 */
 
- 	.item_detail {
-		/* display : inline-block; */
-		letter-spacing: -1px;
-	}
-	/* detail들 간에는 inline-block으로 정렬되게 함*/
+ 	.item_detail { letter-spacing: -1px; }
+	
+	.linked_item_list h4 { font-size : 1.25em; }
  
 
 </style>

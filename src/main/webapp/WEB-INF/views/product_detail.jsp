@@ -94,12 +94,13 @@
 	
 	.product_buy_phase { margin-top: 20px; }
 	
-	.product_buy_button {
+	.product_buy_phase_button {
 		color : black;
 		border-style: solid;
 		border-width : 1px 1px 1px 1px;
 		box-shadow: none;
 		padding : 10px;
+		margin : 10px;
 	}
 	
 	.populated_padding {
@@ -107,10 +108,7 @@
 	}
 	/* 각 div간 바깥쪽에 padding을 10씩 부여시켰다. */
 	
-	.spreadBtn {
-		text-align: left;
-	}
-	
+	.spreadBtn { text-align: left; }
 	.spreadBtn p { text-align: left; }
 	.spreadBtn table { width : 100%; }
 	.spreadBtn table th { width : 25%; }
@@ -119,6 +117,10 @@
 	.spreadBtn table td { border-width: 1px; }
 	
 	.product_detail_table { border : 1px solid black; border-collapse: collapse; }
+	
+	/* 세부정보를 펼치는 버튼 부분 + 첫번째 세부정보 테이블 부분 */
+	
+	.button_container { padding : 0; padding-top : 5em; }
 	
 	
 
@@ -158,13 +160,6 @@
 						<h4>
 						<fmt:formatNumber value="${product_view.price}" pattern="#,###" /> 원		
 						</h4>
-					</div>
-					<div class="product_buy_phase populated_padding">
-						<span class="product_buy_button">
-							<a href="/product_buy">
-	 							구매하기
-	 						</a>
-						</span> 
 					</div>
 					<hr>
 					<div class="spreadBtn populated_padding">
@@ -213,6 +208,25 @@
 					</details>
 					</div>
 					<!-- 배송, 반품 설명 div -->
+					<hr>
+					<div class="product_buy_phase populated_padding button_container">
+						<span class="product_buy_phase_button">
+							<a href="/cart">
+	 							장바구니
+	 						</a>
+						</span> 
+						<span class="product_buy_phase_button">
+							<a href="/favorite">
+	 							찜하기
+	 						</a>
+						</span>
+						<span class="product_buy_phase_button">
+							<a href="/order">
+	 							바로구매
+	 						</a>
+						</span>  
+					</div>
+					<!-- 버튼 부분 div -->
 				</div>
 				<!-- 상품 설명 div -->
 			</div>

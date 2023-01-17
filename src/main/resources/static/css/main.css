@@ -5,7 +5,7 @@ html, body {
 	margin: 0;
 }
 
-	dl, ol, ul, li  { list-style: none; }
+	dl, ol, ul, li  { list-style: none; padding : 0; }
 	li a { text-decoration: none; }
 	em { font-style: normal; font-weight: normal; text-align: left;}
 	/* 리스트 스타일 삭제, 링크 내 밑줄 삭제 */

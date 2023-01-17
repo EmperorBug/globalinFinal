@@ -16,7 +16,7 @@
 <link href="/css/main.css" rel="stylesheet">
 <style>
 	
-	  
+	  a { color : #333;}
 	
 	  .header button { color: black; }
 	
@@ -46,7 +46,65 @@
           text-decoration: none;
           color: black;
       }
-
+      
+    .board_list_faq .board_hot_list { padding: 10px 0 20px 0; }
+	.board_hot_list {
+	    padding: 10px 0 50px 0;
+	    font-size: 0;
+	    text-align: left;
+	    border-top: 1px solid #999999;
+	}	
+	
+	.board_hot_list ul { display: inline-block; font-size: 12px; }
+	
+	.board_hot_list ul li {
+	    display: inline-block;
+	    width: auto;
+	    margin: 0;
+	    vertical-align: middle;
+	}
+	
+	.board_hot_list ul li:first-child a { border-left: none 0; }
+	.board_hot_list ul li a {
+	    display: block;
+	    height: 11px;
+	    padding: 0 5px 0 5px;
+	    border-left: 1px solid #cccccc;
+	}
+	
+	.board_hot_list ul li a span { position: relative; top: -5px; }
+	.board_hot_list ul li a span:hover {
+	    font-weight: bold;
+	    border-bottom: 1px solid #ab3e55;
+	    color: #ab3e55;
+	}
+	
+	.board_list_faq .board_list_table {
+	    border-top: 1px solid #dbdbdb;
+	}
+	
+	.board_list_table {
+	    width: 100%;
+	    margin: 0 0 20px 0;
+	    border: 0;
+	    border-spacing: 0;
+	    border-collapse: collapse;
+	    border-top: 1px solid #3c3c3c;
+	    text-align: center;
+	}
+	
+	.board_list_table th {
+	    padding: 10px 10px 10px 14px;
+	    border-bottom: 1px solid #dbdbdb;
+	    background: #fbfbfb;
+	}
+	
+	.board_list_table td {
+	    padding: 13px 10px 15px 10px;
+	    border-bottom: 1px solid #dbdbdb;
+	}
+	.board_list_faq .board_list_table .board_tit { padding-left: 42px; }
+	
 
   </style>
 </head>
@@ -80,7 +138,7 @@
       			 	<dt>고객상담센터</dt>
        				<dd>
             		<strong class="info_num">02-466-7941</strong><br>
-           		    <a href="mailto:sales@dmcosmetics.co" class="info_mail_link">sales@kapla.co</a>
+           		    <a href="sales@kapla.co" class="info_mail_link">sales@kapla.co</a>
             			<p style="text-align: left;">
             				MON-FRI : 10:00 ~ 16:00<br>
 							LUNCH : 11:30 ~ 13:00<br>
@@ -121,7 +179,44 @@
                         		</div>
 							</form>
 						</div>
+						<div class ="board_zone_title">
+							<h4>	BEST FAQ </h4>
+						</div>
+						<div class ="board_list_faq">
+							<div class="board_hot_list">
+		                        <ul>
+		                            <li class="on"><a href="#"><span>전체</span></a></li>
+		                            <li><a href="#"><span>회원가입/정보</span></a></li>
+		                            <li><a href="#"><span>결제/배송</span></a></li>
+		                            <li><a href="#"><span>교환/반품/환불</span></a></li>
+		                            <li><a href=""><span>기타</span></a></li>
+		                            <!-- <li><a href="faq.php?category=03001005&amp;noheader=y&amp;isBest=y&amp;searchField=&amp;searchWord="><span>기타</span></a></li> -->
+		                        </ul>
+		                    </div>
+		                    <table id="faqList" class="board_list_table">
+				                <colgroup>
+		                            <col style="width:67px">
+		                            <col style="width:144px">
+		                            <col>
+		                        </colgroup>
+		                    	<thead>
+                         			<tr>
+                                		<th>번호</th>
+                                		<th>분류</th>
+                                		<th>내용</th>
+                            		</tr>
+                        		</thead>
+                        		<tbody>
+                        			<tr class="toggle_taq">
+                        				<td>1</td>
+                        				<td>마일리지 적립</td>
+                        				<td class="board_tit">마일리지 적립금은 어떻게 사용하나요?</td>
+                        			</tr>
+                        		</tbody>
+		                    </table>
+						</div>
 					</div>
+					
 				</div>
 			</div>
 		</div>
