@@ -8,7 +8,9 @@
 <title>회원 가입</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link href="/css/main.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<!-- 헤더 include 부분 -->
@@ -17,7 +19,7 @@
 	<jsp:include page="../include/nav.jsp"></jsp:include>
 	<!-- 회원가입 article 부분 -->
 	<main class="loginMain">
-		<form id="joinForm" action="/join" method="post" onsubmit="return valchk()"> 
+		<form id="joinForm" action="/user/join" method="post" onsubmit="return valchk()"> 
 		  <div class="form-floating">
 			<input type="text" class="form-control" id="id" placeholder="id" name="id" maxlength="20">
 			<label for="id">ID</label>
@@ -55,36 +57,47 @@
 		
 			if (form.id.value == '' ) {
 				alert('아이디를 입력해주세요');
-				form.id.focus();
+				$('#id').addClass('is-invalid');	//클래스추가
+				form.id.focus();					//해당부분 포커스
 				return false;
 			}
 			if (!idregx.test(form.id.value)) {
 				alert('아이디 형식을 지켜주세요.');
+				$('#id').addClass('is-invalid');
 				form.id.focus();
 				return false;
 			}
+			//유효성검사 통과시 클래스 지움
+			$('#id').removeClass('is-invalid');
+			
 			if (form.password.value == '' ) {
 				alert('비밀번호 입력해주세요');
+				$('#password').addClass('is-invalid');
 				form.password.focus();
 				return false;
 			}
-			if (!idregx.test(form.password.value)) {
+			if (!pwdregx.test(form.password.value)) {
+				console.log(form.password)
 				alert('비밀번호 형식을 지켜주세요.');
+				$('#password').addClass('is-invalid');
 				form.password.focus();
 				return false;
 			}
+			$('#password').removeClass('is-invalid');
+			
 			if (form.email.value == '' ) {
 				alert('이메일을 입력해주세요');
+				$('#email').addClass('is-invalid');
 				form.email.focus();
 				return false;
 			}
-			if (!idregx.test(form.email.value)) {
+			if (!emailregx.test(form.email.value)) {
 				alert('이메일 형식을 지켜주세요.');
+				$('#email').addClass('is-invalid');
 				form.email.focus();
 				return false;
 			}
-			
-			alert('회원등록 완료 되었습니다!');
+			$('#email').removeClass('is-invalid');
 		}
 	</script>
 </body>

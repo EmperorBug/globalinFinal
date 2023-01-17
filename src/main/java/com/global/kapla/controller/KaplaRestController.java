@@ -10,9 +10,4 @@ import com.global.kapla.vo.UserVO;
 @RequestMapping("/rest")
 public class KaplaRestController {
 
-	@PostMapping("/login")
-	public int login(UserVO userVO) {
-		int result_code = 200;
-		return result_code;
-	}
 }

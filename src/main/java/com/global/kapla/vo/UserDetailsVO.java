@@ -8,6 +8,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.Data;
+
+@Data
 public class UserDetailsVO implements UserDetails{
 
 	/**
@@ -19,6 +22,8 @@ public class UserDetailsVO implements UserDetails{
 	private String password;
 	private List<GrantedAuthority> authorities;
 	
+//	CustomUserDetailsService.java 에서 꺼내온 db정보로 생성자를 호출하여 값 세팅
+	//권한 한가지씩뿐 없음
 	public UserDetailsVO(UserVO user) {
 		this.setUsername(user.getId());
 		this.setPassword(user.getPassword());
@@ -39,9 +44,7 @@ public class UserDetailsVO implements UserDetails{
 	public void setAuthorities(UserVO userVO) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
-		for (AuthVO auth : userVO.getAuthList()) {
-			authorities.add(new SimpleGrantedAuthority(auth.getAuthority()));
-		}
+			authorities.add(new SimpleGrantedAuthority(userVO.getAuthority()));
 		this.authorities = authorities;
 	}
 

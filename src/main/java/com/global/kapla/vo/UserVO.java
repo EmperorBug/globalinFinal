@@ -23,6 +23,5 @@ public class UserVO {
 	private String 	email;
 	private String 	address;
 	private Date 	reg_date;
-	
-	private List<AuthVO> authList;
+	private String authority;
 }

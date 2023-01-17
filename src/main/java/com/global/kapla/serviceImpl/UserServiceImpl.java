@@ -1,6 +1,7 @@
 package com.global.kapla.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.global.kapla.mapper.UserMapper;
@@ -8,11 +9,14 @@ import com.global.kapla.service.UserService;
 import com.global.kapla.vo.KakaoVO;
 import com.global.kapla.vo.UserVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 2023.01.03
  * @author gimdohyeong
- * 유저 서비스 구
+ * 유저 서비스 구현
  */
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService{
 	
@@ -20,6 +24,7 @@ public class UserServiceImpl implements UserService{
 	private UserMapper mapper;
 	
 	public int register(UserVO vo) {
+		vo.setPassword(new BCryptPasswordEncoder().encode(vo.getPassword()));
 		return mapper.insertUser(vo);
 	}
 
