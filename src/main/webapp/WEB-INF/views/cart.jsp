@@ -29,107 +29,106 @@
 	<jsp:include page="./include/nav.jsp"></jsp:include>
 	<!-- 찜 목록 article 부분 -->
 	<article class="wrap">
-		<form action="order" method="post" id="orderForm">
-			<table class="table table-hover w-75" >
-				<thead class="table-light">
-					<tr>
-						<th><input class="form-check-input" type="checkbox" value="" id="allChecked" name="checkAll"></th>
-						<th colspan="3">상품정보</th>
-						<th>수량</th>
-						<th>상품가격</th>
-						<th>할인</th>
-						<th>합계금액</th>
-						<th>배송비</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkList"></td>
-						<td><img src="/item_img/101.Pure Perfume Oil.png" class="itemimg"></td>
-						<td>상품명</td>
-						<td>상품정보</td>
-						<td>
-							<input type="number" name="itemcount" min="1" max="200" value="1" onchange="changeCount(this)">
-							<span class="btn_area">
-								<button class="cart_btn up" type="button" onclick="increase(this);"></button>
-								<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
-							</span>						
-						</td>
-						<td name="price" data-value="50000"><fmt:formatNumber pattern="#,###원" value="50000"></fmt:formatNumber></td>
-						<td>할인</td>
-						<td name="sumPrice" >상품합계</td>
-						<td>배송비</td>
-					</tr>
-					<tr>
-						<td><input class="form-check-input" type="checkbox" value="" name="checkList"></td>
-						<td><img src="/item_img/101.Pure Perfume Oil.png" class="itemimg"></td>
-						<td>상품명</td>
-						<td>상품정보</td>
-						<td>
-							<input type="number" name="itemcount" min="1" max="200" value="1" onchange="changeCount(this)">
-							<span class="btn_area">
-								<button class="cart_btn up" type="button" onclick="increase(this);"></button>
-								<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
-							</span>
-						</td>
-						<td name="price" data-value="100000"><fmt:formatNumber pattern="#,###원" value="100000"></fmt:formatNumber></td>
-						<td>할인</td>
-						<td name="sumPrice" >합계금액</td>
-						<td>배송비</td>
-					</tr>
-					<tr>
-						<td><input class="form-check-input" type="checkbox" value=""name="checkList"></td>
-						<td><img src="/item_img/101.Pure Perfume Oil.png" class="itemimg"></td>
-						<td>상품명</td>
-						<td>상품정보</td>
-						<td>
-							<input type="number" name="itemcount" min="1" max="200" value="1" onchange="changeCount(this)">
-							<span class="btn_area">
-								<button class="cart_btn up" type="button" onclick="increase(this);"></button>
-								<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
-							</span>
-						</td>
-						<td name="price" data-value="25253"><fmt:formatNumber pattern="#,###원" value="25253"></fmt:formatNumber></td>
-						<td>할인</td>
-						<td name="sumPrice" >상품합계</td>
-						<td>배송비</td>
-					</tr>
-				</tbody>
-<%--				<tfoot>--%>
-<%--					<tr>--%>
-<%--						<td colspan="3"></td>--%>
-<%--						<td>총 상품금액</td>--%>
-
-<%--						<td id="totalPrice">50000</td>--%>
-<%--						<td>총 배송비</td>--%>
-<%--						<td>2500</td>--%>
-<%--						<td>총 합계</td>--%>
-<%--						<td>\</td>--%>
-<%--					</tr>--%>
-<%--					<tr>--%>
-<%--						<td><button type="button" class="btn btn-danger">선택삭제</button></td>--%>
-<%--						<td><button type="button" class="btn btn-primary">선택찜</button></td>--%>
-<%--						<td colspan="5"></td>--%>
-<%--						<td><button type="button" class="btn btn-secondary">선택주문</button></td>--%>
-<%--						<td><button class="btn btn-lg btn-dark" type="submit">전체주문</button></td>--%>
-<%--					</tr>--%>
-<%--				</tfoot>--%>
-			</table>
-			<div class="totalPrice w-75">
-				<dl>
-					<dt>총<strong></strong>개의 상품금액</dt>
-					<dd id="totalPrice"></dd>
-				</dl>
-				<dl>
-					<dt>총<strong></strong>개의 상품금액</dt>
-					<dd id="fee">155151</dd>
-				</dl>
-				<dl>
-					<dt>총<strong></strong>개의 상품금액</dt>
-					<dd id="totalPriceSumFee">151515</dd>
-				</dl>
-			</div>
-		</form>
+		<table class="center table table-hover w-75" >
+			<thead class="table-light">
+				<tr>
+					<th width="3%"><input class="form-check-input" type="checkbox" value="" id="allChecked" name="checkAll"></th>
+					<th width="47%" colspan="2">상품정보</th>
+					<th width="10%">수량</th>
+					<th width="10%">상품가격</th>
+					<th width="10%">할인</th>
+					<th width="10%">합계금액</th>
+					<th width="10%">배송비</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+					<!--체크박스에 아이템번호 넣어놓음  -->
+						<input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="checkList">
+					</td>
+					<td>
+						<img src="/item_img/101.Pure Perfume Oil.png" class="itemimg">
+					</td>
+					<td>상품명</td>
+					<td>
+						<input type="number" name="quantity" min="1" max="200" value="1" onchange="changeCount(this)">
+						<span class="btn_area">
+							<button class="cart_btn up" type="button" onclick="increase(this);"></button>
+							<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
+						</span>						
+					</td>
+					<td name="price" data-value="50000"><fmt:formatNumber pattern="#,###원" value="50000"></fmt:formatNumber></td>
+					<td name="discount"></td>
+					<td name="sumPrice" ><fmt:formatNumber pattern="#,###원" value="50000"></fmt:formatNumber></td>
+					<td name="fee">무료배송</td>
+				</tr>
+				<tr>
+					<td>
+						<input class="form-check-input" type="checkbox" value="2" name="checkList">
+					</td>
+					<td>
+						<img src="/item_img/101.Pure Perfume Oil.png" class="itemimg">
+					</td>
+					<td name="name">상품명</td>
+					<td>
+						<input type="number" name="quantity" min="1" max="200" value="1" onchange="changeCount(this)">
+						<span class="btn_area">
+							<button class="cart_btn up" type="button" onclick="increase(this);"></button>
+							<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
+						</span>
+					</td>
+					<td name="price" data-value="100000"><fmt:formatNumber pattern="#,###원" value="100000"></fmt:formatNumber></td>
+					<td name="discount"></td>
+					<td name="sumPrice" ><fmt:formatNumber pattern="#,###원" value="100000"></fmt:formatNumber></td>
+					<td name="fee">무료배송</td>
+				</tr>
+				<tr>
+					<td>
+						<input class="form-check-input" type="checkbox" value="3"name="checkList">
+					</td>
+					<td>
+						<img src="/item_img/101.Pure Perfume Oil.png" class="itemimg">
+					</td>
+					<td name="name">상품명</td>
+					<td>
+						<input type="number" name="quantity" min="1" max="200" value="1" onchange="changeCount(this)">
+						<span class="btn_area">
+							<button class="cart_btn up" type="button" onclick="increase(this);"></button>
+							<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
+						</span>
+					</td>
+					<td name="price" data-value="25253"><fmt:formatNumber pattern="#,###원" value="25253"></fmt:formatNumber></td>
+					<td name="discount"></td>
+					<td name="sumPrice" ><fmt:formatNumber pattern="#,###원" value="25253"></fmt:formatNumber></td>
+					<td name="fee">무료배송</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="totalPrice w-75">
+			<dl>
+				<dt>총<strong id="chkLen"></strong>개의 상품금액</dt>
+				<dd id="totalPrice"></dd>
+			</dl>
+			<span class="priceIcon">
+				<img src="/img/plus.png">
+			</span>
+			<dl>
+				<dt>배송비</dt>
+				<dd id="fee">0</dd>
+			</dl>
+			<span class="priceIcon">
+				<img src="/img/equal.png">
+			</span>			
+			<dl>
+				<dt>합계</dt>
+				<dd id="totalPriceSumFee">151515</dd>
+			</dl>
+		</div>
+		<div class="center w-75">
+			<button class="btn btn-danger" type="button">선택 상품 삭제</button>
+			<button class="btn btn-lg btn-dark" style="float: right" type="button" onclick="goOrder();">상품 주문</button>
+		</div>
 	</article>
 	<br>
 	<hr>
@@ -167,8 +166,8 @@
 			const parent = $(e).closest('td');
 			
 			//개수 변경
-			const add = Number(parent.find('input[name=itemcount]').val())+1;
-			parent.find('input[name=itemcount]').val(add);
+			const add = Number(parent.find('input[name=quantity]').val())+1;
+			parent.find('input[name=quantity]').val(add);
 			
 			//물건 가격
 			const target = parent.siblings('td[name=sumPrice]');	//타겟
@@ -183,12 +182,12 @@
 			const parent = $(e).closest('td');
 			
 			//개수 변경
-			if (Number(parent.find('input[name=itemcount]').val()) == 1) {
+			if (Number(parent.find('input[name=quantity]').val()) == 1) {
 				alert('최소수량은 1개입니다.'); 
 				return;
 			}
-			const sub = Number(parent.find('input[name=itemcount]').val())-1;
-			parent.find('input[name=itemcount]').val(sub);
+			const sub = Number(parent.find('input[name=quantity]').val())-1;
+			parent.find('input[name=quantity]').val(sub);
 			
 			//물건 가격
 			const target = parent.siblings('td[name=sumPrice]');	//타겟
@@ -206,35 +205,72 @@
 
 		//수량 변경시 총 가격 증감
 		totalPrice = () => {
-			const tag = $('#totalPrice');
 			
-			let totalPrice = 0;
-			
-			$('td[name=price]').each(function() {
+			let price 	= 0;		//선택된물건의 합계 저장하는 변수
+			let fee 	= 0;		//배송비 저장하는 변수
+			$('td[name=sumPrice]').each(function() {
 				if ($(this).closest('tr').find('.form-check-input').is(':checked')) {
-					totalPrice +=Number($(this).text().replace(',','').replace('원',''));
+					price +=Number($(this).text().replace(',','').replace('원',''));
 				}
 			});
-			console.log(totalPrice);
-			$(tag).text(comma(totalPrice)+'원');
+			
+			if (price > 1000000000) {
+				fee = 3000;
+			}
+			
+			$('#totalPrice').text(comma(price)+'원');
+			$('#fee').text(comma(fee)+'원');
+			$('#totalPriceSumFee').text(comma(price+fee)+'원');
 		}
 
 		// 모든 체크박스가 체크되어있으면 최상단 체크박스 체크 아니면 체크해기
 		$('.form-check-input').on('change', () => {
-			const cheLen = $('input[name=checkList]:checked').length;
+			const chkLen = $('input[name=checkList]:checked').length;
 			const boxLen = $('input[name=checkList]').length;
 			
-			if (cheLen == boxLen) {
+			if (chkLen == boxLen) {
 				$('#allChecked').prop('checked',true);
 			}
 			else {
 				$('#allChecked').prop('checked',false);
 			}
+			
+			//몇개 체크 되어있는지
+			$('#chkLen').text(chkLen);
 			totalPrice();
 		})
 
 		comma = (num) => {
 			return num.toLocaleString('ko-KR');
+		}
+		
+		goOrder = () => {
+			if ($('input[name=checkList]:checked').length == 0) {
+				alert('선택된 상품이 없습니다.')
+				return;
+			}
+			
+			//서버로 보낼 데이터 만들기
+			const arr = new Array();
+			const obj = new Object();
+			
+			$('input[name=checkList]:checked').each(function() {
+				obj.item_no 	= $(this).val();
+				obj.quantity	= $(this).closest('tr').find('input[name=quantity]').val();
+				
+				arr.push(obj);
+			})
+			//ajax나 fetch로 카트 업데이트하고 서버통신되면 get방식으로 order연결해야할듯
+			$.ajax({
+				url:'/rest/cart',
+				data:JSON.stringify(arr),
+				method:'put',
+				contentType:'application/json; charset=utf-8',
+				dataType:'json',
+				success : (result) => {
+					console.log(result);
+				}
+			})
 		}
 	</script>
 </body>

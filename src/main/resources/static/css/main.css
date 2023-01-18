@@ -13,6 +13,10 @@ html, body {
 	td {vertical-align: middle;}
 	/* 리스트 스타일 삭제, 링크 내 밑줄 삭제 */
 
+/* 가운데 정렬 */
+.center {
+	margin: 0 auto;
+}
 /* header */
 .header {
 	position: relative;
@@ -137,10 +141,6 @@ input[type='number']::-webkit-inner-spin-button {
 	background: url("/img/btn_count_down.png") no-repeat left top;
 }
 
-.table {
-	margin: 0 auto;
-}
-
 
 .itemimg {
 	margin: 0;
@@ -148,6 +148,18 @@ input[type='number']::-webkit-inner-spin-button {
 	display: inline-block;
 	width: 50px;
 	height: 50px;
+}
+
+.priceIcon {
+	display: inline-block;
+	position: relative;
+	top: -15px;
+	padding: 0 15px;
+}
+
+.priceIcon img {
+	width: 22px;
+	height: 22px;
 }
 /*
 	main.jsp
