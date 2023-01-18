@@ -35,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.authorizeHttpRequests()
 			.antMatchers("/admin/**").hasAnyRole("ADMIN")
+			.antMatchers("/order/**").hasAnyRole("USER","ADMIN")
 			.antMatchers("/**").permitAll();	
 		
 		//스프링 기본 로그인폼으로 띄움

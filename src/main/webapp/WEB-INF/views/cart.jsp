@@ -6,48 +6,19 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>회원 가입</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
 <link href="/css/main.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <style>
-	
-	.top_banner {
-		text-align : center;
-		margin-top: 2em;
-	}
-
-	#direction_text {
-		text-align : center;
-	}
-	#form-signup {
-		 width : 500px;
-		 height : 350px;
-		 margin : auto;		
-	}
-	div.header {
-	position: absolute;
-	top: 0;
-	width: 100%;
-	}
-	.header span {
-		color : black;
-	}
-	
-	.header button {
-		color : black;
-	}
-	
-	article {
-		margin-top : 2em;
-		width: 50%;
-	}
-	
-	span a {
-		margin: 2em;
-		text-decoration: none;
-		color : black;
-	}
 	
 	.way_to_come {
 		text-align: center;
@@ -88,24 +59,18 @@
 </style>
 
 <body>
-	<!-- 최상위단 배너부분 -->
-	<div class="top_banner">
-		<h1 align="center">Cart</h1>
-	</div>
-	<hr>
+
+	<jsp:include page="./include/header.jsp"></jsp:include>
 	<!-- 네비게이터 include 부분 -->	
-	<div class="mainNav">
-		<nav>
-			<jsp:include page="./include/nav.jsp"></jsp:include>
-		</nav>
-	</div>
+	
+	<jsp:include page="./include/nav.jsp"></jsp:include>
 	<!-- 찜 목록 article 부분 -->
-	<article class="w-100">
-		<form action="order" method="post">
+	<article class="wrap">
+		<form action="order" method="post" id="orderForm">
 			<table class="table table-hover w-75" >
 				<thead class="table-light">
 					<tr>
-						<th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="checkAll"></th>
+						<th><input class="form-check-input" type="checkbox" value="" id="allChecked" name="checkAll"></th>
 						<th colspan="3">상품정보</th>
 						<th>수량</th>
 						<th>가격</th>
@@ -142,7 +107,7 @@
 						<td><img src="/item_img/101.Pure Perfume Oil.png" class="itemimg"></td>
 						<td>상품명</td>
 						<td>상품정보</td>
-						<td><input type="number" name="itemcount" min="1" max="200"></td>
+						<td><input type="number" name="itemcount"></td>
 						<td>가격</td>
 						<td>할인</td>
 						<td>상품합계</td>
@@ -151,15 +116,13 @@
 				</tbody>
 				<tfoot>
 					<tr>
-						<tr>
-							<td colspan="3"></td>
-							<td>총 상품금액</td>
-							<td>\</td>
-							<td>총 배송비</td>
-							<td>\</td>
-							<td>총 합계</td>
-							<td>\</td>
-						</tr>
+						<td colspan="3"></td>
+						<td>총 상품금액</td>
+						<td>50000</td>
+						<td>총 배송비</td>
+						<td>2500</td>
+						<td>총 합계</td>
+						<td>\</td>
 					</tr>
 					<tr>
 						<tr>
@@ -177,11 +140,17 @@
 	<br>
 	<hr>
 	<!-- Footer include 부분  -->
-	<div class="footer">
-	<footer>
-		<jsp:include page="./include/footer.jsp"></jsp:include>
-	</footer>
-	</div>
+	<jsp:include page="./include/footer.jsp"></jsp:include>
 	<!-- signUp.jsp 작성자 : 박진영 -->
+	
+	<script type="text/javascript">
+		$('#allChecked').on('click', () => {
+			const checkbox = $('input:checkbox[name="checkList"]');
+			
+			(checkbox.is(':checked')) ? checkbox.prop('checked',false) : checkbox.prop('checked',true); 
+		})
+		
+	
+	</script>
 </body>
 </html>

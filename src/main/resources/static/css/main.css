@@ -102,8 +102,15 @@ span a {
 
 input[type='number'] {
 	text-align: center;
-	size: 3;
+	-moz-appearance : textfield;
 }
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+	  -webkit-appearance: none;
+	  margin: 0;
+}
+
 
 .itemsum {
 	display: inline-block;
