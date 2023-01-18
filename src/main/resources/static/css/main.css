@@ -5,7 +5,7 @@ html, body {
 	margin: 0;
 }
 
-	dl, ol, ul, li  { list-style: none; padding : 0; }
+	dl, ol, ul, li  { list-style: none; padding : 0; display: inline-block;}
 	li a { text-decoration: none; }
 	em { font-style: normal; font-weight: normal; text-align: left;}
 	
@@ -131,17 +131,30 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .up {
-	background: url(/img/btn_count_up.png) no-repeat left top; 
+	background: url("/img/btn_count_up.png") no-repeat left top;
 }
 .down {
-	background: url(/img/btn_count_down.png) no-repeat left top;
+	background: url("/img/btn_count_down.png") no-repeat left top;
+}
+
+.table {
+	margin: 0 auto;
+}
+
+
+.itemimg {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	width: 50px;
+	height: 50px;
 }
 /*
 	main.jsp
 	김도형
 	23.01.10
  */ 
-.#main_video {
+#main_video {
 	position: relative; 
 	top: 0; 
 	left: 0; 
@@ -195,7 +208,7 @@ input[type='number']::-webkit-inner-spin-button {
 .totalPrice {
 	text-align: right;
 	border: solid #e4e4e4;
-	margin-top: 20px;
+	margin: 20px auto;
 	padding: 25px 30px 10px 15px;
 }
 
