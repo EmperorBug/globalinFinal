@@ -8,6 +8,9 @@ html, body {
 	dl, ol, ul, li  { list-style: none; padding : 0; }
 	li a { text-decoration: none; }
 	em { font-style: normal; font-weight: normal; text-align: left;}
+	
+	/* td 가운데정렬 추가 */
+	td {vertical-align: middle;}
 	/* 리스트 스타일 삭제, 링크 내 밑줄 삭제 */
 
 /* header */
@@ -45,7 +48,7 @@ html, body {
 	font-size: 30px;
 }	
 article {
-	margin-top : 10em;
+	margin-top : 5em;
 }
 
 
@@ -55,7 +58,7 @@ span a {
 	color : black;
 }
 
-/************ cartModal ***************/
+/************ cart ***************/
 	
 #sum {
 	text-align: left;
@@ -111,11 +114,28 @@ input[type='number']::-webkit-inner-spin-button {
 	  margin: 0;
 }
 
-
 .itemsum {
 	display: inline-block;
 }
 
+.btn_area {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cart_btn  {
+	width: 25px; 
+	height: 17px;
+	border: none;
+	display: block;
+}
+
+.up {
+	background: url(/img/btn_count_up.png) no-repeat left top; 
+}
+.down {
+	background: url(/img/btn_count_down.png) no-repeat left top;
+}
 /*
 	main.jsp
 	김도형

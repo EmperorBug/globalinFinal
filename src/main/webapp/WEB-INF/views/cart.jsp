@@ -85,8 +85,14 @@
 						<td><img src="/item_img/101.Pure Perfume Oil.png" class="itemimg"></td>
 						<td>상품명</td>
 						<td>상품정보</td>
-						<td><input type="number" name="itemcount" min="1" max="200"></td>
-						<td>가격</td>
+						<td>
+							<input type="number" name="itemcount" min="1" max="200" value="1" onchange="changeCount(this)">
+							<span class="btn_area">
+								<button class="cart_btn up" type="button" onclick="increase(this);"></button>
+								<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
+							</span>						
+						</td>
+						<td name="price" data-value="50000">50000</td>
 						<td>할인</td>
 						<td>상품합계</td>
 						<td>배송비</td>
@@ -96,8 +102,14 @@
 						<td><img src="/item_img/101.Pure Perfume Oil.png" class="itemimg"></td>
 						<td>상품명</td>
 						<td>상품정보</td>
-						<td><input type="number" name="itemcount" min="1" max="200"></td>
-						<td>가격</td>
+						<td>
+							<input type="number" name="itemcount" min="1" max="200" value="1" onchange="changeCount(this)">
+							<span class="btn_area">
+								<button class="cart_btn up" type="button" onclick="increase(this);"></button>
+								<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
+							</span>
+						</td>
+						<td name="price" data-value="100000">100000</td>
 						<td>할인</td>
 						<td>상품합계</td>
 						<td>배송비</td>
@@ -107,8 +119,14 @@
 						<td><img src="/item_img/101.Pure Perfume Oil.png" class="itemimg"></td>
 						<td>상품명</td>
 						<td>상품정보</td>
-						<td><input type="number" name="itemcount"></td>
-						<td>가격</td>
+						<td>
+							<input type="number" name="itemcount" min="1" max="200" value="1" onchange="changeCount(this)">
+							<span class="btn_area">
+								<button class="cart_btn up" type="button" onclick="increase(this);"></button>
+								<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
+							</span>
+						</td>
+						<td name="price" data-value="25253">25253</td>
 						<td>할인</td>
 						<td>상품합계</td>
 						<td>배송비</td>
@@ -118,20 +136,18 @@
 					<tr>
 						<td colspan="3"></td>
 						<td>총 상품금액</td>
-						<td>50000</td>
+						<td id="totalPrice">50000</td>
 						<td>총 배송비</td>
 						<td>2500</td>
 						<td>총 합계</td>
 						<td>\</td>
 					</tr>
 					<tr>
-						<tr>
-							<td><button type="button" class="btn btn-danger">선택삭제</button></td>
-							<td><button type="button" class="btn btn-primary">선택찜</button></td>
-							<td colspan="5"></td>
-							<td><button type="button" class="btn btn-secondary">선택주문</button></td>
-							<td><button class="btn btn-lg btn-dark" type="submit">전체주문</button></td>
-						</tr>
+						<td><button type="button" class="btn btn-danger">선택삭제</button></td>
+						<td><button type="button" class="btn btn-primary">선택찜</button></td>
+						<td colspan="5"></td>
+						<td><button type="button" class="btn btn-secondary">선택주문</button></td>
+						<td><button class="btn btn-lg btn-dark" type="submit">전체주문</button></td>
 					</tr>
 				</tfoot>
 			</table>
@@ -150,7 +166,84 @@
 			(checkbox.is(':checked')) ? checkbox.prop('checked',false) : checkbox.prop('checked',true); 
 		})
 		
-	
+		/* 밑에꺼랑 나중에 정리 필요 */
+		changeCount = (e) => {
+			const parent = $(e).closest('td');	//부모노드
+			
+			const price_td = parent.siblings('td[name=price]');	//가격 태그 위치
+			const price = price_td.data('value');	//물건 가격
+			
+			const quantity = $(e).val();
+			
+			price_replace(price_td, quantity, price)
+
+		}
+		
+		increase = (e) => {
+			const parent = $(e).closest('td');
+			
+			//개수 변경
+			const add = Number(parent.find('input[name=itemcount]').val())+1;
+			parent.find('input[name=itemcount]').val(add);
+			
+			//물건 가격
+			const price_td = parent.siblings('td[name=price]');	//td태그 가져옴
+			const price = price_td.data('value');	//물건 가격
+			
+			price_replace(price_td, add, price);
+
+		}
+		
+		decrease = (e) => {
+			const parent = $(e).closest('td');
+			
+			//개수 변경
+			if (Number(parent.find('input[name=itemcount]').val()) == 1) {
+				alert('최소수량은 1개입니다.'); 
+				return;
+			}
+			const sub = Number(parent.find('input[name=itemcount]').val())-1;
+			parent.find('input[name=itemcount]').val(sub);
+			
+			//물건 가격
+			const price_td = parent.siblings('td[name=price]');	//td태그 가져옴
+			const price = price_td.data('value');	//물건 가격
+			
+			price_replace(price_td, sub, price);			
+		}
+		
+		price_replace = (target, quantity, price) => {
+			const newPrice = quantity * price;
+			$(target).text(newPrice);
+			totalPrice();
+		}
+		
+		totalPrice = () => {
+			const tag = $('#totalPrice');
+			
+			console.log($('.form-check-input').is(':checked'));
+			let totalPrice = 0;
+			
+			$('td[name=price]').each(function() {
+				if ($(this).closest('tr').find('.form-check-input').is(':checked')) {
+					totalPrice +=Number($(this).text());
+				}
+			});
+			$(tag).text(totalPrice);
+		}
+		
+		$('.form-check-input').on('change', () => {
+			const cheLen = $('input[name=checkList]:checked').length;
+			const boxLen = $('input[name=checkList]').length;
+			
+			if (cheLen == boxLen) {
+				$('#allChecked').prop('checked',true);
+			}
+			else {
+				$('#allChecked').prop('checked',false);
+			}
+			totalPrice();
+		})
 	</script>
 </body>
 </html>
