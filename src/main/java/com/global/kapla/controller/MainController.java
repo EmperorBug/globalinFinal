@@ -55,10 +55,4 @@ public class MainController {
 		return "event";
 	}
 	
-	@GetMapping("/customerservice")
-	public String customerService() {
-		
-		return "customerservice";
-	}
-	
 }

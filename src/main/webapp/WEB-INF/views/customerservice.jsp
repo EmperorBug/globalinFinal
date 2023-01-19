@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +14,19 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/c179c056d7.js" crossorigin="anonymous"></script>
 <link href="/css/main.css" rel="stylesheet">
 <style>
 	
-	  a { color : #333;}
+	  a { color : #333; text-decoration: none; }
+	  .board_tit a:hover { text-decoration : underline;}
+	  
+	  th, td, input, select, textarea, button {
+ 	    font-size: 12px;
+	    line-height: 1.5;
+	    font-family: Malgun Gothic,"맑은 고딕",AppleGothic,Dotum,"돋움",sans-serif;
+	    color: #333;
+	}
 	
 	  .header button { color: black; }
 	
@@ -103,9 +113,16 @@
 	    padding: 13px 10px 15px 10px;
 	    border-bottom: 1px solid #dbdbdb;
 	}
-	.board_list_faq .board_list_table .board_tit { padding-left: 42px; }
 	
-
+	.board_list_faq .board_list_table .board_tit { padding-left: 42px; text-align : left; }
+	
+	.faq_answer { display : none; }
+	
+	.icon {
+	    margin: 0 2px 0 2px;
+	    vertical-align: middle;
+	}
+	
   </style>
 </head>
 <body>
@@ -207,11 +224,30 @@
                             		</tr>
                         		</thead>
                         		<tbody>
-                        			<tr class="toggle_taq">
-                        				<td>1</td>
-                        				<td>마일리지 적립</td>
-                        				<td class="board_tit">마일리지 적립금은 어떻게 사용하나요?</td>
-                        			</tr>
+                        			<c:forEach var="board" items="${boards}">
+								    	<tr class="toggle_taq">
+											<td>${board.board_no}</td>
+											<!-- 글번호 -->
+											<%-- <td>${board.type_no}</td> --%>
+											<td>${board.writer}</td>
+											<!-- 고객센터 분류(일단은 string으로 된 writer 컬럼을 사용했음. 나중에 type_no로 수정할 예정)-->
+											<td class="board_tit">
+												<a href="javascript:void(0);" class="question"  id="que-${board.board_no}">
+													<span class="icon">
+														<i class="fa-solid fa-q"></i>
+													</span>
+													${board.title}
+												</a>
+											</td>
+											<!-- 글제목 -->
+										</tr>
+										<tr class="faq_answer" id="ans-${board.board_no}">
+											<td colspan="3">
+							   					<div class="answer">${board.content}</div>
+							   				</td>
+							   			</tr>
+							   			<!-- 숨겨진 부분 : 내용 (밑 javascript에 의해 더보기<->접기 활성화됨. ) -->
+									</c:forEach>                                    			
                         		</tbody>
 		                    </table>
 						</div>
@@ -224,8 +260,28 @@
 	</div>
 </div>
 	
+<!-- 긁어온 javascript 부분 -->
+<script>
+  const items = document.querySelectorAll('.question');
 
+  function openCloseAnswer() {
+    const answerId = this.id.replace('que', 'ans');
 
+    if(document.getElementById(answerId).style.display === 'block') {
+      document.getElementById(answerId).style.display = 'none';
+    }
+    else if(document.getElementById(answerId).style.display === 'table-row') {
+        document.getElementById(answerId).style.display = 'none';
+      }
+    
+    else {
+      document.getElementById(answerId).style.display = 'table-row';
+    }
+  }
+
+  items.forEach(item => item.addEventListener('click', openCloseAnswer));
+</script>
+<!-- 펼치고 접고 하게 해주는 script 부분. -->
 <hr>
 <!-- Footer include 부분  -->
 <div class="footer">
