@@ -57,68 +57,7 @@
 		color : black;
 	}
 	
-	.section_line { 
-	
-		margin-top : 50px;
-		margin-bottom : 50px;
-		padding : 0px 200px 0px 200px;
-		position : relative;
-		flex-wrap : wrap;	
-		width : 100%;
-		display : flex;
-		
-	}
-	
-	.product_section {
-		width : 100%;
-		display : inline-block;
-	}
-	/* 제품 섹션 */
 
-	.image_section {
-		width : 50%;
-		text-align: center;
-	}
-	/* 이미지 섹션 */
-	
-	.detail_section {
-		width : 50%;
-		text-align: center;
-		font-family: sans-serif;
-		padding : 20px;
-	}
-
-	.product_status { font-size : 16px; }
-		
-	.product_name  { font-size : large; font-weight: 700; }
-	
-	.product_buy_phase { margin-top: 20px; }
-	
-	.product_buy_phase_button {
-		color : black;
-		border-style: solid;
-		border-width : 1px 1px 1px 1px;
-		box-shadow: none;
-		padding : 10px;
-		margin : 10px;
-	}
-	
-	.populated_padding {
-		padding : 10px;
-	}
-	/* 각 div간 바깥쪽에 padding을 10씩 부여시켰다. */
-	
-	.spreadBtn { text-align: left; }
-	.spreadBtn p { text-align: left; }
-	.spreadBtn table { width : 100%; }
-	.spreadBtn table th { width : 25%; }
-	.spreadBtn table th,td { padding : 10px; }
-	.spreadBtn table th { border-width: 1px; }
-	.spreadBtn table td { border-width: 1px; }
-	
-	.product_detail_table { border : 1px solid black; border-collapse: collapse; }
-	
-	/* 세부정보를 펼치는 버튼 부분 + 첫번째 세부정보 테이블 부분 */
 	
 	.button_container { padding : 0; padding-top : 5em; }
 	

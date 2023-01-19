@@ -17,8 +17,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<%@ include file="modals/loginModal.jsp" %>
-<%@ include file="modals/cartModal.jsp" %>
 <style>
 	
 		 .menu_bar {
@@ -26,7 +24,7 @@
             margin: auto;
         }
 
-        article ul { font-size: 0; margin: 0; padding: 0; text-align: center; }
+        article ul { font-size: 0; margin: 0; padding: 0; text-align: center; width : 100%;}
         article ul li {
             display: inline-block;
             position: relative;
@@ -134,20 +132,10 @@
 		font-size: 1em;
 	}
 	
-	h4 .item_price {
-		font-size: 0.5em;
-	}
+	h4 .item_price { font-size: 0.5em; }
+	/* 가격부분 글자크기 */
 	
-	.populated_padding {
-		padding : 10px;
-	}
-	/* 각 div간 바깥쪽에 padding을 10씩 부여시켰다. */
-	
-	.items {
-		height : 30em;
-		width : 15em;		
-	}
-	
+	.items { height : 30em; width : 15em; }
 	/* item 한 div의 크기는 30em(최대시 480px), 15em(최대시 240px)으로 고정시켰다. */
 	
 	.item_widget_container {
