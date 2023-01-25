@@ -17,12 +17,26 @@ public class BoardController {
 	public void customerService(Model model) {
 		model.addAttribute("boards", boardService.getList());
 	}
+	// 고객센터 메인 페이지
 	
-	
-	@GetMapping("/customerservice2")
-	public String customerService2() {
-		
+	@GetMapping("/customerservice/faq")
+	public String faqPage(Model model) {
+		model.addAttribute("boards", boardService.getList());
 		return "customerservice";
+	}
+	// FAQ 페이지 = 고객센터 메인 페이지
+	
+	@GetMapping("/customerservice/notice")
+	public String noticePage() {
+		
+		return "notice";
+	}
+	// 공지사항 부분
+
+	@GetMapping("/customerservice/qa")
+	public String qaPage() {
+		
+		return "qa";
 	}
 	
 }

@@ -39,6 +39,16 @@
 	       width: 100%;
 	   }
 
+	  h2 {
+	    display: block;
+	    font-size: 1.5em;
+	    margin-block-start: 0.83em;
+	    margin-block-end: 0.83em;
+	    margin-inline-start: 0px;
+	    margin-inline-end: 0px;
+	    font-weight: bold;
+	}
+
       .header span { color: black; }
 
       div.mainNav {
@@ -186,76 +196,41 @@
 			<div class ="board_zone_sec">
 				<div class ="board_zone_cont">
 					<div class ="board_zone_list index">
-						<div class="date_check_box">
-							<form name="frmList" id="frmList" action="faq.jsp" method="get">
-								<div class="date_faq_list">
-                                	<h2>자주묻는 질문 검색</h2>
-                                	<input type="hidden" name="searchField" value="all">
-                                	<input type="text" id="time" name="searchWord" class="text" placeholder="검색어를 입력하세요">
-                                	<button type="submit" class="btn_date_check"><em>검색</em></button>
-                        		</div>
-                        		<div class="date_faq_txt">
-                            		<p>
-                                	<strong>찾으시는 질문이 없다면?</strong>
-                                	<span class="btn_gray_list"><a href="qa.jsp" class="btn_gray_mid" target="_top"><span>1:1 문의하기</span></a></span>
-                            		</p>
-                        		</div>
-							</form>
-						</div>
 						<div class ="board_zone_title">
-							<h4>	BEST FAQ </h4>
+							<h2> 공지사항 </h2>
 						</div>
 						<div class ="board_list_faq">
-							<div class="board_hot_list">
-		                        <ul>
-		                            <li class="on"><a href="#"><span>전체</span></a></li>
-		                            <li><a href="#"><span>회원가입/정보</span></a></li>
-		                            <li><a href="#"><span>결제/배송</span></a></li>
-		                            <li><a href="#"><span>교환/반품/환불</span></a></li>
-		                            <li><a href=""><span>기타</span></a></li>
-		                            <!-- <li><a href="faq.php?category=03001005&amp;noheader=y&amp;isBest=y&amp;searchField=&amp;searchWord="><span>기타</span></a></li> -->
-		                        </ul>
-		                    </div>
 		                    <table id="faqList" class="board_list_table">
-				                <colgroup>
-		                            <col style="width:67px">
-		                            <col style="width:144px">
-		                            <col>
-		                        </colgroup>
+								<colgroup>
+				                    <col style="width:6%">
+				                    <col style="width:37%;">
+				                    <col style="width:12%">
+				                    <col style="width:7%">
+				                    <col style="width:15%">
+				                    <col style="width:6%">
+				                </colgroup>
 		                    	<thead>
                          			<tr>
                                 		<th>번호</th>
-                                		<th>분류</th>
-                                		<th>내용</th>
+                                		<th>제목</th>
+                                		<th>날짜</th>
+                                		<th>작성자</th>
+                                		<th>조회수</th>
                             		</tr>
                         		</thead>
                         		<tbody>
-                        			<c:forEach var="board" items="${boards}">
-								    	<tr class="toggle_taq">
-											<td>${board.board_no}</td>
-											<!-- 글번호 -->
-											<%-- <td>${board.type_no}</td> --%>
-											<td>${board.writer}</td>
-											<!-- 고객센터 분류(일단은 string으로 된 writer 컬럼을 사용했음. 나중에 type_no로 수정할 예정)-->
-											<td class="board_tit">
-												<a href="javascript:void(0);" class="question"  id="que-${board.board_no}">
-													<span class="icon icon_qan">
-														<!-- <i class="fa-solid fa-q"></i> -->
-														<img src="../img/icon_qna_q.png">
-													</span>
-													${board.title}
-												</a>
-											</td>
-											<!-- 글제목 -->
-										</tr>
-										<tr class="faq_answer" id="ans-${board.board_no}">
-											<td colspan="3">
-							   					<div class="answer">${board.content}</div>
-							   				</td>
-							   			</tr>
-							   			<!-- 숨겨진 부분 : 내용 (밑 javascript에 의해 더보기<->접기 활성화됨. ) -->
-									</c:forEach>                                    			
-                        		</tbody>
+                					<tr data-sno="1" data-auth="y" style="height:10px">
+                  						<td>1</td>
+    					                <td class="board_tit">
+                        				<a href="#">
+                           					 <strong>공지사항 예시입니다.</strong>
+                   				       </a>
+                    				   </td>
+					                   <td> 2023.01.20 </td>
+					                   <td> 관리자 </td>
+					                   <td> 1 </td>
+					                </tr>
+				                </tbody>
 		                    </table>
 						</div>
 					</div>

@@ -261,6 +261,8 @@ input[type='number']::-webkit-inner-spin-button {
 	}
 	
 	.sub_menu { padding : 7px 0 6px 10px; font-size : 14px;}
+	.side_cont .sub_menu_box .sub_menu a { display: block; padding: 7px 0 6px 10px; font-size: 14px; }
+	
 	.sub_menu a:hover { background : #f8f8f8; color:#1a2e2d; font-weight: bold; }
 	
 	.sub_menu_box {
