@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.global.kapla.mapper.OrderMapper">
+
+    <select id="getList" resultType="CartVO">
+       SELECT 
+       		item.item_no, item.NAME as item_name, item.discount, item.price, img.url
+       FROM 
+       		KAPLA_ITEM item, KAPLA_ITEM_IMAGE img
+       WHERE
+			item.ITEM_NO  = img.ITEM_NO
+		AND
+			item.ITEM_NO in
+			<foreach collection="itemList" item="item" open="(" separator="," close=")">
+				${item}
+			</foreach>
+    </select>
+
+	<select id="getOrderNo" resultType="String">
+		SELECT 
+			LPAD( TRUNC(DBMS_RANDOM.VALUE(1,125)), 3, 0) 
+		FROM 
+			dual
+	</select>
+</mapper>

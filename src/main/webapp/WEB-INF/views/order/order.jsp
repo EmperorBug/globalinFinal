@@ -35,20 +35,26 @@
 		<main class="orderMain">
 			<table class="orderTable">
 				<caption>상품정보</caption>
-				<tr>
-					<th>상품/옵션정보</th>
-					<th>수량</th>
-					<th>상품금액</th>
-					<th>할인/적립</th>
-					<th>합계금액</th>
-				</tr>
+				<thead class="table-light">
+					<tr>
+						<th width="45%" colspan="2">상품정보</th>
+						<th width="10%">수량</th>
+						<th width="10%">상품가격</th>
+						<th width="10%">할인</th>
+						<th width="15%">합계금액</th>
+						<th width="10%">배송비</th>
+					</tr>
+				</thead>
 				<c:forEach items="${cart_list }" var="item">
 					<tr>
-						<td>${item.item }</td>
-						<td>${item.quantity }</td>
-						<td>${item.price }</td>
+						<td>
+							<img src="${item.url }" class="itemimg">
+						</td>
+ 						<td>${item.item_name }</td> 
+						<td>${item.quantity }개</td>
+						<td><fmt:formatNumber value="${item.price }" pattern="#,###원"/></td>
 						<td>${item.discount }</td>
-						<td>${item.sumPrice }</td>
+						<td><fmt:formatNumber value="${item.sum_price }" pattern="#,###원"/></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -76,7 +82,7 @@
 			</table>
 			
 			<form action="/order/pay" name="order_form" id="order_form">
-			<input type="hidden" value="330033" name="order_no">
+			<input type="hidden" value="${order_no  }" name="order_no">
 				<table class="orderTable">
 					<caption>배송 정보</caption>
 					
