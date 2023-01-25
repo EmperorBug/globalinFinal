@@ -20,5 +20,17 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardmapper.getList();
 	}
+
+	@Override
+	public BoardVO readPost(int board_no) {
+			
+		return boardmapper.readPost(board_no);
+
+	}
+
+	@Override
+	public List<BoardVO> getNoticeList() {
+		return boardmapper.getNoticeList();
+	}
 	
 }

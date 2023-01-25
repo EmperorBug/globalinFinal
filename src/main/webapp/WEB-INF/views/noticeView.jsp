@@ -68,73 +68,62 @@
           text-decoration: none;
           color: black;
       }
-      
-         .board_list_faq .board_hot_list { padding: 10px 0 20px 0; }
-	.board_hot_list {
-	    padding: 10px 0 50px 0;
-	    font-size: 0;
-	    text-align: left;
+	
+	.board_view_tit {
+	    overflow: hidden;
+	    padding: 15px 15px 15px 15px;
 	    border-top: 1px solid #999999;
-	}	
-	
-	.board_hot_list ul { display: inline-block; font-size: 12px; }
-	
-	.board_hot_list ul li {
+	    border-bottom: 1px solid #dbdbdb;
+	    background: #f7f7f7;
+	}
+	.board_view_tit h3 {
 	    display: inline-block;
-	    width: auto;
-	    margin: 0;
-	    vertical-align: middle;
-	}
-	
-	.board_hot_list ul li:first-child a { border-left: none 0; }
-	.board_hot_list ul li a {
-	    display: block;
-	    height: 11px;
-	    padding: 0 5px 0 5px;
-	    border-left: 1px solid #cccccc;
-	}
-	
-	.board_hot_list ul li a span { position: relative; top: -5px; }
-	.board_hot_list ul li a span:hover {
+	    color: #111111;
+	    font-size: 14px;
 	    font-weight: bold;
-	    border-bottom: 1px solid #ab3e55;
-	    color: #ab3e55;
 	}
 	
-	.board_list_faq .board_list_table {
-	    border-top: 1px solid #dbdbdb;
-	}
-	
-	.board_list_table {
-	    width: 100%;
-	    margin: 0 0 20px 0;
-	    border: 0;
-	    border-spacing: 0;
-	    border-collapse: collapse;
-	    border-top: 1px solid #3c3c3c;
-	    text-align: center;
-	}
-	
-	.board_list_table th {
-	    padding: 10px 10px 10px 14px;
-	    border-bottom: 1px solid #dbdbdb;
-	    background: #fbfbfb;
-	}
-	
-	.board_list_table td {
-	    padding: 13px 10px 15px 10px;
+	.board_zone_view .board_view_info {
+	    overflow: hidden;
+	    padding: 10px 15px 10px 15px;
 	    border-bottom: 1px solid #dbdbdb;
 	}
 	
-	.board_list_faq .board_list_table .board_tit { padding-left: 42px; text-align : left; }
-	
-	.faq_answer { display : none; }
-	
-	.icon {
-	    margin: 0 2px 0 2px;
+	.board_view_info .view_info_day {
+	    display: inline-block;
+	    height: 10px;
+	    margin: 0 0 0 7px;
+	    font-size: 11px;
+	    border-left: 1px solid #dbdbdb;
 	    vertical-align: middle;
-	    padding : 0 10px 0 0 ;
-	    text-decoration: none;
+	}
+	
+	.board_view_info .view_info_day em {
+	    position: relative;
+	    display: block;
+	    top: -3px;
+	    padding: 0 0 0 10px;
+	}
+	
+	.board_view_info .view_info_hits {
+	    display: inline-block;
+	    float: right;
+	    text-align: right;
+	}
+	
+	.board_view_content .seem_cont {
+	    padding: 30px 15px 30px 15px;
+	    line-height: 1.8;
+	}
+	
+	.btn_board_list {
+	    height: 28px;
+	    line-height: 26px;
+	    margin: 0 0 0 5px;
+	    padding: 0 12px 0 12px;
+	    color: #666666;
+	    border: 1px solid #a3a3a3;
+	    text-align: center;
 	}
 	
   </style>
@@ -192,57 +181,47 @@
 		<!-- 왼쪽 메뉴 div부분 -->	
 		<div class ="content">
 			<div class ="board_zone_sec">
-				<div class ="board_zone_cont">
-					<div class ="board_zone_list index">
-						<div class ="board_zone_title">
-							<h2> 공지사항 </h2>
-						</div>
-						<div class ="board_list_faq">
-		                    <table id="faqList" class="board_list_table">
-								<colgroup>
-				                    <col style="width:6%">
-				                    <col style="width:37%;">
-				                    <col style="width:12%">
-				                    <col style="width:7%">
-				                    <col style="width:15%">
-				                    <col style="width:6%">
-				                </colgroup>
-		                    	<thead>
-                         			<tr>
-                                		<th>번호</th>
-                                		<th>제목</th>
-                                		<th>날짜</th>
-                                		<th>작성자</th>
-                                		<th>조회수</th>
-                            		</tr>
-                        		</thead>
-                        		<tbody>
-                        			<c:forEach var="notices" items="${notices}">
-                					<tr data-sno="1" data-auth="y" style="height:10px">
-                  						<td>1</td>
-    					                <td class="board_tit">
-                        				<a href="notice/readPost?board_no=${notices.board_no}">
-                           					 <strong>${notices.title}</strong>
-                   				       </a>
-                    				   </td>
-					                   <td> ${notices.reg_date} </td>
-					                   <td> ${notices.writer} </td>
-					                   <td> 1 </td>
-					                </tr>
-					                </c:forEach>  
-				                </tbody>
-		                    </table>
-						</div>
-					</div>
-					
+				<div class ="board_zone_title">
+					<h2> 공지사항 </h2>
 				</div>
+				<div class ="board_zone_cont">
+					<div class="board_zone_view">
+						<div class="board_view_tit">
+							<h3>${noticeView.title}</h3>
+						</div>
+						<div class="board_view_info">
+							<span class="view_info_idip">
+								<strong>${noticeView.writer}</strong>
+							</span>
+							<span class="view_info_day">
+                    			<em>${noticeView.reg_date}</em>
+                			</span>
+                			<span class="view_info_hits">
+								<strong>조회수</strong> 
+								1
+							</span>
+						</div>
+						
+						<div class="board_view_content">
+							<div class="seem_cont">
+								${noticeView.content}
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<hr>
+				<div class="btn_right_box">
+				<button type="button" class="btn_board_list" onclick="history.back()">
+					<strong>목록</strong>
+				</button>        
 			</div>
 		</div>
 		<!-- 오른쪽 큰부분 메뉴 (메인 컨텐츠) div 부분 -->	
+
 	</div>
 </div>
-	
-
 <hr>
 <!-- Footer include 부분  -->
 <div class="footer">

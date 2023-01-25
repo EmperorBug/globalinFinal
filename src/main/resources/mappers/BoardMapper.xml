@@ -6,8 +6,21 @@
     
     <select id="getList" resultType="com.global.kapla.vo.BoardVO">
        <![CDATA[
-           select * from kapla_board order by board_no desc 
+           select * from kapla_board where type_no = 1 order by board_no desc 
        ]]>
     </select>  
+    
+    <select id="getNoticeList" resultType="com.global.kapla.vo.BoardVO">
+       <![CDATA[
+           select * from kapla_board where type_no = 2 order by board_no desc 
+       ]]>
+    </select>  
+    
+    <select id="readPost" resultType="BoardVO">
+		<![CDATA[
+        	select * from kapla_board where board_no = #{board_no} 
+    	]]>	
+	</select>
+   
     
 </mapper>
