@@ -1,49 +1,56 @@
 package com.global.kapla.serviceImpl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.global.kapla.mapper.OrderMapper;
 import com.global.kapla.service.OrderService;
+import com.global.kapla.vo.CartVO;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class OrderServiceImpl implements OrderService{
 
+	@Autowired
+	OrderMapper orderMapper;
+	
 	@Override
-	public List<HashMap<String, Object>> getCartList() {
+	public List<CartVO> getCartList(String[] itemList, String[] quantityList) {
 		// TODO Auto-generated method stub
 		
-		List<HashMap<String, Object>> list = new ArrayList<HashMap<String,Object>>();
+		List<CartVO> list = orderMapper.getList(itemList);
+		log.info("꺼내온값 "+list);
 		
-		HashMap<String, Object> map1 = new HashMap<String, Object>();
-		HashMap<String, Object> map2 = new HashMap<String, Object>();
-		
-		map1.put("item", "Bloom");
-		map1.put("price", 50000);
-		map1.put("quantity", 2);
-		map1.put("sumPrice", 100000);
-		list.add(map1);
-		
-		map2.put("item", "Bloom");
-		map2.put("price", 50000);
-		map2.put("quantity", 2);
-		map2.put("sumPrice", 100000);
-		list.add(map2);
+		for (int i = 0; i<list.size(); i++) {
+			//서버로 넘어온 수량 입력후 합계 계산
+			list.get(i).setQuantity(Integer.parseInt(quantityList[i]));
+			list.get(i).setSum_price(list.get(i).getQuantity() * list.get(i).getPrice());
+		}
+		log.info("수량추가후"+list);
 		return list;
 	}
 
 	@Override
-	public int getTotalPrice(List<HashMap<String, Object>> list) {
+	public int getTotalPrice(List<CartVO> list) {
 		
 		int total_price = 0;
 		
 		for (int i=0; i <list.size(); i++) {
-			total_price += (int)list.get(i).get("sumPrice");
+			total_price += (int)list.get(i).getSum_price();
 		}
 		
 		return total_price;
+	}
+
+	@Override
+	public String getOrderNo() {
+		
+		return orderMapper.getOrderNo();
 	}
 
 	
