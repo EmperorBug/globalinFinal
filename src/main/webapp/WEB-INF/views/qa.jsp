@@ -144,6 +144,8 @@
 	    cursor: pointer;
 	}
 	
+	.board_write_table td > input { width: 312px; }
+	
   </style>
 </head>
 <body>

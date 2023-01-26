@@ -9,4 +9,7 @@ import com.global.kapla.vo.BoardVO;
 @Mapper
 public interface BoardMapper {
 	public List<BoardVO> getList();
+	public List<BoardVO> getNoticeList();
+	BoardVO readPost(int board_no);
+	
 }

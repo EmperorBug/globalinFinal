@@ -1,6 +1,5 @@
 package com.global.kapla.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.global.kapla.service.OrderService;
 import com.global.kapla.service.UserService;
+import com.global.kapla.vo.CartVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +22,7 @@ import lombok.extern.slf4j.Slf4j;
  *　
  */
 @Slf4j
+@RequestMapping("/order")
 @Controller
 public class OrderController {
 
@@ -28,21 +30,20 @@ public class OrderController {
 	UserService userService;
 	
 	@Autowired
-	OrderService orderServoce;
+	OrderService orderService;
 	
 	@GetMapping("/order")
-	public String order (HttpServletRequest request,  Model model) throws Exception {
+	public String order (HttpServletRequest request, Model model) throws Exception {
+		String[] item_no = request.getParameterValues("checkList");
+		String[] quantity = request.getParameterValues("quantity");
 		
-//		HttpSession session = request.getSession(false);
-//		
-//		if (session.getAttribute("id").equals(null)) return KaplaCode.REDIRECT_LOGIN;
+		String id = (String) request.getSession().getAttribute("id");
+		List<CartVO> list = orderService.getCartList(item_no,quantity);
 		
-//		String user_id = (String) session.getAttribute("id");
-//		UserVO userVO = userService.userInfo(user_id);
-		List<HashMap<String,Object>> list = orderServoce.getCartList();
 		
-		model.addAttribute("total_price", orderServoce.getTotalPrice(list));
-//		model.addAttribute("user", userVO);
+		model.addAttribute("total_price", orderService.getTotalPrice(list));
+		model.addAttribute("user",userService.userInfo(id));
+		model.addAttribute("order_no",orderService.getOrderNo());
 		model.addAttribute("cart_list", list);
 		
 		

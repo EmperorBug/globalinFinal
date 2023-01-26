@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,82 +30,46 @@
 	<jsp:include page="./include/nav.jsp"></jsp:include>
 	<!-- 찜 목록 article 부분 -->
 	<article class="wrap">
-		<table class="center table table-hover w-75" >
-			<thead class="table-light">
-				<tr>
-					<th width="3%"><input class="form-check-input" type="checkbox" value="" id="allChecked" name="checkAll"></th>
-					<th width="47%" colspan="2">상품정보</th>
-					<th width="10%">수량</th>
-					<th width="10%">상품가격</th>
-					<th width="10%">할인</th>
-					<th width="10%">합계금액</th>
-					<th width="10%">배송비</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-					<!--체크박스에 아이템번호 넣어놓음  -->
-						<input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="checkList">
-					</td>
-					<td>
-						<img src="/item_img/101.Pure Perfume Oil.png" class="itemimg">
-					</td>
-					<td>상품명</td>
-					<td>
-						<input type="number" name="quantity" min="1" max="200" value="1" onchange="changeCount(this)">
-						<span class="btn_area">
-							<button class="cart_btn up" type="button" onclick="increase(this);"></button>
-							<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
-						</span>						
-					</td>
-					<td name="price" data-value="50000"><fmt:formatNumber pattern="#,###원" value="50000"></fmt:formatNumber></td>
-					<td name="discount"></td>
-					<td name="sumPrice" ><fmt:formatNumber pattern="#,###원" value="50000"></fmt:formatNumber></td>
-					<td name="fee">무료배송</td>
-				</tr>
-				<tr>
-					<td>
-						<input class="form-check-input" type="checkbox" value="2" name="checkList">
-					</td>
-					<td>
-						<img src="/item_img/101.Pure Perfume Oil.png" class="itemimg">
-					</td>
-					<td name="name">상품명</td>
-					<td>
-						<input type="number" name="quantity" min="1" max="200" value="1" onchange="changeCount(this)">
-						<span class="btn_area">
-							<button class="cart_btn up" type="button" onclick="increase(this);"></button>
-							<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
-						</span>
-					</td>
-					<td name="price" data-value="100000"><fmt:formatNumber pattern="#,###원" value="100000"></fmt:formatNumber></td>
-					<td name="discount"></td>
-					<td name="sumPrice" ><fmt:formatNumber pattern="#,###원" value="100000"></fmt:formatNumber></td>
-					<td name="fee">무료배송</td>
-				</tr>
-				<tr>
-					<td>
-						<input class="form-check-input" type="checkbox" value="3"name="checkList">
-					</td>
-					<td>
-						<img src="/item_img/101.Pure Perfume Oil.png" class="itemimg">
-					</td>
-					<td name="name">상품명</td>
-					<td>
-						<input type="number" name="quantity" min="1" max="200" value="1" onchange="changeCount(this)">
-						<span class="btn_area">
-							<button class="cart_btn up" type="button" onclick="increase(this);"></button>
-							<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
-						</span>
-					</td>
-					<td name="price" data-value="25253"><fmt:formatNumber pattern="#,###원" value="25253"></fmt:formatNumber></td>
-					<td name="discount"></td>
-					<td name="sumPrice" ><fmt:formatNumber pattern="#,###원" value="25253"></fmt:formatNumber></td>
-					<td name="fee">무료배송</td>
-				</tr>
-			</tbody>
-		</table>
+		<form action="/order/order" id="cartForm">
+			<table class="center table table-hover w-75" >
+				<thead class="table-light">
+					<tr>
+						<th width="3%"><input class="form-check-input" type="checkbox" value="" id="allChecked" name="checkAll"></th>
+						<th width="42%" colspan="2">상품정보</th>
+						<th width="10%">수량</th>
+						<th width="10%">상품가격</th>
+						<th width="10%">할인</th>
+						<th width="15%">합계금액</th>
+						<th width="10%">배송비</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="item" items="${list }">
+						<tr>
+							<td>
+								<input class="form-check-input" type="checkbox" value="${item.item_no }" name="checkList">
+							</td>
+							<td>
+								<img src="${item.url }" class="itemimg">
+							</td>
+							<td>${item.item_name }</td>
+							<td>
+								<input type="number" name="quantity" min="1" max="200" value="${item.quantity }" onchange="changeCount(this)">
+								<span class="btn_area">
+									<button class="cart_btn up" type="button" onclick="increase(this);"></button>
+									<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
+								</span>
+							</td>
+							<td name="price" data-value="${item.price }"><fmt:formatNumber pattern="#,###원" value="${item.price }"></fmt:formatNumber></td>
+							<td name="discount"></td>
+							<td name="sumPrice" ><fmt:formatNumber pattern="#,###원" value="${item.price * item.quantity }"></fmt:formatNumber></td>
+							<td name="fee">무료배송</td>
+						</tr>
+					</c:forEach>
+					
+				</tbody>
+			</table>
+		</form>
 		<div class="totalPrice w-75">
 			<dl>
 				<dt>총<strong id="chkLen"></strong>개의 상품금액</dt>
@@ -122,7 +87,7 @@
 			</span>			
 			<dl>
 				<dt>합계</dt>
-				<dd id="totalPriceSumFee">151515</dd>
+				<dd id="totalPriceSumFee"></dd>
 			</dl>
 		</div>
 		<div class="center w-75">
@@ -210,7 +175,7 @@
 			let fee 	= 0;		//배송비 저장하는 변수
 			$('td[name=sumPrice]').each(function() {
 				if ($(this).closest('tr').find('.form-check-input').is(':checked')) {
-					price +=Number($(this).text().replace(',','').replace('원',''));
+					price +=Number($(this).text().replaceAll(',','').replace('원',''));
 				}
 			});
 			
@@ -249,7 +214,8 @@
 				alert('선택된 상품이 없습니다.')
 				return;
 			}
-			
+
+			//이거 주문수량 변경시 서버에 업데이트 해야할듯
 			//서버로 보낼 데이터 만들기
 			const arr = new Array();
 			const obj = new Object();
@@ -261,7 +227,7 @@
 				arr.push(obj);
 			})
 			//ajax나 fetch로 카트 업데이트하고 서버통신되면 get방식으로 order연결해야할듯
-			$.ajax({
+/* 			$.ajax({
 				url:'/rest/cart',
 				data:JSON.stringify(arr),
 				method:'put',
@@ -270,7 +236,8 @@
 				success : (result) => {
 					console.log(result);
 				}
-			})
+			}) */
+			$('#cartForm').submit();
 		}
 	</script>
 </body>

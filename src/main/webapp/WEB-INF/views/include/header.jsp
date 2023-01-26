@@ -35,7 +35,7 @@
 				</button>
 			</span>
 			<span>
-				<button type="button" class="btn border-none" onclick="location.href='/customerservice'">
+				<button type="button" class="btn border-none" onclick="location.href='/customerservice/main'">
 					고객센터
 				</button>
 			</span>
