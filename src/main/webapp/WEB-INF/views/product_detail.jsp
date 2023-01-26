@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,11 +17,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <style>
-	
+
 	.header button {
 		color : black;
 	}
-	
+
 	div.header {
 	position: relative;
 	top: 0;
@@ -30,7 +31,7 @@
 	.header span {
 		color : black;
 	}
-	
+
 	div.mainNav {
 	position: relative;
 	margin-top: 5em;
@@ -39,29 +40,29 @@
 	z-index: 3;
 	color : white;
 	text-align: center;
-	
+
 	}
-	
+
 	article {
 		margin-top : 5em;
 	}
-	
+
 	img {
 		max-width : 100%;
 		height : auto;
-	}	
+	}
 
 	span a {
 		margin: 2em;
 		text-decoration: none;
 		color : black;
 	}
-	
 
-	
+
+
 	.button_container { padding : 0; padding-top : 5em; }
-	
-	
+
+
 
 </style>
 <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -72,14 +73,14 @@
 	<div class="header">
 		<jsp:include page="./include/header.jsp"></jsp:include>
 	</div>
-	<!-- 네비게이터 include 부분 -->	
+	<!-- 네비게이터 include 부분 -->
 	<div class="mainNav">
 		<nav>
 			<jsp:include page="./include/nav.jsp"></jsp:include>
 		</nav>
 	</div>
 	<hr>
-	
+
 	<!-- 상품 설명 페이지 본문 내용 Article -->
 	<div class="product_detail">
 		<article>
@@ -90,14 +91,14 @@
 				<!-- 상품 이미지 div -->
 				<div class="product_section detail_section">
 					<div class="product_status populated_padding">
-						${product_view.item_status}					
+						${product_view.item_status}
 					</div>
 					<div class="product_name populated_padding">
-						${product_view.name}	
+						${product_view.name}
 					</div>
 					<div class="product_price populated_padding">
 						<h4>
-						<fmt:formatNumber value="${product_view.price}" pattern="#,###" /> 원		
+						<fmt:formatNumber value="${product_view.price}" pattern="#,###" /> 원
 						</h4>
 					</div>
 					<hr>
@@ -128,7 +129,7 @@
 								<td>설명4</td>
 							</tr>
 						</table>
-					</details>					
+					</details>
 					</div>
 					<!-- 제품 세부 정보 div -->
 					<hr>
@@ -142,7 +143,7 @@
 							<br>
 							배송기간 : 보통 1~3일 정도 소요
 							<br>
-							(지역 택배사 사정에 따라 약간의 지연 될 수 있음.) 
+							(지역 택배사 사정에 따라 약간의 지연 될 수 있음.)
 						</p>
 					</details>
 					</div>
@@ -153,7 +154,7 @@
 							<a href="/cart">
 	 							장바구니
 	 						</a>
-						</span> 
+						</span>
 						<span class="product_buy_phase_button">
 							<a href="/favorite">
 	 							찜하기
@@ -163,7 +164,16 @@
 							<a href="/order">
 	 							바로구매
 	 						</a>
-						</span>  
+						</span>
+						<%--ADMIN 계정만 보이는 버튼 테스트--%>
+						<sec:authorize access="hasRole('ADMIN')">
+						<span class="product_buy_phase_button">
+							<a href="/order">
+	 							상품 변경
+	 						</a>
+						</span>
+						</sec:authorize>
+
 					</div>
 					<!-- 버튼 부분 div -->
 				</div>
