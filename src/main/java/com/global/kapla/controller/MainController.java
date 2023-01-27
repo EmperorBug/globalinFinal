@@ -44,11 +44,6 @@ public class MainController {
 	public String favoritePage() {
 		return "favorite"; 
 	}
-	
-	@GetMapping("/cart")
-	public String cartPage() {
-		return "cart"; 
-	}
 
 	@GetMapping("/admin")
 	public String adminPage() {
