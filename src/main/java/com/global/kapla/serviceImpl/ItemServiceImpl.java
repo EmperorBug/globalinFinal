@@ -19,10 +19,10 @@ public class ItemServiceImpl implements ItemService{
 	@Autowired
 	ItemMapper itemMapper;
 	
-	public List<ItemVO> getList() {
-		log.info("getList() ..");
+	public List<ItemVO> getList(int category_no) {
+		log.info("getList()" + category_no);
 		
-		return itemMapper.getList();
+		return itemMapper.getList(category_no);
 	}
 
 	@Override

@@ -6,7 +6,7 @@
 
 	<select id="getList" resultType="com.global.kapla.vo.ItemVO">
 		<![CDATA[
-        	select * from kapla_item, kapla_item_image where kapla_item.item_no = kapla_item_image.item_no order by kapla_item.item_no
+        	select * from kapla_item, kapla_item_image where kapla_item.item_no = kapla_item_image.item_no and category_no = #{category_no} order by kapla_item.item_no
     	]]>	
 	</select>
 	
