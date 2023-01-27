@@ -29,7 +29,9 @@
 		<main class="loginMain">
 			<form action="/user/login" method="post">
 			testuser3
-			test123@
+			test123@ <br>
+			testuser2
+			test123@ (ADMIN 계정)
 			${error }
 			${exception }
 			<p>로그인</p>

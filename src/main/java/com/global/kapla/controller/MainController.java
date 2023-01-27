@@ -3,6 +3,7 @@ package com.global.kapla.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +22,9 @@ public class MainController {
 
 	@GetMapping("/")
 	public String hello() {
-		
 		return "main";
 	}
-	
+
 	@GetMapping("/map")
 	public String map() {
 		return "directions"; 
@@ -46,6 +46,22 @@ public class MainController {
 	}
 	
 	@GetMapping("/cart")
+	public String cartPage() {
+		return "cart"; 
+	}
+
+	@GetMapping("/admin")
+	public String adminPage() {
+		return "admin";
+	}
+
+	@GetMapping("/event")
+	public String eventPage() {
+
+		return "event";
+	}
+
+	@GetMapping("/cart")
 	public String cartPage(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		
@@ -56,14 +72,4 @@ public class MainController {
 		return "cart";
 	}
 
-	@GetMapping("/admin")
-	public String adminPage() {
-		return "admin";
-	}
-
-	@GetMapping("/event")
-	public String eventPage() {
-		return "event";
-	}
-	
 }

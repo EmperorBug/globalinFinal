@@ -29,19 +29,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		/*
 		 *초기 개발시에는 꺼주고 나중에 다시 킨다.
-		 *  
-		 */
-		
+		*/
 		http.csrf().disable();
 		http.authorizeHttpRequests()
-			.antMatchers("/admin/**").hasAnyRole("ADMIN")
+//			.antMatchers("/admin/**").hasAnyRole("ADMIN")
 			.antMatchers("/order/**").hasAnyRole("USER","ADMIN")
 			.antMatchers("/cart/**").hasAnyRole("USER","ADMIN")
 			.antMatchers("/**").permitAll();	
 		
 		//스프링 기본 로그인폼으로 띄움
 		//스프링에서 파라미터로 넘겨받는 기본값은 username, password다
-		//이걸 변경하려면 밑에 파라미터 설정값을 변경해준
+		//이걸 변경하려면 밑에 파라미터 설정값을 변경해준다
 		http.formLogin()
 		.loginPage("/user/login")
 		.usernameParameter("id")	//기본값 username을 id로 변경 jsp에서도 바꿔줘야함
