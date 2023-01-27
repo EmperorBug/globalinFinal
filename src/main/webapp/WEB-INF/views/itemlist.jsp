@@ -173,16 +173,16 @@
 			<section class="section_line">
 		    <div class="menu_bar populated_padding">
 		        <ul>
-		            <li><a href="#">Oil Perfume<br>오일 퍼퓸</a></li>
-		            <li><a href="#">Hand Perfume<br>핸드 퍼퓸<br></a></li>
-		            <li><a href="#">Home & Travel<br>홈 & 여행<i class='fa fa-angle-down'></i></a>
+		            <li><a href="../product/itemlist?category_num=1">Oil Perfume<br>오일 퍼퓸</a></li>
+		            <li><a href="../product/itemlist?category_num=2">Hand Perfume<br>핸드 퍼퓸<br></a></li>
+		            <li><a href="../product/itemlist?category_num=3">Home & Travel<br>홈 & 여행<i class='fa fa-angle-down'></i></a>
 		                <ul>
-		                    <li><a href="#">디퓨저</a></li>
-		                    <li><a href="#">카 디퓨저</a></li>
-		                    <li><a href="#">캔들</a></li>
+		                    <li><a href="../product/itemlist?category_num=3">디퓨저</a></li>
+		                    <li><a href="../product/itemlist?category_num=4">카 디퓨저</a></li>
+		                    <li><a href="../product/itemlist?category_num=5">캔들</a></li>
 		                </ul>
 		            </li>
-		            <li><a href="#">Hand Perfume<br>기프트<br></a></li>
+		            <li><a href="../product/itemlist?category_num=6">Hand Perfume<br>기프트<br></a></li>
 		        </ul>
 		    </div>
 		    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -222,6 +222,7 @@
 					<div class="populated_padding item_price item_detail">
 						<h4 class="item_heading_title">
 							<fmt:formatNumber value="${product.price}" pattern="#,###" /> 원
+							<!-- xxx, xxx원으로 표시되게 하는 format -->
 						</h4>
 					</div>
 				</div>

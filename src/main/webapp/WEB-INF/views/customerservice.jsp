@@ -8,6 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>고객센터</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -197,7 +198,7 @@
                         		<div class="date_faq_txt">
                             		<p>
                                 	<strong>찾으시는 질문이 없다면?</strong>
-                                	<span class="btn_gray_list"><a href="qa.jsp" class="btn_gray_mid" target="_top"><span>1:1 문의하기</span></a></span>
+                                	<span class="btn_gray_list"><a href="qa" class="btn_gray_mid" target="_top"><span>1:1 문의하기</span></a></span>
                             		</p>
                         		</div>
 							</form>
@@ -273,7 +274,6 @@
 
   function openCloseAnswer() {
     const answerId = this.id.replace('que', 'ans');
-
     if(document.getElementById(answerId).style.display === 'block') {
       document.getElementById(answerId).style.display = 'none';
     }
@@ -282,6 +282,7 @@
       }
     
     else {
+      $('.faq_answer').css('display','none');
       document.getElementById(answerId).style.display = 'table-row';
     }
   }

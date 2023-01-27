@@ -5,8 +5,8 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class ItemVO {
 	
+public class ItemVO {
 //	id,
 //	category_num;
 //	name,

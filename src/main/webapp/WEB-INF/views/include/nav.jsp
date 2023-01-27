@@ -14,7 +14,7 @@
 	<div class="mainNav">
 		<nav>
 			<span><a href="/brand">Brand</a></span>
-			<span><a href="/product/itemlist">Shop</a></span> 
+			<span><a href="/product/itemlist?category_num=1">Shop</a></span> 
 			<span><a href="/" class="homeBtn">kapla</a></span>
 			<span><a href="/event">Event</a></span>
 			<span><a href="/map">Store</a></span>
@@ -22,3 +22,4 @@
 	</div>
 	<!-- nav 작성자 : 김도형 -->
 	<!-- 수정 : 김형우 박진영-->
+	<!-- 최종수정 2023.01.27, shop 페이지 카테고리별로 페이지 뜨게 변경 -->
