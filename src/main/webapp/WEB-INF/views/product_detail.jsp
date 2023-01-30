@@ -57,7 +57,9 @@
 		text-decoration: none;
 		color : black;
 	}
-
+	span{
+		display: inline-block;
+	}
 
 
 	.button_container { padding : 0; padding-top : 5em; }

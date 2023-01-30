@@ -9,7 +9,7 @@ import com.global.kapla.vo.ItemVO;
 @Mapper
 public interface ItemMapper {
 	
-	List<ItemVO> getList();
+	List<ItemVO> getList(int category_no);
 
 	ItemVO productView(int id);
 	
