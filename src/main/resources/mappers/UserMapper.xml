@@ -9,6 +9,7 @@
 	id,
 	password,
 	name,
+	phone,
 	email,
 	address,
 	authority,
@@ -34,4 +35,8 @@
     <insert id="insertUser">
     	insert into KAPLA_USER (user_no, id, password, email) values ( user_seq.nextval, #{id}, #{password}, #{email} )
     </insert>
+    
+    <update id="updateUser">
+    	update KAPLA_USER set name=#{name}, phone=#{phone}, email=#{email} where id=#{id}
+    </update>
 </mapper>

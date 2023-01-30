@@ -14,5 +14,7 @@ public interface UserMapper {
 	
 	public int insertUser(UserVO vo);
 	
+	public int updateUser(UserVO vo);
+	
 	public UserVO getUser(String id);
 }

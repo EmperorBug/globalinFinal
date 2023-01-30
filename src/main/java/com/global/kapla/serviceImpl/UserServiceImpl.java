@@ -39,6 +39,20 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return mapper.getUser(userId);
 	}
+
+	@Override
+	public int updateUser(UserVO vo) {
+		int result = 200;
+		// TODO Auto-generated method stub
+		try {
+			mapper.updateUser(vo);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			result = 300;
+		}
+		return result;
+	}
  
 	
 	

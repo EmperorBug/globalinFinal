@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.global.kapla.service.OrderService;
 import com.global.kapla.service.UserService;
 import com.global.kapla.vo.CartVO;
+import com.global.kapla.vo.OrderVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -48,5 +50,11 @@ public class OrderController {
 		
 		
 		return "order/order";
+	}
+	
+	@PostMapping("/test")
+	public String test(OrderVO orderVO) {
+		log.info("넘어온값"+orderVO);
+		return "";
 	}
 }
