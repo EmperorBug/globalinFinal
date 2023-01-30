@@ -4,12 +4,14 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.global.kapla.service.CartService;
 import com.global.kapla.service.OrderService;
 import com.global.kapla.service.UserService;
 import com.global.kapla.vo.CartVO;
@@ -24,32 +26,47 @@ import lombok.extern.slf4j.Slf4j;
 public class KaplaRestController {
 	
 	@Autowired
+	CartService cartService;
+	
+	@Autowired
 	UserService userService;
 	
 	@Autowired
 	OrderService orderService;
 	
+	//////////////////   카트     //////////////////////// 
 	@PutMapping("/cart")
-	public int updateCart(@RequestBody List<CartVO> cartVO) {
-		log.info("넘어온값 "+cartVO);
-		log.info("넘어온값길이 "+cartVO.size());
-		return 1;
+	public int updateCart(@RequestBody CartVO cartVO, Principal principal) {
+		
+		cartVO.setId(principal.getName());
+		
+		return cartService.updateCart(cartVO);
+	}
+	
+	@DeleteMapping("/cart")
+	public int deleteCart(@RequestBody CartVO cartVO, Principal principal) {
+		
+		cartVO.setId(principal.getName());
+		log.info("값들"+cartVO);
+		
+		return cartService.deleteCart(cartVO);
 	}
 	
 	@PutMapping("/user")
 	public int updateUser(@RequestBody UserVO userVO, Principal principal) throws Exception {
-		log.info("넘어온값"+userVO);
-		log.info("넘어온값"+principal);
+		
 		userVO.setId(principal.getName());
 		int num = userService.updateUser(userVO);
+		
 		return num;
 	}
 	
 //	넘어오는값 수정필요
 	@PostMapping("/order")
 	public int test(@RequestBody OrderVO orderVO, Principal principal) {
-		log.info("넘어온값 :"+orderVO);
+		
 		orderVO.setId(principal.getName());
+		
 		return orderService.insertOrder(orderVO);
 	}
 }

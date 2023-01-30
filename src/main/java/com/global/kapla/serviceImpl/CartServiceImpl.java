@@ -20,4 +20,32 @@ public class CartServiceImpl implements CartService {
 		return cartMapper.getList(id);
 	}
 
+	@Override
+	public int updateCart(CartVO cartVO) {
+		int result_code = 200;
+		try {
+			cartMapper.updateCart(cartVO);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			result_code = 300;
+		}
+		return result_code;
+	}
+
+	@Override
+	public int deleteCart(CartVO cartVO) {
+		int result_code = 200;
+		
+		try {
+			cartMapper.deleteCart(cartVO);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			result_code = 300;
+		}
+		return result_code;
+	}
+
+	
 }

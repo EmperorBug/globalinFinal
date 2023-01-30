@@ -28,8 +28,28 @@
 
 	<!-- 주문정보 저장 -->
 	<insert id="insertOrder">
-		INSERT INTO KAPLA_ORDER	(ORDER_NO, USER_NO, PAYMENT_METHOD, TOTAL_PRICE, RECEIVER, RECEIVER_ADDR, RECEIVER_PHONE, RECEIVER_EMAIL, ORDER_COMMENT) 
-		VALUES( #{order_no}, (SELECT USER_NO FROM KAPLA_USER WHERE id=#{id}), #{payment_method}, #{total_price}, #{receiver}, #{receiver_addr}, #{receiver_phone}, #{receiver_email}, #{comment})
+		INSERT INTO KAPLA_ORDER	(
+			ORDER_NO, 
+			USER_NO, 
+			PAYMENT_METHOD, 
+			TOTAL_PRICE, 
+			RECEIVER, 
+			RECEIVER_ADDR, 
+			RECEIVER_PHONE, 
+			RECEIVER_EMAIL, 
+			ORDER_COMMENT
+		) 
+		VALUES( 
+			#{order_no}, 
+			(SELECT USER_NO FROM KAPLA_USER WHERE id=#{id}), 
+			#{payment_method}, 
+			#{total_price}, 
+			#{receiver}, 
+			#{receiver_addr}, 
+			#{receiver_phone}, 
+			#{receiver_email}, 
+			#{comment}
+		)
 	</insert>
 
 	<insert id="insertOrderDetail" parameterType="OrderVO">

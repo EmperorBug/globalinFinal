@@ -64,7 +64,7 @@ public class MainController {
 		
 		model.addAttribute("list", cartService.getList(id));
 		
-		return "cart";
+		return "/order/cart";
 	}
 
 }

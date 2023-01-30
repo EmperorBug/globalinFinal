@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,87 +20,97 @@
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/aJax.js"></script>
 </head>
 
 
 <body>
 
-	<jsp:include page="./include/header.jsp"></jsp:include>
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	<!-- 네비게이터 include 부분 -->	
 	
-	<jsp:include page="./include/nav.jsp"></jsp:include>
+	<jsp:include page="../include/nav.jsp"></jsp:include>
 	<!-- 찜 목록 article 부분 -->
 	<article class="wrap">
-		<form action="/order/order" id="cartForm">
-			<table class="center table table-hover w-75" >
-				<thead class="table-light">
-					<tr>
-						<th width="3%"><input class="form-check-input" type="checkbox" value="" id="allChecked" name="checkAll"></th>
-						<th width="42%" colspan="2">상품정보</th>
-						<th width="10%">수량</th>
-						<th width="10%">상품가격</th>
-						<th width="10%">할인</th>
-						<th width="15%">합계금액</th>
-						<th width="10%">배송비</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="item" items="${list }">
+		<c:if test="${fn:length(list) != 0 }">
+			<form action="/order/order" id="cartForm">
+		
+				<table class="center table table-hover w-75">
+					<thead class="table-light">
 						<tr>
-							<td>
-								<input class="form-check-input" type="checkbox" value="${item.item_no }" name="checkList">
-							</td>
-							<td>
-								<img src="${item.url }" class="itemimg">
-							</td>
-							<td>${item.item_name }</td>
-							<td>
-								<input type="number" name="quantity" min="1" max="200" value="${item.quantity }" onchange="changeCount(this)">
-								<span class="btn_area">
-									<button class="cart_btn up" type="button" onclick="increase(this);"></button>
-									<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
-								</span>
-							</td>
-							<td name="price" data-value="${item.price }"><fmt:formatNumber pattern="#,###원" value="${item.price }"></fmt:formatNumber></td>
-							<td name="discount"></td>
-							<td name="sumPrice" ><fmt:formatNumber pattern="#,###원" value="${item.price * item.quantity }"></fmt:formatNumber></td>
-							<td name="fee">무료배송</td>
+							<th width="3%"><input class="form-check-input" type="checkbox" value="" id="allChecked" name="checkAll"></th>
+							<th width="40%">상품정보</th>
+							<th width="10%">수량</th>
+							<th width="10%">상품가격</th>
+							<th width="10%">할인</th>
+							<th width="15%">합계금액</th>
+							<th width="10%">배송비</th>
 						</tr>
-					</c:forEach>
-					
-				</tbody>
-			</table>
-		</form>
+					</thead>
+					<tbody>
+				
+						<c:forEach var="item" items="${list }">
+							<tr>
+								<td>
+									<input class="form-check-input" type="checkbox" value="${item.item_no }" name="checkList">
+								</td>
+								
+								<td>
+									<img src="${item.url }" class="itemimg">
+									${item.item_name }
+								</td>
+								<td>
+									<input type="number" name="quantity" min="1" max="200" value="${item.quantity }" onchange="changeCount(this)">
+									<span class="btn_area">
+										<button class="cart_btn up" type="button" onclick="increase(this);"></button>
+										<button class="cart_btn down" type="button" onclick="decrease(this);"></button>
+									</span>
+								</td>
+								<td name="price" data-value="${item.price }"><fmt:formatNumber pattern="#,###원" value="${item.price }"></fmt:formatNumber></td>
+								<td name="discount"><fmt:formatNumber pattern="#,###원" value="${item.discount }"></fmt:formatNumber></td>
+								<td name="sumPrice" data-item_no="${item.item_no }"><fmt:formatNumber pattern="#,###원" value="${item.price * item.quantity }"></fmt:formatNumber></td>
+								<td name="fee">무료배송</td>
+							</tr>
+						</c:forEach>
+						
+					</tbody>
+				</table>
+			</form>
+		</c:if>
+		<c:if test="${fn:length(list) == 0 }">
+			<p style="text-align: center;">장바구니에 담긴 상품이 없습니다.</p>	
+		</c:if>	
 		<div class="totalPrice w-75">
 			<dl>
-				<dt>총<strong id="chkLen"></strong>개의 상품금액</dt>
-				<dd id="totalPrice"></dd>
+				<dt>총<strong id="chkLen">0</strong>개의 상품금액</dt>
+				<dd id="totalPrice">0원</dd>
 			</dl>
 			<span class="priceIcon">
 				<img src="/img/plus.png">
 			</span>
 			<dl>
 				<dt>배송비</dt>
-				<dd id="fee">0</dd>
+				<dd id="fee">0원</dd>
 			</dl>
 			<span class="priceIcon">
 				<img src="/img/equal.png">
 			</span>			
 			<dl>
 				<dt>합계</dt>
-				<dd id="totalPriceSumFee"></dd>
+				<dd id="totalPriceSumFee">0원</dd>
 			</dl>
 		</div>
-		<div class="center w-75">
-			<button class="btn btn-danger" type="button">선택 상품 삭제</button>
-			<button class="btn btn-lg btn-dark" style="float: right" type="button" onclick="goOrder();">상품 주문</button>
-		</div>
+		<c:if test="${fn:length(list) != 0 }">
+			<div class="center w-75">
+				<button class="btn btn-danger" type="button" onclick="delete_cart();">선택 상품 삭제</button>
+				<button class="btn btn-lg btn-dark" style="float: right" type="button" onclick="goOrder();">상품 주문</button>
+			</div>
+		</c:if>
 	</article>
 	<br>
 	<hr>
 	<!-- Footer include 부분  -->
-	<jsp:include page="./include/footer.jsp"></jsp:include>
-	<!-- signUp.jsp 작성자 : 박진영 -->
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
 	<script type="text/javascript">
 		/* 페이지 로드시 전체 체크하기*/
@@ -163,6 +174,8 @@
 
 		//수량 변경시 가격 증감하기
 		price_replace = (target, quantity, price) => {
+			//가격 변경전에 db에 수량정보 업데이트
+			const result = update_cart(quantity, target.data('item_no'));
 			const newPrice = quantity * price;
 			$(target).text(comma(newPrice)+'원');
 			totalPrice();
@@ -170,7 +183,6 @@
 
 		//수량 변경시 총 가격 증감
 		totalPrice = () => {
-			
 			let price 	= 0;		//선택된물건의 합계 저장하는 변수
 			let fee 	= 0;		//배송비 저장하는 변수
 			$('td[name=sumPrice]').each(function() {
@@ -226,18 +238,36 @@
 				
 				arr.push(obj);
 			})
-			//ajax나 fetch로 카트 업데이트하고 서버통신되면 get방식으로 order연결해야할듯
-/* 			$.ajax({
-				url:'/rest/cart',
-				data:JSON.stringify(arr),
-				method:'put',
-				contentType:'application/json; charset=utf-8',
-				dataType:'json',
-				success : (result) => {
-					console.log(result);
-				}
-			}) */
 			$('#cartForm').submit();
+		}
+		
+		update_cart = (quantity, item_no) => {
+			const data = {'quantity' : quantity,
+						'item_no' : item_no	
+						}
+			
+			updateAjax('/rest/cart',data);
+		}
+		
+		delete_cart = () => {
+			if ($('input[name=checkList]:checked').length == 0) {
+				alert('선택된 상품이 없습니다.')
+				return;
+			}
+
+			//이거 주문수량 변경시 서버에 업데이트 해야할듯
+			//서버로 보낼 데이터 만들기
+			const arr = new Array();
+			const obj = new Object;
+			$('input[name=checkList]:checked').each(function() {
+				arr.push({
+					'item_no':$(this).val()
+				})
+			})
+			
+			console.log(arr);
+			obj.cart_list = arr;
+			delAjax('/rest/cart',obj);
 		}
 	</script>
 </body>

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +41,7 @@
 	<div class="wrap">
 		<main class="orderMain">
 		<!-- 결제가 정상적으로 되면 상품정보랑 유저정보 서버로 보내서 인서트,업데이트 해야함. -->
-			<table class="center table table-hover" style="margin-top: 30px;">
+			<table class="center table table-hover" style="margin-top: 30px; caption-side: top">
 				<caption>상품정보</caption>
 				<thead class="table-light">
 					<tr>
@@ -60,7 +61,7 @@
  						<td name="item_name">${item.item_name }</td> 
 						<td>${item.quantity }개</td>
 						<td><fmt:formatNumber value="${item.price }" pattern="#,###원"/></td>
-						<td>${item.discount }</td>
+						<td><fmt:formatNumber pattern="#,###원" value="${item.discount }"></fmt:formatNumber></td>
 						<td><fmt:formatNumber value="${item.sum_price }" pattern="#,###원"/></td>
 						<td>무료배송</td>
 					</tr>
@@ -159,13 +160,11 @@
 		</main>
 	</div>
 <script>
+	//다음 주소 api
 	openPost = () => {
 	    new daum.Postcode({
 	        oncomplete: function(data) {
-	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-	            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
 	            
-	           console.log(data);
 	           $('#zipcode').val(data.zonecode);
 	           $('#addr').val(data.address);
 	           $('#addr2').focus();
@@ -187,7 +186,6 @@
 		//아래는 결제정보 서버로보내는 예시임
 		const arr = new Array();
 		const jObj = new Object();
-		const obj = new Object();
 		
 		const receiver = $('#cust_name').val();
 		const receiver_addr = $('#zipcode').val() + $('#addr').val() + $('#addr2').val();
@@ -214,10 +212,7 @@
 		jObj.comment = comment;
 		
 		console.log(jObj);
-		aJax('/rest/order',jObj);
 		
-		return;
-	//여기까지 //
 		var IMP = window.IMP; 
         IMP.init("imp11043101"); 
 		const order_name = $('td[name=item_name]')[0].innerText+'외'+($('td[name=item_name]').length-1)+'건';
@@ -246,93 +241,14 @@
             			email : $('#user_email').val()
             		};
             		
-            		
-            		$.ajax({
-	    				url:'/rest/user',
-	    				data:JSON.stringify(data),
-	    				method:'put',
-	    				contentType:'application/json; charset=utf-8',
-	    				dataType:'json',
-	    				success : (result) => {
-	    					console.log(result);
-	    				}
-    				}) 
+            		//유저정보 반영
+            		updateAjax('/rest/user', data);
             	}
-            	/**
-            	리턴값예시
-            	*apply_num: "77558075"
-            	bank_name:null
-            	buyer_addr: 
-            		""
-            		buyer_email
-            		: 
-            		""
-            		buyer_name
-            		: 
-            		""
-            		buyer_postcode
-            		: 
-            		"07250"
-            		buyer_tel
-            		: 
-            		""
-            		card_name
-            		: 
-            		"현대카드"
-            		card_number
-            		: 
-            		"9431330000001304"
-            		card_quota
-            		: 
-            		0
-            		currency
-            		: 
-            		"KRW"
-            		custom_data
-            		: 
-            		null
-            		imp_uid
-            		: 
-            		"imp_328076586356"
-            		merchant_uid
-            		: 
-            		"nobody_1674619076469"
-            		name
-            		: 
-            		"Bombshell외2건"
-            		paid_amount
-            		: 
-            		100
-            		paid_at
-            		: 
-            		1674619147
-            		pay_method
-            		: 
-            		"card"
-            		pg_provider
-            		: 
-            		"kcp"
-            		pg_tid
-            		: 
-            		"23275984389284"
-            		pg_type
-            		: 
-            		"payment"
-            		receipt_url
-            		: 
-            		"https://admin8.kcp.co.kr/assist/bill.BillActionNew.do?cmd=card_bill&tno=23275984389284&order_no=imp_328076586356&trade_mony=100"
-            		status
-            		: 
-            		"paid"
-            		success
-            		: 
-            		true
-            	*
-            	*/
-            	
+				
             	/* 주문정보반영 */
-            	
-                console.log(rsp);
+				postAjax('/rest/order',jObj);
+
+            //ajax 통신실패
             } else {
                 console.log(rsp);
             }
