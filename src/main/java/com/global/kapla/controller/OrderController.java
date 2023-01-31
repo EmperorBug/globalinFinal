@@ -36,7 +36,7 @@ public class OrderController {
 	
 	@GetMapping("/order")
 	public String order (HttpServletRequest request, Model model) throws Exception {
-		String[] item_no = request.getParameterValues("checkList");
+		String[] item_no = request.getParameterValues("item");
 		String[] quantity = request.getParameterValues("quantity");
 		
 		String id = (String) request.getSession().getAttribute("id");

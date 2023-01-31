@@ -52,7 +52,7 @@
 						<c:forEach var="item" items="${list }">
 							<tr>
 								<td>
-									<input class="form-check-input" type="checkbox" value="${item.item_no }" name="checkList">
+									<input class="form-check-input" type="checkbox" value="${item.item_no }" name="item">
 								</td>
 								
 								<td>
@@ -119,7 +119,7 @@
 		});
 
 		$('#allChecked').on('click', () => {
-			const checkbox = $('input:checkbox[name="checkList"]');
+			const checkbox = $('input:checkbox[name="item"]');
 			
 			(checkbox.is(':checked')) ? checkbox.prop('checked',false) : checkbox.prop('checked',true); 
 		})
@@ -202,8 +202,8 @@
 
 		// 모든 체크박스가 체크되어있으면 최상단 체크박스 체크 아니면 체크해기
 		$('.form-check-input').on('change', () => {
-			const chkLen = $('input[name=checkList]:checked').length;
-			const boxLen = $('input[name=checkList]').length;
+			const chkLen = $('input[name=item]:checked').length;
+			const boxLen = $('input[name=item]').length;
 			
 			if (chkLen == boxLen) {
 				$('#allChecked').prop('checked',true);
@@ -222,7 +222,7 @@
 		}
 		
 		goOrder = () => {
-			if ($('input[name=checkList]:checked').length == 0) {
+			if ($('input[name=item]:checked').length == 0) {
 				alert('선택된 상품이 없습니다.')
 				return;
 			}
@@ -232,7 +232,7 @@
 			const arr = new Array();
 			const obj = new Object();
 			
-			$('input[name=checkList]:checked').each(function() {
+			$('input[name=item]:checked').each(function() {
 				obj.item_no 	= $(this).val();
 				obj.quantity	= $(this).closest('tr').find('input[name=quantity]').val();
 				
@@ -250,7 +250,7 @@
 		}
 		
 		delete_cart = () => {
-			if ($('input[name=checkList]:checked').length == 0) {
+			if ($('input[name=item]:checked').length == 0) {
 				alert('선택된 상품이 없습니다.')
 				return;
 			}
@@ -259,7 +259,7 @@
 			//서버로 보낼 데이터 만들기
 			const arr = new Array();
 			const obj = new Object;
-			$('input[name=checkList]:checked').each(function() {
+			$('input[name=item]:checked').each(function() {
 				arr.push({
 					'item_no':$(this).val()
 				})
