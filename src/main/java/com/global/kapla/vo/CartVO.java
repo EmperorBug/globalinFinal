@@ -28,4 +28,6 @@ public class CartVO {
 	private String url;
 	
 	
+	private List<CartVO> cart_list;
+	
 }

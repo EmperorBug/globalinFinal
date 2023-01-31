@@ -16,6 +16,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/c179c056d7.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="/css/main.css" rel="stylesheet">
 <style>
 	
@@ -272,6 +273,7 @@
 <script>
   const items = document.querySelectorAll('.question');
 
+  
   function openCloseAnswer() {
     const answerId = this.id.replace('que', 'ans');
     if(document.getElementById(answerId).style.display === 'block') {
@@ -282,7 +284,11 @@
       }
     
     else {
+<<<<<<< HEAD
+    	$('.faq_answer').css('display','none');
+=======
       $('.faq_answer').css('display','none');
+>>>>>>> branch 'master' of https://github.com/EmperorBug/globalinFinal.git
       document.getElementById(answerId).style.display = 'table-row';
     }
   }

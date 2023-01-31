@@ -14,14 +14,58 @@
 		AND
 			item.ITEM_NO in
 			<foreach collection="itemList" item="item" open="(" separator="," close=")">
-				${item}
+				#{item}
 			</foreach>
     </select>
 
+	<!-- 밀리세컨드초 + 랜덤숫자3개로 주문번호 생성 -->
 	<select id="getOrderNo" resultType="String">
 		SELECT 
-			LPAD( TRUNC(DBMS_RANDOM.VALUE(1,125)), 3, 0) 
+			CONCAT( TO_CHAR(SYSTIMESTAMP,'YYYYMMDDHH24MISSFF3'), ( SELECT LPAD( TRUNC(DBMS_RANDOM.VALUE(1,125)), 3, 0) FROM dual) )
 		FROM 
 			dual
 	</select>
+
+	<!-- 주문정보 저장 -->
+	<insert id="insertOrder">
+		INSERT INTO KAPLA_ORDER	(
+			ORDER_NO, 
+			USER_NO, 
+			PAYMENT_METHOD, 
+			TOTAL_PRICE, 
+			RECEIVER, 
+			RECEIVER_ADDR, 
+			RECEIVER_PHONE, 
+			RECEIVER_EMAIL, 
+			ORDER_COMMENT
+		) 
+		VALUES( 
+			#{order_no}, 
+			(SELECT USER_NO FROM KAPLA_USER WHERE id=#{id}), 
+			#{payment_method}, 
+			#{total_price}, 
+			#{receiver}, 
+			#{receiver_addr}, 
+			#{receiver_phone}, 
+			#{receiver_email}, 
+			#{comment}
+		)
+	</insert>
+
+	<insert id="insertOrderDetail" parameterType="OrderVO">
+		INSERT INTO KAPLA_ORDER_DETAIL (
+        	DETAIL_NO,
+			ORDER_NO,
+  			ITEM_NO,
+  			QUANTITY
+		)
+		select order_seq.nextval, A.* from(
+		<foreach item="item" collection="cart_list" separator="UNION ALL ">
+			select #{order_no},
+			#{item.item_no},
+			#{item.quantity}
+			from dual
+		</foreach>
+		) A
+	</insert>
 </mapper>

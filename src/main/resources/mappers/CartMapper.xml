@@ -17,4 +17,26 @@
 			USER_NO =(SELECT user_no FROM KAPLA_USER WHERE id=#{id})
     </select>
 
+	<update id="updateCart">
+		UPDATE
+			KAPLA_CART 
+		SET
+			QUANTITY = #{quantity}
+		WHERE
+			ITEM_NO = #{item_no}
+		AND
+			USER_NO = (SELECT user_no FROM KAPLA_USER WHERE id=#{id})
+	</update>
+	
+	<delete id="deleteCart">
+		DELETE FROM 
+			KAPLA_CART 
+		WHERE
+			ITEM_NO IN  
+			<foreach collection="cart_list" open="(" separator="," close=")" item="item">
+			 #{item.item_no} 
+			</foreach>
+		AND
+			USER_NO = (SELECT user_no FROM KAPLA_USER WHERE id=#{id})
+	</delete>
 </mapper>
