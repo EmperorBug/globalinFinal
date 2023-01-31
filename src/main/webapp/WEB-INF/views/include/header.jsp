@@ -24,7 +24,7 @@
 				</button>
 			</span>
 			<span>
-				<button type="button" class="btn border-none" onclick="location.href='/signup'">
+				<button type="button" class="btn border-none" onclick="location.href='/mypage'">
 	 			마이페이지
 				</button>
 			</span>

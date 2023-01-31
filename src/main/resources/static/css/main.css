@@ -384,3 +384,18 @@ input[type='number']::-webkit-inner-spin-button {
 	.product_detail_table { border : 1px solid black; border-collapse: collapse; }
 	
 	/* 세부정보를 펼치는 버튼 부분 + 첫번째 세부정보 테이블 부분 */
+	
+/* mypage */
+
+.leftMenu {
+    float: left;
+    width: 300px;
+}
+.leftMenu ul li {
+	display: block;
+	padding: 0 0 0 32px;
+}
+.contents {
+	float: left;
+	margin: 0 auto;
+}
