@@ -389,13 +389,14 @@ input[type='number']::-webkit-inner-spin-button {
 
 .leftMenu {
     float: left;
-    width: 300px;
+    width: 20%;
 }
-.leftMenu ul li {
+.leftMenu li {
 	display: block;
-	padding: 0 0 0 32px;
+
 }
-.contents {
+.contents_article {
 	float: left;
-	margin: 0 auto;
+	margin: 0 0 0 2em;
+	width: 70%;
 }
