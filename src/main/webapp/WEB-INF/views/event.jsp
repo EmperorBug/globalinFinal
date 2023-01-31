@@ -101,13 +101,13 @@
         <div class="container">
             <div class="items">
                 <%--(이벤트 배너 이미지1 넣기)--%>
-                <a href="/product/itemlist">
+                <a href="../product/itemlist?category_num=6">
                     <img src="/event_img/january1.png" width="500" , height="500">
                 </a>
             </div>
             <div class="items">
                 <%--(이벤트 배너 이미지2 넣기)--%>
-                <a href="/product/itemlist">
+                <a href="../product/itemlist?category_num=6">
                     <img src="/event_img/february1.png" width="500" , height="500">
                 </a>
             </div>

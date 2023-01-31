@@ -10,6 +10,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kapla</title>
+<script src="https://kit.fontawesome.com/c179c056d7.js" crossorigin="anonymous"></script>
 <link href="/css/main.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
@@ -151,17 +152,50 @@
 					</div>
 					<!-- 배송, 반품 설명 div -->
 					<hr>
+						<div class="product_quantity_select">
+							<button id="button_plus" onclick="plus()">
+									<i class="fa-solid fa-plus"></i>
+							</button>		
+							<input type="number" name="quantity" id="product_cnt" value="1"  readonly="readonly">			
+							<button id="button_plus" onclick="minus()">
+									<i class="fa-solid fa-minus"></i>
+							</button>	
+							<br><br>
+							총 금액 : 
+							<span class="product_total_price" id="total_cost">
+								<fmt:formatNumber value="${product_view.price}" pattern="#,###" /> 원
+							</span>
+						</div>					
+					<hr>
+					<!-- plus / minus / 총금액 script 부분 -->
+					<script>
+						function plus() {
+							var count = document.getElementById("product_cnt").value;
+							document.getElementById("product_cnt").value = parseInt(count) + 1;
+						}
+						function minus() {
+							var count = document.getElementById("product_cnt").value;
+							if(count > 0){
+							document.getElementById("product_cnt").value = parseInt(count) - 1;
+							}
+							else {
+								count = 0;
+							}
+						}
+						
+					</script>
+					<!-- 제품 수량 설정 및 가격 나오는 곳 -->
 					<div class="product_buy_phase populated_padding button_container">
 						<span class="product_buy_phase_button">
 							<a href="/cart">
 	 							장바구니
 	 						</a>
 						</span>
-						<span class="product_buy_phase_button">
+<!-- 						<span class="product_buy_phase_button">
 							<a href="/favorite">
 	 							찜하기
 	 						</a>
-						</span>
+						</span> -->
 						<span class="product_buy_phase_button">
 							<a href="/order">
 	 							바로구매

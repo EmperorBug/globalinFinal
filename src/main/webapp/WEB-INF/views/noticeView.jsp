@@ -148,9 +148,9 @@
 			<div class ="sub_menu_box">
 				<h4>고객센터</h4>
 				<ul class="sub_menu">
-					<li><a href="../customerservice/notice">공지사항</a></li>
-					<li><a href="../customerservice/qa">1:1문의하기</a></li>
-			    	<li><a href="../customerservice/faq">FAQ</a></li>
+					<li><a href="../../customerservice/notice">공지사항</a></li>
+					<li><a href="../../customerservice/qa">1:1문의하기</a></li>
+			    	<li><a href="../../customerservice/faq">FAQ</a></li>
 		    	</ul>
 			</div>
 				<div class ="info_box">

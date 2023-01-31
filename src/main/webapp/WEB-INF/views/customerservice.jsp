@@ -207,16 +207,16 @@
 							<h4>	BEST FAQ </h4>
 						</div>
 						<div class ="board_list_faq">
-							<div class="board_hot_list">
+							<!-- <div class="board_hot_list">
 		                        <ul>
 		                            <li class="on"><a href="#"><span>전체</span></a></li>
 		                            <li><a href="#"><span>회원가입/정보</span></a></li>
 		                            <li><a href="#"><span>결제/배송</span></a></li>
 		                            <li><a href="#"><span>교환/반품/환불</span></a></li>
 		                            <li><a href=""><span>기타</span></a></li>
-		                            <!-- <li><a href="faq.php?category=03001005&amp;noheader=y&amp;isBest=y&amp;searchField=&amp;searchWord="><span>기타</span></a></li> -->
+		                            <li><a href="faq.php?category=03001005&amp;noheader=y&amp;isBest=y&amp;searchField=&amp;searchWord="><span>기타</span></a></li>
 		                        </ul>
-		                    </div>
+		                    </div> -->
 		                    <table id="faqList" class="board_list_table">
 				                <colgroup>
 		                            <col style="width:67px">
