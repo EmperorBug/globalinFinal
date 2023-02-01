@@ -17,6 +17,7 @@
 	rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 
 	.header button {
@@ -99,8 +100,8 @@
 					<div class="product_name populated_padding">
 						${product_view.name}
 					</div>
-					<div class="product_price populated_padding">
-						<h4>
+					<div class="product_price populated_padding" >
+						<h4 id="product_price" data-value="${product_view.price }">
 						<fmt:formatNumber value="${product_view.price}" pattern="#,###" /> 원
 						</h4>
 					</div>
@@ -153,36 +154,44 @@
 					<!-- 배송, 반품 설명 div -->
 					<hr>
 						<div class="product_quantity_select">
-							<button id="button_plus" onclick="plus()">
+							<form action="/order/order">
+							수량 : 
+							<button type="button" id="button_plus" onclick="plus()">
 									<i class="fa-solid fa-plus"></i>
 							</button>		
-							<input type="number" name="quantity" id="product_cnt" value="1"  readonly="readonly">			
-							<button id="button_plus" onclick="minus()">
+								<input type="number" name="quantity" id="product_cnt" value="1"  readonly="readonly">			
+								<input type="hidden" name="item" id="product_number" value="${product_view.item_no}">
+							<button type ="button" id="button_plus" onclick="minus()">
 									<i class="fa-solid fa-minus"></i>
 							</button>	
 							<br><br>
-							총 금액 : 
-							<span class="product_total_price" id="total_cost">
-								<fmt:formatNumber value="${product_view.price}" pattern="#,###" /> 원
-							</span>
+							총 금액 :
+							<input type="number" name="total_cost_js" id="total_cost_js" value="${product_view.price}"  readonly="readonly">	
+							</form>
 						</div>					
 					<hr>
 					<!-- plus / minus / 총금액 script 부분 -->
 					<script>
+					var cost = $('#product_price').data('value'); // 물건의 가격
+					
 						function plus() {
-							var count = document.getElementById("product_cnt").value;
-							document.getElementById("product_cnt").value = parseInt(count) + 1;
+							var count = document.getElementById("product_cnt").value; // 물건 갯수
+							var totalcost = document.getElementById("total_cost_js").value; // 총가격
+							document.getElementById("product_cnt").value = parseInt(count) + 1; // 물건 카운트 + 1
+							document.getElementById("total_cost_js").value = parseInt(totalcost)+parseInt(cost); // 총 가격 재합산
 						}
 						function minus() {
-							var count = document.getElementById("product_cnt").value;
+							var count = document.getElementById("product_cnt").value; // 물건 갯수
+							var totalcost = document.getElementById("total_cost_js").value; // 총가격
 							if(count > 0){
-							document.getElementById("product_cnt").value = parseInt(count) - 1;
+								document.getElementById("product_cnt").value = parseInt(count) - 1; // 물건 카운트 - 1
+								document.getElementById("total_cost_js").value = parseInt(totalcost)-parseInt(cost); // 총 가격 재합산
 							}
 							else {
 								count = 0;
+								document.getElementById("total_cost_js").value = 0;
 							}
 						}
-						
 					</script>
 					<!-- 제품 수량 설정 및 가격 나오는 곳 -->
 					<div class="product_buy_phase populated_padding button_container">
@@ -191,20 +200,26 @@
 	 							장바구니
 	 						</a>
 						</span>
-<!-- 						<span class="product_buy_phase_button">
-							<a href="/favorite">
-	 							찜하기
-	 						</a>
-						</span> -->
 						<span class="product_buy_phase_button">
-							<a href="/order">
+							<a href="/order/order" id="buylink">
 	 							바로구매
 	 						</a>
 						</span>
+						<!-- 값 넘기는 javascript 함수 -->
+						<script>
+						  $(function() {
+							  $("#buylink").on("click", function(event) {
+							  	$(this).attr("href",function(i,val){
+							  		return val+"?quantity="+$("#product_cnt").val()+"&item="+$("#product_number").val();
+							  	});
+							  	});
+							  })
+						</script>
+						
 						<%--ADMIN 계정만 보이는 버튼 테스트--%>
 						<sec:authorize access="hasRole('ADMIN')">
 						<span class="product_buy_phase_button">
-							<a href="/order">
+							<a href="/order/order">
 	 							상품 변경
 	 						</a>
 						</span>
