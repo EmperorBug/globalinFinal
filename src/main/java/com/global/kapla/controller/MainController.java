@@ -45,6 +45,11 @@ public class MainController {
 		return "favorite"; 
 	}
 
+	@GetMapping("/mypage")
+	public String myPage() {
+		return "mypage/main";
+	}
+	
 	@GetMapping("/admin")
 	public String adminPage() {
 		return "admin";
