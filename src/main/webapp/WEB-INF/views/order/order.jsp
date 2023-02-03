@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>구매 페이지</title>
 
 <link href="/css/main.css" rel="stylesheet">
 <link

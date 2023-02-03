@@ -6,15 +6,32 @@
 
 	<select id="getList" resultType="com.global.kapla.vo.ItemVO">
 		<![CDATA[
-        	select * from kapla_item, kapla_item_image where kapla_item.item_no = kapla_item_image.item_no and category_no = #{category_no} order by kapla_item.item_no
+        	select * from
+        		 kapla_item, kapla_item_image 
+        	where
+        		 kapla_item.item_no = kapla_item_image.item_no 
+        	and 
+        		 category_no = #{category_no} order by kapla_item.item_no
     	]]>	
 	</select>
 	
 	<select id="productView" resultType="com.global.kapla.vo.ItemVO">
 		<![CDATA[
-        	select * from kapla_item, kapla_item_image where kapla_item.item_no = kapla_item_image.item_no and kapla_item.item_no = #{item_no} 
+        	SELECT * FROM
+        		 kapla_item, kapla_item_image
+         	WHERE
+         		 kapla_item.item_no = kapla_item_image.item_no 
+         	and 
+         		 kapla_item.item_no = #{item_no} 
     	]]>	
 	</select>
+	
+<!-- 	<insert id="insertItemToCart" >
+		<![CDATA[
+            insert into kapla_cart (cart_no, item_no, user_no, quantity, reg_date) 
+      		values (cart_no_seq.nextval, #{item_no}, #{user_no}, #{quantity}, sysdate) 
+    	]]>	
+	</insert> -->
 	
 	
 </mapper>

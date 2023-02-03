@@ -1,12 +1,17 @@
 package com.global.kapla.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.global.kapla.service.ItemService;
+import com.global.kapla.vo.CartVO;
 import com.global.kapla.vo.ItemVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -40,5 +45,20 @@ public class ItemController {
 		
 		return "product_detail";
 	}
+	
+	@PostMapping("/cart")
+	public String insert_cart(ItemVO itemVO, CartVO cartVO, Model model, Principal principal) {
+		
+		int item_no = itemVO.getId();
+		int quantity = cartVO.getQuantity();
+		String username = principal.getName();
+		itemService.insertItemToCart(cartVO);
+		log.info("데이터가 넘어가는지 테스트 중입니다." + item_no + "/" + quantity + "/" + username);
+		model.addAttribute("detail_to_cart");
+		
+		return "redirect:/cart";
+	}
+	
+	
 	
 }

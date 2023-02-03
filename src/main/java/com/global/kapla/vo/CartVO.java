@@ -15,11 +15,13 @@ public class CartVO {
 	private int item_no;
 	private String id;
 	private int quantity;
+	private int user_no;
 	
 	//상품테이블
 	private int price;
 	private String item_name;
 	private int discount;
+	
 	
 	//따로 계산
 	private int sum_price;

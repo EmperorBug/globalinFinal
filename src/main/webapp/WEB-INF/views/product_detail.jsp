@@ -64,7 +64,7 @@
 	}
 
 
-	.button_container { padding : 0; padding-top : 5em; }
+	.button_container { padding : 0; padding-top : 1em; }
 
 
 
@@ -195,17 +195,26 @@
 					</script>
 					<!-- 제품 수량 설정 및 가격 나오는 곳 -->
 					<div class="product_buy_phase populated_padding button_container">
+						<form action="/product/cart" method="post" style="display:inline-block;">
+						<input type="hidden" name="item_no" id="product_number" value="${product_view.item_no}">
+						<!--  상품번호 -->
+						<input type="hidden" name="user_no" id="user_number" value="11">
+						<input type="hidden" name="quantity" id="total_quantity" value="1">
+						
 						<span class="product_buy_phase_button">
-							<a href="/cart">
+							<a href="javascript:void(0)">
+	 							<button style="all:unset">
 	 							장바구니
+	 							</button>
 	 						</a>
 						</span>
+						</form>
 						<span class="product_buy_phase_button">
 							<a href="/order/order" id="buylink">
 	 							바로구매
 	 						</a>
 						</span>
-						<!-- 값 넘기는 javascript 함수 -->
+						<!-- 상품의 수량개수와 상품번호를 넘기는 javascript 함수 -->
 						<script>
 						  $(function() {
 							  $("#buylink").on("click", function(event) {
