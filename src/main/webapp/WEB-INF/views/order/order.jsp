@@ -153,7 +153,7 @@
 			</table>
 			
 				<div class="totalPrice"> 
-					최종결제금액 <h3 id="total_price" data-price="${total_price }"><fmt:formatNumber pattern="###,###" value="${total_price }"/></h3></div>
+					최종결제금액 <h3 id="total_price" data-price="${total_price }"><fmt:formatNumber pattern="###,###원" value="${total_price }"/></h3></div>
 			<div style="text-align: center;">
 				<button type="button" class="btn btn-primary" style="padding: 20px; width: 226px; margin-top: 20px" id="pay_btn">결제</button>
 			</div>

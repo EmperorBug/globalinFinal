@@ -31,7 +31,7 @@
 		USING dual
 		ON (item_no =#{item_no})
 		WHEN MATCHED  THEN 
-			UPDATE SET QUANTITY = (SELECT QUANTITY FROM KAPLA_CART WHERE USER_NO = (select user_no from kapla_user where id=#{id}))+#{quantity}
+			UPDATE SET QUANTITY = (SELECT QUANTITY FROM KAPLA_CART WHERE USER_NO = (select user_no from kapla_user where id=#{id} and item_no = #{item_no}))+#{quantity}
 		WHEN NOT MATCHED THEN
 		 	insert (cart_no, item_no, user_no, quantity) values (cart_no_seq.nextval, #{item_no}, (select user_no from kapla_user where id=#{id}), #{quantity})
 	</insert>
