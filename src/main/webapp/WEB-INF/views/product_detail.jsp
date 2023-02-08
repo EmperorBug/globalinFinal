@@ -184,15 +184,17 @@
 						function minus() {
 							var count = document.getElementById("product_cnt").value; // 물건 갯수
 							var totalcost = document.getElementById("total_cost_js").value; // 총가격
-							if(count > 0){
-								document.getElementById("product_cnt").value = parseInt(count) - 1; // 물건 카운트 - 1
-								document.getElementById("total_quantity").value = parseInt(count) - 1; // 물건 카운트 - 1
-								document.getElementById("total_cost_js").value = parseInt(totalcost)-parseInt(cost); // 총 가격 재합산
+							
+							if(count <= 1){
+								alert("수량을 1 미만으로 할수 없습니다.")
+								return;
 							}
-							else {
-								count = 0;
-								document.getElementById("total_cost_js").value = 0;
-							}
+							
+							document.getElementById("product_cnt").value = parseInt(count) - 1; // 물건 카운트 - 1
+							document.getElementById("total_quantity").value = parseInt(count) - 1; // 물건 카운트 - 1
+							document.getElementById("total_cost_js").value = parseInt(totalcost)-parseInt(cost); // 총 가격 재합산
+							
+							
 						}
 					</script>
 					<!-- 제품 수량 설정 및 가격 나오는 곳 -->
@@ -200,7 +202,7 @@
 						<form action="/product/cart" method="post" style="display:inline-block;">
 						<input type="hidden" name="item_no" id="product_number" value="${product_view.item_no}">
 						<!--  상품번호 -->
-						<input type="hidden" name="quantity" id="total_quantity">
+						<input type="hidden" name="quantity" value="1" id="total_quantity">
 						
 						<span class="product_buy_phase_button">
 							<a href="javascript:void(0)">
