@@ -26,12 +26,15 @@
     	]]>	
 	</select>
 	
-<!-- 	<insert id="insertItemToCart" >
-		<![CDATA[
-            insert into kapla_cart (cart_no, item_no, user_no, quantity, reg_date) 
-      		values (cart_no_seq.nextval, #{item_no}, #{user_no}, #{quantity}, sysdate) 
-    	]]>	
-	</insert> -->
+ 	<insert id="insertItemToCart" >
+		MERGE INTO KAPLA_CART 
+		USING dual
+		ON (USER_NO =(select user_no from kapla_user where id=#{id}))
+		WHEN MATCHED  THEN 
+			UPDATE SET QUANTITY = (SELECT QUANTITY FROM KAPLA_CART WHERE USER_NO = (select user_no from kapla_user where id=#{id}))+#{quantity}
+		WHEN NOT MATCHED THEN
+		 insert (cart_no, item_no, user_no, quantity) values (cart_no_seq.nextval, #{item_no}, (select user_no from kapla_user where id=#{id}), #{quantity})
+	</insert>
 	
 	
 </mapper>

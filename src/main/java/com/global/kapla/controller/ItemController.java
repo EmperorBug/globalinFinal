@@ -47,11 +47,13 @@ public class ItemController {
 	}
 	
 	@PostMapping("/cart")
-	public String insert_cart(ItemVO itemVO, CartVO cartVO, Model model, Principal principal) {
+	public String insert_cart(CartVO cartVO, Model model, Principal principal) {
 		
-		int item_no = itemVO.getId();
+		int item_no = cartVO.getItem_no();
 		int quantity = cartVO.getQuantity();
 		String username = principal.getName();
+		
+		cartVO.setId(username);
 		itemService.insertItemToCart(cartVO);
 		log.info("데이터가 넘어가는지 테스트 중입니다." + item_no + "/" + quantity + "/" + username);
 		model.addAttribute("detail_to_cart");

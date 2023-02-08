@@ -15,7 +15,6 @@ public class CartVO {
 	private int item_no;
 	private String id;
 	private int quantity;
-	private int user_no;
 	
 	//상품테이블
 	private int price;
