@@ -53,6 +53,17 @@ public class UserServiceImpl implements UserService{
 		}
 		return result;
 	}
+
+	@Override
+	public int findUser(UserVO vo) {
+		int result = 1;
+		try {
+			result = mapper.findUser(vo);
+		}catch (Exception e) {
+			result = 300;
+		}
+		return result;
+	}
  
 	
 	

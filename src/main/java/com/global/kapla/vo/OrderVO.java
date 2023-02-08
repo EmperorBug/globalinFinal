@@ -20,4 +20,7 @@ public class OrderVO {
 	private String id;
 	
 	private List<CartVO> cart_list;
+	
+	//mypage정보 (order_detail) 
+	private int quantity;
 }

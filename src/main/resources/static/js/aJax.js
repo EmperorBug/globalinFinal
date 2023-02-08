@@ -3,18 +3,19 @@
  */
 
 postAjax = (url, data) => {
+	let r_data = "";
 	$.ajax({
 		url:url,
 		data:JSON.stringify(data),
 		method:'post',
+		async: false,
 		contentType:'application/json; charset=utf-8',
 		dataType:'json',
 		success : (result) => {
-			if (result == 200) {
-				location.href='/';
-			}
+			r_data = result;
 		}
 	}) 
+	return r_data;
 }
 
 updateAjax = (url, data) => {

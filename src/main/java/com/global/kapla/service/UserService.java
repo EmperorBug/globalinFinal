@@ -10,4 +10,6 @@ public interface UserService {
 	public UserVO login(UserVO vo) throws Exception;
 	public int updateUser(UserVO vo) throws Exception;
 	public UserVO userInfo(String userId) throws Exception;
+	public int findUser(UserVO vo);
+	
 }

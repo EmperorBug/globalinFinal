@@ -1,5 +1,7 @@
 package com.global.kapla.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.global.kapla.service.CartService;
+import com.global.kapla.service.OrderService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +23,9 @@ public class MainController {
 	@Autowired
 	CartService cartService;
 
+	@Autowired
+	OrderService orderService;
+	
 	@GetMapping("/")
 	public String hello() {
 		return "main";
@@ -46,7 +52,10 @@ public class MainController {
 	}
 
 	@GetMapping("/mypage")
-	public String myPage() {
+	public String myPage(Model model, Principal principal) {
+		log.info("mypage들어옴");
+		
+		
 		return "mypage/main";
 	}
 	

@@ -1,7 +1,6 @@
 package com.global.kapla.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,6 +32,17 @@ public class KaplaRestController {
 	
 	@Autowired
 	OrderService orderService;
+	
+	/**
+	 * 2023.02.08
+	 * 아이디 중복 체크
+	 * 김도형
+	 */
+	@PostMapping("/idchk")
+	public int idChk(@RequestBody UserVO userVO) {
+		
+		return userService.findUser(userVO);
+	}
 	
 	//////////////////   카트     //////////////////////// 
 	@PutMapping("/cart")
