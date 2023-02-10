@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global.kapla.mapper.OrderMapper;
 import com.global.kapla.service.OrderService;
@@ -56,6 +57,7 @@ public class OrderServiceImpl implements OrderService{
 	 *  			= 300 - 통신실패
 	 */
 	@Override
+	@Transactional
 	public int insertOrder(OrderVO orderVO) {
 		// TODO Auto-generated method stub
 		

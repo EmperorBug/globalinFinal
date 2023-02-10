@@ -23,4 +23,7 @@ public class OrderVO {
 	
 	//mypage정보 (order_detail) 
 	private int quantity;
+	private String order_date;
+	private String item_name;
+	private String order_status;
 }

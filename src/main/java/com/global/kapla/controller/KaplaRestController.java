@@ -71,7 +71,11 @@ public class KaplaRestController {
 		return num;
 	}
 	
-//	넘어오는값 수정필요
+	/**
+	 * 2023.02.02
+	 * 주문정보 저장
+	 * 김도형
+	 */
 	@PostMapping("/order")
 	public int test(@RequestBody OrderVO orderVO, Principal principal) {
 		

@@ -57,13 +57,15 @@
         	DETAIL_NO,
 			ORDER_NO,
   			ITEM_NO,
-  			QUANTITY
+  			QUANTITY,
+  			SUM_PRICE
 		)
 		select order_seq.nextval, A.* from(
 		<foreach item="item" collection="cart_list" separator="UNION ALL ">
 			select #{order_no},
 			#{item.item_no},
-			#{item.quantity}
+			#{item.quantity},
+			#{item.sum_price}
 			from dual
 		</foreach>
 		) A
