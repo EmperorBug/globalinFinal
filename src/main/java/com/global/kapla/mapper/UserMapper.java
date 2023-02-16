@@ -16,5 +16,7 @@ public interface UserMapper {
 	
 	public int updateUser(UserVO vo);
 	
-	public UserVO getUser(String id);
+	public UserVO getUser(String userId);
+	
+	public UserVO printUserName(UserVO vo);
 }

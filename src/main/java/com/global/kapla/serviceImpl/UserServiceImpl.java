@@ -15,6 +15,11 @@ import lombok.extern.slf4j.Slf4j;
  * 2023.01.03
  * @author gimdohyeong
  * 유저 서비스 구현
+ * 
+ * 2023.02.14
+ * 
+ * 유저 ID 가져오는 기능 만듬 
+ * @author 김형우
  */
 @Slf4j
 @Service
@@ -64,7 +69,10 @@ public class UserServiceImpl implements UserService{
 		}
 		return result;
 	}
- 
-	
+
+	@Override
+	public UserVO printUserName(UserVO vo) throws Exception {
+		return mapper.printUserName(vo);
+	}
 	
 }

@@ -31,6 +31,9 @@
     	select <include refid="user"/> from KAPLA_USER where id = #{id}
     </select>
     
+    <select id="printUserName" resultType="UserVO">
+    	select <include refid="user"/> from KAPLA_USER where id = #{id}
+    </select>
     
     <insert id="insertUser">
     	insert into KAPLA_USER (user_no, id, password, email) values ( user_seq.nextval, #{id}, #{password}, #{email} )
