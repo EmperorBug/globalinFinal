@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,23 +80,23 @@ p {
 					<ol>
 						<li style="width: 100px">
 							<p>결제완료</p>
-							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">0</strong>
+							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[0].INFO }</strong>
 						</li>
 						<li style="width: 100px">
 							<p>상품준비중</p>
-							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">0</strong>
+							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[1].INFO }</strong>
 						</li>
 						<li style="width: 100px">
 							<p>배송중</p>
-							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">0</strong>
+							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[2].INFO }</strong>
 						</li>
 						<li style="width: 100px">
 							<p>배송완료</p>
-							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">0</strong>
+							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[3].INFO }</strong>
 						</li>
 						<li style="width: 100px">
 							<p>구매확정</p>
-							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">0</strong>
+							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[4].INFO }</strong>
 						</li>
 					</ol>
 				</div>
@@ -110,13 +113,15 @@ p {
 						<th width="15%" style="border-bottom: 1px solid #dbdbdb; background-color: #f7f7f7">주문상태</th>
 						<th width="15%" style="border-bottom: 1px solid #dbdbdb; background-color: #f7f7f7">확인/리뷰</th>
 					</tr>
-					<tr>
-						<td>2023-01-05</td>
-						<td>상품명</td>
-						<td>1,500,000/10</td>
-						<td>결제완료</td>
-						<td>상품명</td>
-					</tr>
+					<c:forEach items="${order_list }" var="item">
+						<tr>
+							<td>${item.order_date }</td>
+							<td>${item.item_name }</td>
+							<td><fmt:formatNumber pattern="###,###원" value="${item.total_price }"/> / ${item.quantity }개</td>
+							<td>${item.order_status }</td>
+							<td>상품명</td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 		</article>

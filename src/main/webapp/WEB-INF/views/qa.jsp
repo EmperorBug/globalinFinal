@@ -26,7 +26,6 @@
 	  th, td, input, select, textarea, button {
  	    font-size: 12px;
 	    line-height: 1.5;
-	    font-family: Malgun Gothic,"맑은 고딕",AppleGothic,Dotum,"돋움",sans-serif;
 	    color: #333;
 	}
 	

@@ -30,12 +30,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		/*
 		 *초기 개발시에는 꺼주고 나중에 다시 킨다.
 		*/
+		//메인, 로그인, 
 		http.csrf().disable();
 		http.authorizeHttpRequests()
 //			.antMatchers("/admin/**").hasAnyRole("ADMIN")
-			.antMatchers("/order/**").hasAnyRole("USER","ADMIN")
-			.antMatchers("/cart/**").hasAnyRole("USER","ADMIN")
-			.antMatchers("/product/cart").hasAnyRole("USER","ADMIN")
+			.antMatchers("/order/**", "/cart/**", "/product/cart", "/mypage/**").hasAnyRole("USER","ADMIN")
+//			.antMatchers("/cart/**").hasAnyRole("USER","ADMIN")
+//			.antMatchers("/product/cart").hasAnyRole("USER","ADMIN")
 			.antMatchers("/**").permitAll();	
 		
 		//스프링 기본 로그인폼으로 띄움
