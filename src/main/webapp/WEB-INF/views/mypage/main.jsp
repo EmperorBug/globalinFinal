@@ -25,9 +25,9 @@ html, body {
 	height: 100%
 }
 .container {
-	overflow: hidden;
+	overflow:hidden;
 	margin-top: 5em;
-	height: 100%
+	margin-bottom:3em;
 }
 p {
 	margin-top: -0.5em;
@@ -80,23 +80,48 @@ p {
 					<ol>
 						<li style="width: 100px">
 							<p>결제완료</p>
-							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[0].INFO }</strong>
+							<c:if test="${not empty order_info[0].INFO }">
+								<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[0].INFO }</strong>
+							</c:if>
+							<c:if test="${empty order_info[0].INFO }">
+								<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">0</strong>
+							</c:if>
 						</li>
 						<li style="width: 100px">
 							<p>상품준비중</p>
-							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[1].INFO }</strong>
+							<c:if test="${not empty order_info[1].INFO }">
+								<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[1].INFO }</strong>
+							</c:if>
+							<c:if test="${empty order_info[1].INFO }">
+								<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">0</strong>
+							</c:if>
 						</li>
 						<li style="width: 100px">
 							<p>배송중</p>
-							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[2].INFO }</strong>
+							<c:if test="${not empty order_info[2].INFO }">
+								<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[2].INFO }</strong>
+							</c:if>
+							<c:if test="${empty order_info[2].INFO }">
+								<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">0</strong>
+							</c:if>
 						</li>
 						<li style="width: 100px">
 							<p>배송완료</p>
-							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[3].INFO }</strong>
+							<c:if test="${not empty order_info[3].INFO }">
+								<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[3].INFO }</strong>
+							</c:if>
+							<c:if test="${empty order_info[3].INFO }">
+								<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">0</strong>
+							</c:if>						
 						</li>
 						<li style="width: 100px">
 							<p>구매확정</p>
-							<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[4].INFO }</strong>
+							<c:if test="${not empty order_info[4].INFO }">
+								<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">${order_info[4].INFO }</strong>
+							</c:if>
+							<c:if test="${empty order_info[4].INFO }">
+								<strong style="background-image:url('/img/mypgae_ing_list_bg.png'); width: 52px; height: 52px; display: inline-block; text-align: center; padding-top: 13px;">0</strong>
+							</c:if>
 						</li>
 					</ol>
 				</div>
@@ -110,16 +135,15 @@ p {
 						<th width="15%" style="border-bottom: 1px solid #dbdbdb; background-color: #f7f7f7">날짜/주문정보</th>
 						<th width="35%" style="border-bottom: 1px solid #dbdbdb; background-color: #f7f7f7">상품명/옵션</th>
 						<th width="20%" style="border-bottom: 1px solid #dbdbdb; background-color: #f7f7f7">상품금액/수량</th>
-						<th width="15%" style="border-bottom: 1px solid #dbdbdb; background-color: #f7f7f7">주문상태</th>
-						<th width="15%" style="border-bottom: 1px solid #dbdbdb; background-color: #f7f7f7">확인/리뷰</th>
+						<th width="15%" style="border-bottom: 1px solid #dbdbdb; background-color: #f7f7f7" colspan="2">주문상태</th>
 					</tr>
 					<c:forEach items="${order_list }" var="item">
 						<tr>
-							<td>${item.order_date }</td>
-							<td>${item.item_name }</td>
+						
+							<td>${item.order_date } <a>상세보기</a></td>
+							<td><a href="/mypage/order/${item.order_no }" style="color: black;">${item.item_name }</a></td>
 							<td><fmt:formatNumber pattern="###,###원" value="${item.total_price }"/> / ${item.quantity }개</td>
 							<td>${item.order_status }</td>
-							<td>상품명</td>
 						</tr>
 					</c:forEach>
 				</table>
