@@ -113,6 +113,9 @@ p {
 	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 	<script type="text/javascript">
+		/*
+			나중에 change 이벤트 제거 필요
+		 */
 		$('#startDate').datepicker({
 	        format: "yyyy-mm-dd",
 	        language: "ko",

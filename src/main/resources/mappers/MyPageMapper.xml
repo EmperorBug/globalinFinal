@@ -11,7 +11,7 @@
 				SELECT rownum rnum, A.* FROM (
 					SELECT o.ORDER_NO, (SELECT NAME  FROM KAPLA_ITEM WHERE ITEM_NO=od.ITEM_NO) item_name, od.QUANTITY, od.SUM_PRICE total_price, decode(od.ORDER_STATUS,1,'결제완료',2,'환불') order_status, TO_CHAR( o.REG_DATE,'YYYY-MM-DD') order_date 
 					FROM KAPLA_ORDER o, KAPLA_ORDER_DETAIL od
-					WHERE o.ORDER_NO = od.ORDER_NO AND o.user_no = (SELECT USER_NO FROM KAPLA_USER WHERE id=#{id})ORDER BY o.reg_date DESC
+					WHERE o.ORDER_NO = od.ORDER_NO AND o.user_no = (SELECT USER_NO FROM KAPLA_USER WHERE id=#{id})ORDER BY o.reg_date DESC, od.DETAIL_NO DESC
 				) A
 				WHERE rownum <= #{pageNum} * #{amount}
 			)WHERE rnum > (#{pageNum}-1) * #{amount}
@@ -25,6 +25,8 @@
 			KAPLA_ORDER_DETAIL od, KAPLA_ORDER o  
 		WHERE 
 			od.ORDER_NO  = o.ORDER_NO AND o.USER_NO = (SELECT user_no FROM KAPLA_USER WHERE id=#{id})
+		AND
+		    o.REG_DATE between current_date-30 and current_date
 		GROUP BY 
 			ORDER_STATUS
 	</select>
