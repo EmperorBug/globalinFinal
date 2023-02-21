@@ -2,6 +2,7 @@ package com.global.kapla.serviceImpl;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,11 @@ public class MyPageServiceImpl implements MyPageService{
 		// TODO Auto-generated method stub
 		return myPageMapper.getOrderInfo(id);
 	}
-	
-	
+
+	@Override
+	public List<OrderVO> getDetailList(Map<String, String> order_map) {
+		return myPageMapper.getDetailList(order_map);
+	}
+
+
 }

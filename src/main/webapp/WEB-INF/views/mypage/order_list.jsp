@@ -90,26 +90,26 @@ p {
 	<jsp:include page="../include/nav.jsp"></jsp:include>
 	<div class="container">
 		<jsp:include page="../include/mypage_left.jsp"></jsp:include>	
-	<article class="contents_article">
-			<div>
-				<h3 style="margin-bottom: 1em;">주문목록/배송조회</h3>
-				<div class="mypage_order_info">
-					<p style="display: inline-block;">조회기간</p>
-					<span>
-						<button class="period" data-date='today'>오늘</button>
-						<button class="period focus" data-date='day'>7일</button>
-						<button class="period" data-date='month'>1개월</button>
-						<button class="period" data-date='half-month'>6개월</button>
-						<button class="period" data-date='year'>1년</button>
-					</span>
-					<span>
-						<input type="text" id="startDate" class="datepicker_input form-control border-2" value="2023-01-21" width="20%"/> ~
-						<input type="text" id="endDate" class="datepicker_input form-control border-2" value="2023-02-01" width="20%"/>
-					</span>
-					<button type="button">조회하기</button>
+		<article class="contents_article">
+				<div>
+					<h3 style="margin-bottom: 1em;">주문목록/배송조회</h3>
+					<div class="mypage_order_info">
+						<p style="display: inline-block;">조회기간</p>
+						<span>
+							<button class="period" data-date='today'>오늘</button>
+							<button class="period focus" data-date='day'>7일</button>
+							<button class="period" data-date='month'>1개월</button>
+							<button class="period" data-date='half-month'>6개월</button>
+							<button class="period" data-date='year'>1년</button>
+						</span>
+						<span>
+							<input type="text" id="startDate" class="datepicker_input form-control border-2" value="2023-01-21" width="20%"/> ~
+							<input type="text" id="endDate" class="datepicker_input form-control border-2" value="2023-02-01" width="20%"/>
+						</span>
+						<button type="button">조회하기</button>
+					</div>
 				</div>
-			</div>
-		</article>		
+			</article>
 	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 	<script type="text/javascript">

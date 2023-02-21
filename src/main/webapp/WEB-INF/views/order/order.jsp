@@ -147,7 +147,7 @@
 				<caption>결제수단 선택 / 결제</caption>
 				<tr>
 					<td>
-						<input type="radio" name="pay_btn" value="card" checked>에스크로
+						<input type="radio" name="pay_btn" value="card" checked>카드
 					</td>
 				</tr>
 			</table>
@@ -159,6 +159,7 @@
 			</div>
 		</main>
 	</div>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 <script>
 	//다음 주소 api
 	openPost = () => {

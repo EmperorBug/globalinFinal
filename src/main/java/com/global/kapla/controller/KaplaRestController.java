@@ -77,7 +77,7 @@ public class KaplaRestController {
 	 * 김도형
 	 */
 	@PostMapping("/order")
-	public int test(@RequestBody OrderVO orderVO, Principal principal) {
+	public int insertOrder(@RequestBody OrderVO orderVO, Principal principal) {
 		
 		orderVO.setId(principal.getName());
 		

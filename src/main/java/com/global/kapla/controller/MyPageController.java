@@ -1,7 +1,10 @@
 package com.global.kapla.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.global.kapla.service.MyPageService;
 import com.global.kapla.vo.OrderVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +28,8 @@ public class MyPageController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private MyPageService myPageService;
 //	주문목록 페이지 따로 만들지않고 메인페이지랑 같이 사용
 //	@GetMapping("/orderList")
 //	public String orderList(Criteria criteria, Model model) {
@@ -46,7 +51,13 @@ public class MyPageController {
 
 	@GetMapping("/order/{order_no}")
 	public String orderDetail(@PathVariable String order_no, Model model, Principal principal) throws Exception {
+		log.info("오더번호"+order_no);
+		Map<String,String> order_map = new HashMap<>();
 
-		return "/mypage/detail_view";
+		order_map.put("order_no", order_no);
+		order_map.put("id",principal.getName());
+
+		model.addAttribute("order",myPageService.getDetailList(order_map));
+		return "mypage/detail_view";
 	}
 }

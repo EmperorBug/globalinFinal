@@ -59,7 +59,7 @@ public class MainController {
 	public String myPage(Model model, Principal principal, Criteria criteria) {
 		log.info("mypage들어옴");
 		
-		criteria.setAmount(7);//최근 7건의 주문내역 가져옴
+		criteria.setAmount(10);//최근 7건의 주문내역 가져옴
 		criteria.setId(principal.getName());
 		
 		model.addAttribute("order_list", myPageService.getRecentOrderList(criteria));

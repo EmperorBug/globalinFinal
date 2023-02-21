@@ -35,8 +35,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeHttpRequests()
 //			.antMatchers("/admin/**").hasAnyRole("ADMIN")
 			.antMatchers("/order/**", "/cart/**", "/product/cart", "/mypage/**").hasAnyRole("USER","ADMIN")
-//			.antMatchers("/cart/**").hasAnyRole("USER","ADMIN")
-//			.antMatchers("/product/cart").hasAnyRole("USER","ADMIN")
 			.antMatchers("/**").permitAll();	
 		
 		//스프링 기본 로그인폼으로 띄움

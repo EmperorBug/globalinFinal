@@ -51,10 +51,4 @@ public class OrderController {
 		
 		return "order/order";
 	}
-	
-	@PostMapping("/test")
-	public String test(OrderVO orderVO) {
-		log.info("넘어온값"+orderVO);
-		return "";
-	}
 }
