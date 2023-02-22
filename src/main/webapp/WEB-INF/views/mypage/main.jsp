@@ -23,6 +23,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/aJax.js"></script>
 <!-- dayjs -->
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 <style type="text/css">
@@ -180,7 +181,7 @@ p {
 						<input type="text" id="startDate" class="datepicker_input form-control border-2" width="20%"/> ~
 						<input type="text" id="endDate" class="datepicker_input form-control border-2" width="20%"/>
 					</span>
-					<button type="button">조회하기</button>
+					<button type="button" id="search">조회하기</button>
 				</div>
 			</div>
 			<div style="margin-top: 1em">
@@ -193,6 +194,11 @@ p {
 						<th width="15%" style="border-bottom: 1px solid #dbdbdb; background-color: #f7f7f7" colspan="2">주문상태</th>
 					</tr>
 					<tbody id="order_list">
+					<c:if test="${fn:length(order_list) == 0 }">
+						<tr>
+							<td>주문내역이 없습니다.</td>
+						</tr>
+					</c:if>
 					<c:forEach items="${order_list }" var="item">
 						<tr>
 							<td>
@@ -280,6 +286,18 @@ p {
 				break;
 		}
 	});
+	$('#search').on('click',function() {
+		const url = '/rest/order/list';
+		const data = {'startDate' : $('#startDate').val(),
+						'endDate': $('#endDate').val()
+						}
+		getAjax(url, data, test);
+		
+	})
+	
+	test = (result) => {
+		console.log(result);
+	}
 </script>
 </body>
 </html>

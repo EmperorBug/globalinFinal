@@ -62,7 +62,7 @@ public class MainController {
 		criteria.setAmount(10);//최근 7건의 주문내역 가져옴
 		criteria.setId(principal.getName());
 		
-		model.addAttribute("order_list", myPageService.getRecentOrderList(criteria));
+//		model.addAttribute("order_list", myPageService.getRecentOrderList(criteria));
 		model.addAttribute("order_info", myPageService.getOrderInfo(principal.getName()));
 		return "mypage/main";
 	}

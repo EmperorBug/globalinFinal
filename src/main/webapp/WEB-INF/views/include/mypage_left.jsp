@@ -13,8 +13,8 @@
 					<h4>쇼핑정보</h4>
 					<ul>
 						<li><a href="/mypage" style="color: black;">- 주문목록/배송조회</a></li>
-						<li><a>- 교환내역 조회</a></li>
-						<li><a>- 환불내역 조회</a></li>
+						<!-- <li><a>- 교환내역 조회</a></li>
+						<li><a>- 환불내역 조회</a></li> -->
 					</ul>
 				</li>
 				<li class="menu_section">
