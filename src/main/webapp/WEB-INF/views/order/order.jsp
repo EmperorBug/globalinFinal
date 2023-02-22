@@ -212,9 +212,7 @@
 		jObj.receiver_email = receiver_email;
 		jObj.comment = comment;
 		
-		console.log(jObj);
-		
-		var IMP = window.IMP; 
+		var IMP = window.IMP;
         IMP.init("imp11043101"); 
 		const order_name = $('td[name=item_name]')[0].innerText+'외'+($('td[name=item_name]').length-1)+'건';
 		
@@ -255,10 +253,6 @@
             }
         });
 	})
-	
-	function test(result) {
-		console.log(result);
-	}
 </script>	
 </body>
 </html>

@@ -43,7 +43,7 @@
     	<![CDATA[
 					SELECT o.ORDER_NO, (SELECT NAME  FROM KAPLA_ITEM WHERE ITEM_NO=od.ITEM_NO) item_name, od.QUANTITY, od.SUM_PRICE total_price, decode(od.ORDER_STATUS,1,'결제완료',2,'상품준비중',3,'배송중',4,'배송완료',5,'구매확정') order_status, TO_CHAR( o.REG_DATE,'YYYY-MM-DD') order_date
 					FROM KAPLA_ORDER o, KAPLA_ORDER_DETAIL od
-					WHERE o.ORDER_NO = od.ORDER_NO AND o.user_no = (SELECT USER_NO FROM KAPLA_USER WHERE id=#{id}) AND TO_CHAR( o.REG_DATE,'YYYY-MM-DD') BETWEEN TO_CHAR(#{startDate}) AND TO_CHAR(#{endDate})  ORDER BY o.reg_date DESC, od.DETAIL_NO DESC;
+					WHERE o.ORDER_NO = od.ORDER_NO AND o.user_no = (SELECT USER_NO FROM KAPLA_USER WHERE id=#{id}) AND TO_CHAR( o.REG_DATE,'YYYY-MM-DD') BETWEEN TO_CHAR(#{startDate}) AND TO_CHAR(#{endDate})  ORDER BY o.reg_date DESC, od.DETAIL_NO DESC
 		]]>
     </select>
 

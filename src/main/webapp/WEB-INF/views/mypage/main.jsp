@@ -195,9 +195,7 @@ p {
 					</tr>
 					<tbody id="order_list">
 					<c:if test="${fn:length(order_list) == 0 }">
-						<tr>
-							<td>주문내역이 없습니다.</td>
-						</tr>
+							<td colspan="4">주문내역이 없습니다.</td>
 					</c:if>
 					<c:forEach items="${order_list }" var="item">
 						<tr>
@@ -217,7 +215,9 @@ p {
 	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 <script>
-
+$(document).ready(function() {
+	$('#search').click();
+});
 <%--데이트피커 설정--%>
 	$('#startDate').datepicker({
 		dateFormat: "yy-mm-dd",
@@ -291,12 +291,38 @@ p {
 		const data = {'startDate' : $('#startDate').val(),
 						'endDate': $('#endDate').val()
 						}
-		getAjax(url, data, test);
+		getAjax(url, data, makeList);
 		
 	})
-	
-	test = (result) => {
-		console.log(result);
+
+	makeList = (result) => {
+		const parent = $('#order_list');
+		const itemArr = new Array();
+		parent.html(''); //부모 html 초기화
+		if (result.length == 0) {
+		 parent.append("<td colspan='4'>주문내역이 없습니다.</td>");
+		}
+		else {
+			console.log(result)
+			$.each(result, function (k,v) {
+				console.log(v)
+				itemArr.push('<tr>');
+				itemArr.push('	<td>');
+				itemArr.push(		v.order_date);
+				itemArr.push(		'<a href="/mypage/order/'+v.order_no+'" class="order_detail">주문상세</a>');
+				itemArr.push('	</td>');
+				itemArr.push('	<td>'+v.item_name+'</td>');
+				itemArr.push('	<td> '+comma(v.total_price)+'원/'+comma(v.quantity)+'개</td>');
+				itemArr.push('	<td>'+v.order_status+'</td>');
+				itemArr.push('	</td>');
+				itemArr.push('</tr>');
+			});
+			parent.html(itemArr.join(''));
+		}
+	}
+
+	comma = (num) => {
+		return num.toLocaleString('ko-KR');
 	}
 </script>
 </body>
