@@ -1,16 +1,21 @@
 package com.global.kapla.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.global.kapla.paging.Criteria;
 import com.global.kapla.service.CartService;
+import com.global.kapla.service.MyPageService;
 import com.global.kapla.service.OrderService;
 import com.global.kapla.service.UserService;
 import com.global.kapla.vo.CartVO;
@@ -33,6 +38,8 @@ public class KaplaRestController {
 	@Autowired
 	OrderService orderService;
 	
+	@Autowired
+	MyPageService mypageService;
 	/**
 	 * 2023.02.08
 	 * 아이디 중복 체크
@@ -77,10 +84,19 @@ public class KaplaRestController {
 	 * 김도형
 	 */
 	@PostMapping("/order")
-	public int test(@RequestBody OrderVO orderVO, Principal principal) {
+	public int insertOrder(@RequestBody OrderVO orderVO, Principal principal) {
 		
 		orderVO.setId(principal.getName());
 		
 		return orderService.insertOrder(orderVO);
+	}
+	
+	@GetMapping("/order/list")
+	public List<OrderVO> order_list(Principal principal,Criteria criteria, @RequestParam String startDate, @RequestParam String endDate) throws Exception {
+		
+		criteria.setStartDate(startDate);
+		criteria.setEndDate(endDate);
+		criteria.setId(principal.getName());
+		return mypageService.getRecentOrderList(criteria);
 	}
 }

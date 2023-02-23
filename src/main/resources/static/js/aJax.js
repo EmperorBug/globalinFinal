@@ -1,6 +1,20 @@
 /**
  * 
  */
+getAjax = (url, data, next) => {
+	let r_data = "";
+	$.ajax({
+		url:url,
+		data:data,
+		method:'get',
+		async: false,
+		contentType:'application/json; charset=utf-8',
+		dataType:'json',
+		success : (result) => {
+			next(result);
+		}
+	}) 
+}
 
 postAjax = (url, data) => {
 	let r_data = "";
