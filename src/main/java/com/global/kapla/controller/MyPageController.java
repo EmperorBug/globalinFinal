@@ -4,12 +4,15 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import com.global.kapla.service.MyPageService;
 import com.global.kapla.vo.OrderVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -43,7 +46,29 @@ public class MyPageController {
 		
 		return "mypage/modify_information";
 	}
-
+	
+	@PostMapping("/ispwdcorrect")
+	public String toModifyPage(HttpSession session, Model model, UserVO userVO, Principal principal) {
+		
+		String id = principal.getName();
+		String pwd = userVO.getPassword();
+		
+		log.info(id, pwd);
+		
+		return "redirect:/mypage/modify_page";
+	}
+	
+	@GetMapping("/modify_page")
+	public String modify_page(Model model, UserVO userVO, Principal principal) throws Exception {
+		
+		String id = principal.getName();
+		userVO.setId(id);
+		
+		model.addAttribute("user_info", userService.printUserName(userVO));
+		log.info(userVO.getId());
+		
+		return "mypage/modify_page";
+	}
 	@GetMapping("/order/{order_no}")
 	public String orderDetail(@PathVariable String order_no, Model model, Principal principal) throws Exception {
 		log.info("오더번호"+order_no);

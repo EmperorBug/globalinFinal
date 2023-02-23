@@ -20,6 +20,12 @@ import lombok.extern.slf4j.Slf4j;
  * 
  * 유저 ID 가져오는 기능 만듬 
  * @author 김형우
+ * 
+ * 회원정보 변경 비밀번호 확인 기능 구현중
+ * 
+ * 2023.02.17
+ * 
+ * @author 김형우
  */
 @Slf4j
 @Service
@@ -73,6 +79,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserVO printUserName(UserVO vo) throws Exception {
 		return mapper.printUserName(vo);
+	}
+
+	@Override
+	public UserVO isPwdCorrect(UserVO vo) {
+		return null;
 	}
 	
 }
