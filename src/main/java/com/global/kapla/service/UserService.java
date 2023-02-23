@@ -12,5 +12,6 @@ public interface UserService {
 	public UserVO userInfo(String userId) throws Exception;
 	public int findUser(UserVO vo);
 	public UserVO printUserName(UserVO vo) throws Exception;
+	public UserVO isPwdCorrect(UserVO vo);
 	
 }

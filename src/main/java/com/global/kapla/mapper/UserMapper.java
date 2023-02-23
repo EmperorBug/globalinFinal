@@ -19,4 +19,6 @@ public interface UserMapper {
 	public UserVO getUser(String userId);
 	
 	public UserVO printUserName(UserVO vo);
+	
+	public UserVO isPwdCorrect(UserVO vo);
 }

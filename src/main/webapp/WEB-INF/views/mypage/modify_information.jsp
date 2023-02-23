@@ -182,7 +182,7 @@ p {
 					<p>
 						<strong>회원님의 정보를 안전하게 보호하기 위해서 비밀번호를 다시 한번 확인해주세요.</strong>
 					</p>
-					<form id="formFind" novalidate="novalidate">
+					<form action="/mypage/ispwdcorrect" method="post" id="formFind" novalidate="novalidate">
                 <div class="id_pw_cont">
                     <dl>
                         <dt>아이디</dt>
