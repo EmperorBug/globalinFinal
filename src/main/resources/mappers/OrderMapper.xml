@@ -51,7 +51,8 @@
 			#{comment}
 		)
 	</insert>
-
+	
+	<!-- 주문상세 저장 -->
 	<insert id="insertOrderDetail" parameterType="OrderVO">
 		INSERT INTO KAPLA_ORDER_DETAIL (
         	DETAIL_NO,
@@ -70,4 +71,16 @@
 		</foreach>
 		) A
 	</insert>
+	
+	<!-- 주문정보 -->
+	<select id="getOrder" resultType="OrderVO">
+		SELECT 
+			ORDER_NO, PAYMENT_METHOD, TOTAL_PRICE, TO_CHAR(reg_date,'YYYY-MM-DD') order_date, RECEIVER, RECEIVER_ADDR, RECEIVER_PHONE, RECEIVER_EMAIL, ORDER_COMMENT
+		FROM 
+			KAPLA_ORDER 
+		WHERE
+			 	ORDER_NO =#{order_no} 
+			AND 
+				USER_NO =(SELECT USER_NO FROM KAPLA_USER WHERE id=#{id})
+	</select>
 </mapper>

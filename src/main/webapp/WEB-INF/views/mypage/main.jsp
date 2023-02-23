@@ -194,20 +194,6 @@ p {
 						<th width="15%" style="border-bottom: 1px solid #dbdbdb; background-color: #f7f7f7" colspan="2">주문상태</th>
 					</tr>
 					<tbody id="order_list">
-					<c:if test="${fn:length(order_list) == 0 }">
-							<td colspan="4">주문내역이 없습니다.</td>
-					</c:if>
-					<c:forEach items="${order_list }" var="item">
-						<tr>
-							<td>
-								${item.order_date }
-								<a href="/mypage/order/${item.order_no}" class="order_detail">주문상세</a>
-							</td>
-							<td>${item.item_name }</td>
-							<td><fmt:formatNumber pattern="###,###원" value="${item.total_price }"/> / ${item.quantity }개</td>
-							<td>${item.order_status }</td>
-						</tr>
-					</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -216,7 +202,7 @@ p {
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 <script>
 $(document).ready(function() {
-	$('#search').click();
+	 $('#search').click();
 });
 <%--데이트피커 설정--%>
 	$('#startDate').datepicker({
@@ -298,12 +284,11 @@ $(document).ready(function() {
 	makeList = (result) => {
 		const parent = $('#order_list');
 		const itemArr = new Array();
-		parent.html(''); //부모 html 초기화
+		
 		if (result.length == 0) {
-		 parent.append("<td colspan='4'>주문내역이 없습니다.</td>");
+		 parent.html("<td colspan='4'>주문내역이 없습니다.</td>");
 		}
 		else {
-			console.log(result)
 			$.each(result, function (k,v) {
 				console.log(v)
 				itemArr.push('<tr>');

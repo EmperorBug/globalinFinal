@@ -30,12 +30,7 @@ public class MyPageController {
 
 	@Autowired
 	private MyPageService myPageService;
-//	주문목록 페이지 따로 만들지않고 메인페이지랑 같이 사용
-//	@GetMapping("/orderList")
-//	public String orderList(Criteria criteria, Model model) {
-//
-//		return "mypage/order_list";
-//	}
+
 	
 	@GetMapping("/modify_information")
 	public String modify_information(Model model, UserVO userVO, Principal principal) throws Exception {

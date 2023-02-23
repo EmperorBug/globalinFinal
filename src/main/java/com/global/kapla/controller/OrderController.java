@@ -1,5 +1,6 @@
 package com.global.kapla.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -50,5 +52,16 @@ public class OrderController {
 		
 		
 		return "order/order";
+	}
+	
+	@GetMapping("/success/{order_no}")
+	public String orderSuccess(@PathVariable String order_no, Model model, Principal principal) throws Exception {
+		log.info("주문번호 :"+order_no);
+		OrderVO orderVO = new OrderVO();
+		orderVO.setOrder_no(order_no);
+		orderVO.setId(principal.getName());
+		
+		model.addAttribute("order", orderService.getOrder(orderVO));
+		return "order/success";
 	}
 }

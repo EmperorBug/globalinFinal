@@ -184,7 +184,7 @@
 	}
 	
 	$('#pay_btn').on('click', () => {
-		//아래는 결제정보 서버로보내는 예시임
+
 		const arr = new Array();
 		const jObj = new Object();
 		
@@ -194,6 +194,25 @@
 		const receiver_email = $('#cust_email').val();
 		const comment = $('#comment').val();
 		
+		if (receiver == null || receiver == '') {
+			alert('받는사람을 입력해주세요.');
+			$('#cust_name').focus();
+			return;
+		}
+		if (receiver_addr == null || receiver_addr == '') {
+			alert('받으실 주소를 입력해주세요.');
+			return;
+		}
+		if (receiver_phone == null || receiver_phone == '') {
+			alert('전화번호를 입력해주세요.');
+			$('#cust_phone').focus();
+			return;
+		}
+		if (receiver_email == null || receiver_email == '') {
+			alert('이메일을 입력해주세요.');
+			$('#cust_email').focus();
+			return;
+		}
 		<c:forEach items="${cart_list}" var="item">
 			arr.push({
 				item_no : "${item.item_no}",	
@@ -246,10 +265,12 @@
 				
             	/* 주문정보반영 */
 				postAjax('/rest/order',jObj);
-
+            	/* 주문완료후 주문완료페이지로 이동 */
+				location.href='/order/success/'+$('#order_no').val();
             //ajax 통신실패
             } else {
                 console.log(rsp);
+                alert('주문실패 했습니다. 잠시후 다시 시도해주세요.');
             }
         });
 	})
