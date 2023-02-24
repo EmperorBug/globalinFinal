@@ -47,19 +47,22 @@ public class MyPageController {
 	}
 	
 	@PostMapping("/ispwdcorrect")
-	public String toModifyPage(HttpServletRequest httpServletRequest, Model model, UserVO userVO, Principal principal) {
+	public String toModifyPage(HttpServletRequest httpServletRequest, Model model, Principal principal) throws Exception {
 		
 		String id = principal.getName(); // 로그인 id
-		userVO.setId(id);
-		String pwd = userVO.getPassword(); // 객체에 저장된 비밀번호
+		
+		UserVO userVO = userService.userInfo(id);
 		
 		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
-		boolean test = b.matches(httpServletRequest.getParameter("findPassword"), pwd);
+		boolean test = b.matches(httpServletRequest.getParameter("findPassword"), userVO.getPassword());
 		
-		log.info(test + "true? or false");
-		log.info(httpServletRequest.getParameter("findPassword") + "잘 넘어오고있는건가?" + pwd);
+		/*
+		 * log.info(test + "true? or false");
+		 * log.info(httpServletRequest.getParameter("findPassword") + "잘 넘어오고있는건가?" +
+		 * userVO.getPassword());
+		 */
 		
-		if(test == false) {
+		if(test) {
 			return "redirect:/mypage/modify_page";
 		}
 		else

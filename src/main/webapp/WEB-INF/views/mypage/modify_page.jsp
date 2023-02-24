@@ -320,9 +320,12 @@ input[type="text"], input[type="password"] {
 
 							<div class="btn_center_box">
 								<button type="button" class="btn_member_cancel" onclick="history.back()">취소</button>
-								<button type="submit" class="btn_comfirm js_btn_join"
+								<button type="submit" id="update_commit" class="btn_comfirm js_btn_join"
 									value="정보수정">정보수정</button>
 							</div>
+							<script>
+										/* 실제로 구현해야할 부분(alert로 수정 완료했습니다.) */					
+							</script>
 							<!-- //btn_center_box -->
 						</form>
 					</div>
