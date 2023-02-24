@@ -208,7 +208,7 @@ input[type="text"], input[type="password"] {
 				<div class="join_base_wrap">
 					<div class="member_cont">
 						<form id="formJoin" name="formJoin"
-							action="https://www.dm-cosmetics.com/mypage/my_page_ps.php"
+							action="/mypage/updatecomplete"
 							method="post" novalidate="novalidate">
 							<input type="hidden" name="memNo" value="22516"> <input
 								type="hidden" name="memberFl" value="personal"> <input
@@ -301,11 +301,11 @@ input[type="text"], input[type="password"] {
 												<td class="member_address">
 													<div class="address_input">
 														<div class="member_warning">
-															<input type="text" name="address"
-																value="${user_info.address}">
+															<input type="text" name="address1"
+																value="${user_info.address1}">
 														</div>
 														<div class="member_warning js_address_sub">
-															<input type="text" name="addressSub" value=".">
+															<input type="text" name="address2" value="${user_info.address2}">
 														</div>
 													</div>
 												</td>
@@ -319,7 +319,7 @@ input[type="text"], input[type="password"] {
 
 							<div class="btn_center_box">
 								<button type="button" class="btn_member_cancel" onclick="history.back()">취소</button>
-								<button type="button" class="btn_comfirm js_btn_join"
+								<button type="submit" class="btn_comfirm js_btn_join"
 									value="정보수정">정보수정</button>
 							</div>
 							<!-- //btn_center_box -->

@@ -82,8 +82,11 @@ public class MyPageController {
 	}
 	
 	@PostMapping("/updatecomplete")
-	public String modify_infoSave(UserVO userVO) {
+	public String modify_infoSave(UserVO userVO, Principal principal) {
 		log.info("회원정보 수정이 되었습니다.");
+		
+		String id = principal.getName();
+		userVO.setId(id);
 		
 		userService.updateUserInfo(userVO);
 		

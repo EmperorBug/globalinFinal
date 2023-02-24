@@ -44,4 +44,14 @@
     <update id="updateUser">
     	update KAPLA_USER set name=#{name}, phone=#{phone}, email=#{email}, zip_code=#{zip_code}, address1=#{address1}, address2=#{address2} where id=#{id}
     </update>
+    
+    <update id="updateUserInfo">
+    	update
+    		 KAPLA_USER 
+    	set 
+    		name=#{name}, phone=#{phone}, email=#{email}, address1=#{address1}, address2=#{address2}
+    	where
+    		 id=#{id}
+    </update>
+    
 </mapper>
