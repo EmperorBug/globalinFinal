@@ -78,6 +78,7 @@ public class MainController {
 		return "event";
 	}
 
+	
 	@GetMapping("/cart")
 	public String cartPage(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();

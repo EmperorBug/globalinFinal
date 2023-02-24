@@ -4,19 +4,18 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.global.kapla.service.MyPageService;
-import com.global.kapla.vo.OrderVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.global.kapla.paging.Criteria;
 
 import com.global.kapla.service.UserService;
 import com.global.kapla.vo.UserVO;
@@ -48,14 +47,26 @@ public class MyPageController {
 	}
 	
 	@PostMapping("/ispwdcorrect")
-	public String toModifyPage(HttpSession session, Model model, UserVO userVO, Principal principal) {
+	public String toModifyPage(HttpServletRequest httpServletRequest, Model model, UserVO userVO, Principal principal) {
 		
-		String id = principal.getName();
-		String pwd = userVO.getPassword();
+		String id = principal.getName(); // 로그인 id
+		userVO.setId(id);
+		String pwd = userVO.getPassword(); // 객체에 저장된 비밀번호
 		
-		log.info(id, pwd);
+		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
+		boolean test = b.matches(httpServletRequest.getParameter("findPassword"), pwd);
 		
-		return "redirect:/mypage/modify_page";
+		log.info(test + "true? or false");
+		log.info(httpServletRequest.getParameter("findPassword") + "잘 넘어오고있는건가?" + pwd);
+		
+		if(test == false) {
+			return "redirect:/mypage/modify_page";
+		}
+		else
+		{
+			return "redirect:/mypage/modify_information";
+		}
+		
 	}
 	
 	@GetMapping("/modify_page")

@@ -87,6 +87,7 @@ p {
 	{
 	border-left: none;
 }
+.base_info_box { position : relative; }
 
 .base_info_sec table th {
 	text-align: left;
