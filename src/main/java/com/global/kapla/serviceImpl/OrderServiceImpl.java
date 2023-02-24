@@ -76,6 +76,8 @@ public class OrderServiceImpl implements OrderService{
 		return resultCode;
 	}
 
-	
-	
+	@Override
+	public OrderVO getOrder(OrderVO orderVO) {
+		return orderMapper.getOrder(orderVO);
+	}
 }

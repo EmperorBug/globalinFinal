@@ -22,4 +22,6 @@ public interface OrderMapper {
 	
 	public int insertOrder(OrderVO orderVO);
 	public int insertOrderDetail(OrderVO orderVO);
+	
+	public OrderVO getOrder(OrderVO orderVO);
 }

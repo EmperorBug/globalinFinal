@@ -11,4 +11,5 @@ public interface OrderService {
 	public int getTotalPrice(List<CartVO> list);
 	public String getOrderNo();
 	public int insertOrder(OrderVO orderVO);
+	public OrderVO getOrder(OrderVO orderVO);
 }
