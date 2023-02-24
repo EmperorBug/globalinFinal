@@ -85,5 +85,10 @@ public class UserServiceImpl implements UserService{
 	public UserVO isPwdCorrect(UserVO vo) {
 		return null;
 	}
+
+	@Override
+	public void updateUserInfo(UserVO vo) {
+		mapper.updateUserInfo(vo);
+	}
 	
 }

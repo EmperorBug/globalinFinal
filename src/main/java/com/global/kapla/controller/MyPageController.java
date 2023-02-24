@@ -80,4 +80,14 @@ public class MyPageController {
 		model.addAttribute("order",myPageService.getDetailList(order_map));
 		return "mypage/detail_view";
 	}
+	
+	@PostMapping("/updatecomplete")
+	public String modify_infoSave(UserVO userVO) {
+		log.info("회원정보 수정이 되었습니다.");
+		
+		userService.updateUserInfo(userVO);
+		
+		return "redirect:/mypage";
+	}
+	
 }
