@@ -67,10 +67,14 @@
 					</tr>
 				</c:forEach>
 			</table>
-					
+			<input type="hidden" id="user_zip" value="${user.zip_code}">
+			<input type="hidden" id="user_addr" value="${user.address1}">
+			<input type="hidden" id="user_addr2" value="${user.address2}">
 			<table class="orderTable">
+
 				<caption>주문자 정보</caption>
 				<tr>
+
 					<td>주문하시는 분</td>
 					<td>
 						<input type="text" name="name" value="${user.name }" id="user_name">
@@ -177,10 +181,16 @@
 		const name = $('#user_name').val();
 		const phone = $('#user_phone').val();
 		const email = $('#user_email').val();
-		
+		const zip = $('#user_zip').val();
+		const addr = $('#user_addr').val();
+		const addr2 = $('#user_addr2').val();
+
 		$('#cust_name').val(name);
 		$('#cust_phone').val(phone);
 		$('#cust_email').val(email);
+		$('#zipcode').val(zip);
+		$('#addr').val(addr);
+		$('#addr2').val(addr2);
 	}
 	
 	$('#pay_btn').on('click', () => {
@@ -189,7 +199,7 @@
 		const jObj = new Object();
 		
 		const receiver = $('#cust_name').val();
-		const receiver_addr = $('#zipcode').val() + $('#addr').val() + $('#addr2').val();
+		const receiver_addr = '('+$('#zipcode').val()+') ' + $('#addr').val() +' '+ $('#addr2').val();
 		const receiver_phone = $('#cust_phone').val();
 		const receiver_email = $('#cust_email').val();
 		const comment = $('#comment').val();
@@ -232,9 +242,15 @@
 		jObj.comment = comment;
 		
 		var IMP = window.IMP;
-        IMP.init("imp11043101"); 
-		const order_name = $('td[name=item_name]')[0].innerText+'외'+($('td[name=item_name]').length-1)+'건';
-		
+        IMP.init("imp11043101");
+		let order_name;
+		if ($('td[name=item_name]').length == 1) {
+			order_name = $('td[name=item_name]')[0].innerText;
+		}
+		else {
+			$('td[name=item_name]')[0].innerText+'외'+($('td[name=item_name]').length-1)+'건';
+		}
+
         IMP.request_pay({
             pg : 'kcp',
             // kcp
@@ -256,7 +272,10 @@
             		const data = {
             			name : $('#user_name').val(),
             			phone : $('#user_phone').val(),
-            			email : $('#user_email').val()
+            			email : $('#user_email').val(),
+						zip_code : $('#zipcode').val(),
+						address1 : $('#addr').val(),
+						address2 : $('#addr2').val()
             		};
             		
             		//유저정보 반영
@@ -270,7 +289,7 @@
             //ajax 통신실패
             } else {
                 console.log(rsp);
-                alert('주문실패 했습니다. 잠시후 다시 시도해주세요.');
+                alert('주문에실패 했습니다. 잠시후 다시 시도해주세요.');
             }
         });
 	})

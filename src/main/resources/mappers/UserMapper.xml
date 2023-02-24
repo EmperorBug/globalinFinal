@@ -11,7 +11,9 @@
 	name,
 	phone,
 	email,
-	address,
+	zip_code,
+	address1,
+	address2,
 	authority,
 	reg_date
 
@@ -40,6 +42,6 @@
     </insert>
     
     <update id="updateUser">
-    	update KAPLA_USER set name=#{name}, phone=#{phone}, email=#{email} where id=#{id}
+    	update KAPLA_USER set name=#{name}, phone=#{phone}, email=#{email}, zip_code=#{zip_code}, address1=#{address1}, address2=#{address2} where id=#{id}
     </update>
 </mapper>
