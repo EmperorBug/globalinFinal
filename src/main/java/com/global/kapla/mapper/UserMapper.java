@@ -21,4 +21,6 @@ public interface UserMapper {
 	public UserVO printUserName(UserVO vo);
 	
 	public UserVO isPwdCorrect(UserVO vo);
+
+	public UserVO updateUserInfo(UserVO vo);
 }

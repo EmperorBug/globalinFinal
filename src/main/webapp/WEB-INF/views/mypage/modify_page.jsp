@@ -250,7 +250,7 @@ input[type="text"], input[type="password"] {
 															<dt>새 비밀번호</dt>
 															<dd>
 																<div class="member_warning">
-																	<input type="password" id="newPassword" name="memPw">
+																	<input type="password" id="password" name="memPw">
 																</div>
 															</dd>
 														</dl>
@@ -270,7 +270,7 @@ input[type="text"], input[type="password"] {
 												<th><span class="important">이름</span></th>
 												<td>
 													<div class="member_warning">
-														<input type="text" name="memNm"
+														<input type="text" name="name"
 															data-pattern="gdMemberNmGlobal" value="${user_info.name}"
 															maxlength="30" >
 													</div>
@@ -290,7 +290,7 @@ input[type="text"], input[type="password"] {
 												<th><span class="important">휴대폰번호</span></th>
 												<td class="member_address">
 													<div class="address_postcode">
-														<input type="text" id="cellPhone" name="cellPhone"
+														<input type="text" id="phone" name="phone"
 															maxlength="12" placeholder="- 없이 입력하세요."
 															data-pattern="gdNum" value="${user_info.phone}">
 													</div>
@@ -301,7 +301,7 @@ input[type="text"], input[type="password"] {
 												<td class="member_address">
 													<div class="address_input">
 														<div class="member_warning">
-															<input type="text" name="address" readonly="readonly"
+															<input type="text" name="address"
 																value="${user_info.address}">
 														</div>
 														<div class="member_warning js_address_sub">
