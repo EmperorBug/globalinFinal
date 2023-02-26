@@ -77,19 +77,19 @@
 
 					<td>주문하시는 분</td>
 					<td>
-						<input type="text" name="name" value="${user.name }" id="user_name">
+						<input  type="text" name="name" value="${user.name }" id="user_name" readonly>
 					</td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
 					<td>
-						<input type="text" name="phone" id="user_phone" value="${user.phone }">
+						<input type="text" name="phone" id="user_phone" value="${user.phone }" readonly>
 					</td>
 				</tr>
 				<tr>
 					<td>이메일</td>
 					<td>
-						<input type="email" name="email" value="${user.email }" id="user_email">
+						<input type="email" name="email" value="${user.email }" id="user_email" readonly>
 					</td>
 				</tr>
 			</table>
