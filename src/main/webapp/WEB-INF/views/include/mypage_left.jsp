@@ -21,7 +21,7 @@
 					<h4>회원정보</h4>
 					<ul>
 						<li><a href="/mypage/modify_information" style="color: black;">- 회원정보 변경</a></li>
-						<li>- 회원탈퇴</li>
+						<li><a href="/mypage/member_quit" style="color: black;">- 회원탈퇴</a></li>
 					</ul>
 				</li>				
 			</ul>
