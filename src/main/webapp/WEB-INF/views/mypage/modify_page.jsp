@@ -19,16 +19,7 @@
 	crossorigin="anonymous"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
-	integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js"
-	integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- dayjs -->
-<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+<script type="text/javascript" src="/js/aJax.js"></script>
 <style type="text/css">
 
 html, body {
@@ -210,7 +201,7 @@ input[type="text"], input[type="password"] {
 					<div class="member_cont">
 						<form id="formJoin" name="formJoin"
 							action="/mypage/updatecomplete"
-							method="post" novalidate="novalidate">
+							method="post" onsubmit="return test()">
 							<input type="hidden" name="memNo" value="22516"> <input
 								type="hidden" name="memberFl" value="personal"> <input
 								type="hidden" name="dupeinfo"
@@ -242,8 +233,7 @@ input[type="text"], input[type="password"] {
 															<dt>현재 비밀번호</dt>
 															<dd>
 																<div class="member_warning">
-																	<input type="password" id="currentPassword"
-																		name="oldMemPw">
+																	<input type="password" id="currentPassword">
 																</div>
 															</dd>
 														</dl>
@@ -251,7 +241,7 @@ input[type="text"], input[type="password"] {
 															<dt>새 비밀번호</dt>
 															<dd>
 																<div class="member_warning">
-																	<input type="password" id="password" name="memPw">
+																	<input type="password" id="password" name="password">
 																</div>
 															</dd>
 														</dl>
@@ -259,8 +249,7 @@ input[type="text"], input[type="password"] {
 															<dt>새 비밀번호 확인</dt>
 															<dd>
 																<div class="member_warning">
-																	<input type="password" id="newPasswordCheck"
-																		name="memPwRe">
+																	<input type="password" id="newPasswordCheck">
 																</div>
 															</dd>
 														</dl>
@@ -320,7 +309,7 @@ input[type="text"], input[type="password"] {
 
 							<div class="btn_center_box">
 								<button type="button" class="btn_member_cancel" onclick="history.back()">취소</button>
-								<button type="submit" id="update_commit" class="btn_comfirm js_btn_join"
+								<button id="update_commit" class="btn_comfirm js_btn_join"
 									value="정보수정">정보수정</button>
 							</div>
 							<script>
@@ -340,6 +329,33 @@ input[type="text"], input[type="password"] {
 
 	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
-
+<script type="text/javascript">
+	function test() {
+		const newPwd = $('#password').val();
+		const newPwdChk = $('#newPasswordCheck').val();
+		
+		if (!(newPwd == newPwdChk)){
+			alert('동일한비밀번호를 입력해주세요.');
+			$('#password').focus();
+			return false;	
+		}
+		
+		if (pwdChk()) {
+			return true;	
+		}
+		else {
+			alert('비밀번호가 다릅니다.');
+		}
+		return false;
+	}
+	
+	function pwdChk() {
+		const currPwd = $('#currentPassword').val();
+		const data = {'password' : currPwd};
+		const test = postAjax('/rest/pwdChk',data);
+		return (test == 1) ? true : false; 
+		
+	}
+</script>
 </body>
 </html>

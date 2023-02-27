@@ -99,4 +99,10 @@ public class KaplaRestController {
 		criteria.setId(principal.getName());
 		return mypageService.getRecentOrderList(criteria);
 	}
+	
+	@PostMapping("/pwdChk")
+	public int pwdChk(@RequestBody UserVO userVO, Principal principal) {
+		userVO.setId(principal.getName());
+		return userService.pwdChk(userVO);
+	}
 }

@@ -14,5 +14,6 @@ public interface UserService {
 	public UserVO printUserName(UserVO vo) throws Exception;
 	public UserVO isPwdCorrect(UserVO vo);
 	public void updateUserInfo(UserVO vo);
+	public int pwdChk(UserVO vo);
 	
 }

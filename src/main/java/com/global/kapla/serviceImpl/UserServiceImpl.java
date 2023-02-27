@@ -1,5 +1,7 @@
 package com.global.kapla.serviceImpl;
 
+import java.util.Base64;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -88,7 +90,16 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void updateUserInfo(UserVO vo) {
+		vo.setPassword(new BCryptPasswordEncoder().encode(vo.getPassword()));
 		mapper.updateUserInfo(vo);
+	}
+
+	@Override
+	public int pwdChk(UserVO vo){
+		
+		UserVO vo2 = mapper.getUser(vo.getId());
+		
+		return (new BCryptPasswordEncoder().matches(vo.getPassword(), vo2.getPassword())) ? 1 : 0;
 	}
 	
 }

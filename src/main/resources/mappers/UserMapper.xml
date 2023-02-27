@@ -50,9 +50,13 @@
     	update
     		 KAPLA_USER 
     	set 
-    		name=#{name}, phone=#{phone}, email=#{email}, address1=#{address1}, address2=#{address2}
+    		name=#{name}, password=#{password}, phone=#{phone}, email=#{email}, address1=#{address1}, address2=#{address2}
     	where
     		 id=#{id}
     </update>
     
+    <!-- 비밀번호 확인 -->
+    <select id="pwdChk" resultType="int">
+    	SELECT count(*) FROM KAPLA_USER WHERE PASSWORD =#{password} AND id=#{id}
+    </select>
 </mapper>
