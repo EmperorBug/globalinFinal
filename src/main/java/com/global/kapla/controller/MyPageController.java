@@ -114,17 +114,4 @@ public class MyPageController {
 		return "mypage/member_quit";
 	}
 	
-	@PostMapping("/ispwdcorrect_byquit")
-	public String toMemberQuit(@RequestBody UserVO userVO, Principal principal, Model model) throws Exception {
-		
-		String id = principal.getName();
-		userVO.setId(id);
-		
-		System.out.println("테스트용" + userVO.getId() + "비밀번호 : " + userVO.getPassword());
-		
-		userService.unregister(userVO);
-		
-		return "/";
-	}
-	
 }

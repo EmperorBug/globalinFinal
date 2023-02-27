@@ -203,7 +203,7 @@ input[type="text"], input[type="password"] {
 			<div class="mypage_cont">
 				<!-- Form start -->
 				<form id="formHackOut" name="formHackOut"
-					action="/mypage/ispwdcorrect_byquit" method="post"
+					action="/rest/ispwdcorrect_byquit" method="post"
 					novalidate="novalidate">
 					<div class="hack_out">
 						<div class="mypage_zone_tit">
@@ -259,6 +259,7 @@ input[type="text"], input[type="password"] {
 						$(document).ready(function (){
 							
 							$("#formHackOut").submit(function(event) {
+								return false;
 								//prevendDefault()는 href로 연결해 주지 않고 
 								//단순히 click에 대한 처리를 하도록 해준다.
 								event.preventDefault();
@@ -271,15 +272,12 @@ input[type="text"], input[type="password"] {
 
 								$.ajax({
 								    type : "POST",
-								    url : "/mypage/ispwdcorrect_byquit",
+								    url : "rest/ispwdcorrect_byquit"
 								    cashe:false,
-/* 								contentType:'application/json; charset=UTF-8',/* MIME 타입*/
-								    contentType:'application/json',/* MIME 타입*/
+								    contentType:'application/json; charset=UTF-8'
 								    data: JSON.stringify(form), 
 								    success: function (result) {       
 								           console.log(result);
-								           //location.href = "/list";
-								           //$(location).attr('href', '/rest_board.html');
 								           $(location).attr('href', '/');
 								           alert("탈퇴가 완료되었습니다. 지금까지 kapla를 이용해주셔서 감사합니다."); 
 								    },

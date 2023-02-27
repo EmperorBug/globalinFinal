@@ -3,7 +3,11 @@ package com.global.kapla.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -105,4 +109,27 @@ public class KaplaRestController {
 		userVO.setId(principal.getName());
 		return userService.pwdChk(userVO);
 	}
+	
+	@PostMapping("/ispwdcorrect_byquit")
+	public String toMemberQuit(@RequestBody UserVO userVO, Principal principal, Model model) throws Exception {
+		
+		String id = principal.getName();
+		userVO.setId(id);
+		
+		UserVO dbInfo = userService.userInfo(id);
+		String dbPwd = dbInfo.getPassword();
+		
+		System.out.println("테스트용" + userVO.getId() + "비밀번호 : " + userVO.getPassword());
+		System.out.println("테스트용 비밀번호 2 : " + dbPwd);
+		
+		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
+		boolean ispwdcorrect = b.matches(userVO.getPassword(), dbPwd);
+		System.out.println("결과는? :" + ispwdcorrect);
+		
+		/* userService.unregister(userVO); */ 
+		// 회원 REG_YN을 TRUE->FALSE로 바꿔주는 역할
+		
+		return "/";
+	}
+	
 }

@@ -63,7 +63,7 @@
     	update
     		 KAPLA_USER 
     	set 
-    		reg_yn=false;
+    		reg_yn='false'
     	where
     		 id=#{id}
     </update>
