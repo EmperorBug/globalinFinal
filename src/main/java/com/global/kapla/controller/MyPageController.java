@@ -107,4 +107,36 @@ public class MyPageController {
 		return "redirect:/mypage";
 	}
 	
+	@GetMapping("/member_quit")
+	public String member_quit() {
+		
+		return "mypage/member_quit";
+	}
+	
+	@PostMapping("/ispwdcorrect_byquit")
+	public String toMemberQuit(HttpServletRequest httpServletRequest, Model model, Principal principal) throws Exception {
+		
+		String id = principal.getName(); // 로그인 id
+		
+		UserVO userVO = userService.userInfo(id);
+		
+		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
+		boolean test = b.matches(httpServletRequest.getParameter("findPassword"), userVO.getPassword());
+		
+		/*
+		 * log.info(test + "true? or false");
+		 * log.info(httpServletRequest.getParameter("findPassword") + "잘 넘어오고있는건가?" +
+		 * userVO.getPassword());
+		 */
+		
+		if(test) {
+			return "redirect:/mypage/modify_page";
+		}
+		else
+		{
+			return "redirect:/mypage/modify_information";
+		}
+		
+	}
+	
 }

@@ -212,7 +212,7 @@ input[type="text"], input[type="password"] {
 							<!-- 회원가입/정보 기본정보 -->
 							<div class="base_info_box">
 								<h3>기본정보</h3>
-								<span class="important">표시는 반드시 입력하셔야 하는 항목입니다.</span>
+								<!-- <span class="important">표시는 반드시 입력하셔야 하는 항목입니다.</span> -->
 								<div class="base_info_sec">
 									<table border="0" cellpadding="0" cellspacing="0">
 										<colgroup>
@@ -313,7 +313,9 @@ input[type="text"], input[type="password"] {
 									value="정보수정">정보수정</button>
 							</div>
 							<script>
-										/* 실제로 구현해야할 부분(alert로 수정 완료했습니다.) */					
+								 document.getElementById('update_commit').addEventListener('click', function() {
+									alert("수정이 완료되었습니다."); 
+								 });
 							</script>
 							<!-- //btn_center_box -->
 						</form>
