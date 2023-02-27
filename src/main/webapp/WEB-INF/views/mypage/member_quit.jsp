@@ -17,8 +17,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
 	integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
@@ -202,8 +201,9 @@ input[type="text"], input[type="password"] {
 		<jsp:include page="../include/mypage_left.jsp"></jsp:include>
 		<div class="content">
 			<div class="mypage_cont">
+				<!-- Form start -->
 				<form id="formHackOut" name="formHackOut"
-					action="../mypage/my_page_ps.php" method="post"
+					action="/mypage/ispwdcorrect_byquit" method="post"
 					novalidate="novalidate">
 					<div class="hack_out">
 						<div class="mypage_zone_tit">
@@ -238,8 +238,8 @@ input[type="text"], input[type="password"] {
 									<tbody>
 										<tr>
 											<th scope="row">비밀번호</th>
-											<td><input type="password" name="memPw"
-												aria-required="true" class="error"></td>
+											<td><input type="password" name="memberPassword"
+												aria-required="true" class="error" id="memberPassword"></td>
 										</tr>
 									</tbody>
 								</table>
@@ -256,9 +256,40 @@ input[type="text"], input[type="password"] {
 							<em>탈퇴</em>
 						</button>
 						<script>
-							 document.getElementById('quit_commit').addEventListener('click', function() {
-								alert("탈퇴가 완료되었습니다. 지금까지 kapla를 이용해주셔서 감사합니다."); 
-							 });
+						$(document).ready(function (){
+							
+							$("#formHackOut").submit(function(event) {
+								//prevendDefault()는 href로 연결해 주지 않고 
+								//단순히 click에 대한 처리를 하도록 해준다.
+								event.preventDefault();
+								
+								let password = $("#memberPassword").val();
+																
+								let form={
+									password : password			
+								};
+
+								$.ajax({
+								    type : "POST",
+								    url : "/mypage/ispwdcorrect_byquit",
+								    cashe:false,
+/* 								contentType:'application/json; charset=UTF-8',/* MIME 타입*/
+								    contentType:'application/json',/* MIME 타입*/
+								    data: JSON.stringify(form), 
+								    success: function (result) {       
+								           console.log(result);
+								           //location.href = "/list";
+								           //$(location).attr('href', '/rest_board.html');
+								           $(location).attr('href', '/');
+								           alert("탈퇴가 완료되었습니다. 지금까지 kapla를 이용해주셔서 감사합니다."); 
+								    },
+								    error: function (e) {
+								        console.log(e);
+								        alert("비밀번호가 틀렸습니다.");
+								    }
+								});
+							});
+						});
 						</script>
 					</div>
 				</form>

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -114,29 +115,16 @@ public class MyPageController {
 	}
 	
 	@PostMapping("/ispwdcorrect_byquit")
-	public String toMemberQuit(HttpServletRequest httpServletRequest, Model model, Principal principal) throws Exception {
+	public String toMemberQuit(@RequestBody UserVO userVO, Principal principal, Model model) throws Exception {
 		
-		String id = principal.getName(); // 로그인 id
+		String id = principal.getName();
+		userVO.setId(id);
 		
-		UserVO userVO = userService.userInfo(id);
+		System.out.println("테스트용" + userVO.getId() + "비밀번호 : " + userVO.getPassword());
 		
-		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
-		boolean test = b.matches(httpServletRequest.getParameter("findPassword"), userVO.getPassword());
+		userService.unregister(userVO);
 		
-		/*
-		 * log.info(test + "true? or false");
-		 * log.info(httpServletRequest.getParameter("findPassword") + "잘 넘어오고있는건가?" +
-		 * userVO.getPassword());
-		 */
-		
-		if(test) {
-			return "redirect:/mypage/modify_page";
-		}
-		else
-		{
-			return "redirect:/mypage/modify_information";
-		}
-		
+		return "/";
 	}
 	
 }

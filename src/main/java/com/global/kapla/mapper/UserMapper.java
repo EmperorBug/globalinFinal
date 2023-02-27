@@ -23,4 +23,7 @@ public interface UserMapper {
 	public UserVO isPwdCorrect(UserVO vo);
 
 	public void updateUserInfo(UserVO vo);
+	
+	public void unregister(UserVO vo);
+	
 }

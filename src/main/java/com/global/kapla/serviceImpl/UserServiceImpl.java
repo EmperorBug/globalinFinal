@@ -21,9 +21,15 @@ import lombok.extern.slf4j.Slf4j;
  * 유저 ID 가져오는 기능 만듬 
  * @author 김형우
  * 
- * 회원정보 변경 비밀번호 확인 기능 구현중
+ * 회원정보 변경 비밀번호 확인 기능 구현중 -> 1차 구현 완료
  * 
- * 2023.02.17
+ * 2023.02.17 / 2023.02.24
+ * 
+ * @author 김형우
+ * 
+ * 회원탈퇴 기능 구현중
+ * 
+ * 2023.02.27
  * 
  * @author 김형우
  */
@@ -89,6 +95,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void updateUserInfo(UserVO vo) {
 		mapper.updateUserInfo(vo);
+	}
+
+	@Override
+	public void unregister(UserVO vo) {
+		mapper.unregister(vo);
 	}
 	
 }

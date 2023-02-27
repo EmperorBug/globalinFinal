@@ -29,6 +29,10 @@
     	select count(*) from KAPLA_USER where id=#{id}
     </select>
     
+    <select id="findUserPassword" resultType="String">
+    	select password from KAPLA_USER where id=#{id}
+    </select>
+    
     <!--  로그인 처리  -->
     <select id="login" resultType="UserVO">
     	select * from KAPLA_USER where id = #{id}
@@ -51,6 +55,15 @@
     		 KAPLA_USER 
     	set 
     		name=#{name}, phone=#{phone}, email=#{email}, address1=#{address1}, address2=#{address2}
+    	where
+    		 id=#{id}
+    </update>
+    
+    <update id="unregister">
+    	update
+    		 KAPLA_USER 
+    	set 
+    		reg_yn=false;
     	where
     		 id=#{id}
     </update>
