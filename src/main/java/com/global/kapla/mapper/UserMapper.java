@@ -26,4 +26,5 @@ public interface UserMapper {
 	
 	public void unregister(UserVO vo);
 	
+	public int pwdChk(UserVO vo);
 }

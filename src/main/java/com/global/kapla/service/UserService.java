@@ -15,5 +15,6 @@ public interface UserService {
 	public UserVO isPwdCorrect(UserVO vo);
 	public void updateUserInfo(UserVO vo);
 	public void unregister(UserVO vo);
+	public int pwdChk(UserVO vo);
 	
 }
