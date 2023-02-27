@@ -15,7 +15,8 @@
 	address1,
 	address2,
 	authority,
-	reg_date
+	reg_date,
+	reg_yn
 
 </sql>
 
@@ -30,7 +31,7 @@
     
     <!--  로그인 처리  -->
     <select id="login" resultType="UserVO">
-    	select <include refid="user"/> from KAPLA_USER where id = #{id}
+    	select * from KAPLA_USER where id = #{id}
     </select>
     
     <select id="printUserName" resultType="UserVO">

@@ -31,7 +31,7 @@ public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler{
 		
 		String returnPage = (String) request.getSession().getAttribute("returnPage");
 		//이전 페이지가 존재하고 회원가입페이지가 아니라면 이전페이지로 리다이렉트
-		if (returnPage != null && !returnPage.contains("signup")) {
+		if (returnPage != null && !returnPage.contains("signup") && !returnPage.contains("user/login")) {
 			session.removeAttribute("returnPage");
 			redirectStrategy.sendRedirect(request, response, returnPage);
 		}

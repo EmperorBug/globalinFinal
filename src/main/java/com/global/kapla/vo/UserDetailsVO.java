@@ -21,6 +21,7 @@ public class UserDetailsVO implements UserDetails{
 	private String username;
 	private String password;
 	private List<GrantedAuthority> authorities;
+	private boolean isEnabled;
 	
 //	CustomUserDetailsService.java 에서 꺼내온 db정보로 생성자를 호출하여 값 세팅
 	//권한 한가지씩뿐 없음
@@ -28,6 +29,7 @@ public class UserDetailsVO implements UserDetails{
 		this.setUsername(user.getId());
 		this.setPassword(user.getPassword());
 		this.setAuthorities(user);
+		this.setEnabled(user.getReg_yn());
 	}
 
 	
@@ -92,7 +94,7 @@ public class UserDetailsVO implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return true;
+		return isEnabled;
 	}
 
 	

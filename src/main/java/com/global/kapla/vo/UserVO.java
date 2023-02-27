@@ -27,4 +27,5 @@ public class UserVO {
 	private String 	address2;
 	private Date 	reg_date;
 	private String authority;
+	private Boolean reg_yn;
 }
