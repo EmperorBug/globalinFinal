@@ -37,12 +37,12 @@
 		  <div class="form-floating">
 			<input type="password" class="form-control" id="password" placeholder="password" name="password" maxlength="30">
 			<label for="password">Password</label>
-			<p class="join_placeholder">특수문자를 하나 포함하여 대소문자+숫자</p>
+			<p class="join_placeholder">특수문자를 하나 포함하여 영문자+숫자 최소8자 ~ 최대 30자</p>
 		  </div>
 		  <div class="form-floating">
 			<input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" maxlength="100">
 			<label for="email">Email address</label>
-			<p class="join_placeholder">비밀번호찾기시 이용됩니다</p>
+			<!-- <p class="join_placeholder">비밀번호찾기시 이용됩니다</p> -->
 		  </div>
 		  <button class="w-100 btn btn-lg btn btn-dark">Sign up</button>
 		</form>
