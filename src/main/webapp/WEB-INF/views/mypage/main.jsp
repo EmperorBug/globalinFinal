@@ -273,6 +273,7 @@ $(document).ready(function() {
 		}
 	});
 	$('#search').on('click',function() {
+		makeLoding();
 		const url = '/rest/order/list';
 		const data = {'startDate' : $('#startDate').val(),
 						'endDate': $('#endDate').val()
@@ -290,7 +291,6 @@ $(document).ready(function() {
 		}
 		else {
 			$.each(result, function (k,v) {
-				console.log(v)
 				itemArr.push('<tr>');
 				itemArr.push('	<td>');
 				itemArr.push(		v.order_date);
@@ -308,6 +308,16 @@ $(document).ready(function() {
 
 	comma = (num) => {
 		return num.toLocaleString('ko-KR');
+	}
+	
+	makeLoding = () => {
+		
+		const arr = new Array();
+		arr.push('<td colspan="4">');
+		arr.push(' 	<img alt="" src="/img/loading.gif">');
+		arr.push('</td>');
+		
+		$('#order_list').html(arr.join(''));
 	}
 </script>
 </body>

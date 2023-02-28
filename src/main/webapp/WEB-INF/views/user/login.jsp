@@ -55,9 +55,9 @@
 			  	카카오 로그인
 			  </button>      
 			</form>
-			<hr>
+			<!-- <hr>
 			<button type="button" class="btn btn-light loginFormBtn">아이디 찾기</button>
-			<button type="button" class="btn btn-light loginFormBtn">비밀번호 찾기</button>
+			<button type="button" class="btn btn-light loginFormBtn">비밀번호 찾기</button> -->
 		</main>
 	</div>
 	<script type="text/javascript">
