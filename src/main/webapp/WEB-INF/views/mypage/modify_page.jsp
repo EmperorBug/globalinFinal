@@ -39,21 +39,13 @@ html, body {
     height : 100%;
 }
 
-p {
-	margin-top: -0.5em;
-}
+p { margin-top: -0.5em; }
 
-.menu_section {
-	margin: 0 0 30px 0;
-}
+.menu_section { margin: 0 0 30px 0; }
 
-.leftMenu ul {
-	width: 100%;
-}
+.leftMenu ul { width: 100%; }
 
-.menu_section li {
-	padding-left: 2em;
-}
+.menu_section li { padding-left: 2em; }
 
 .contents_article li:not(:first-child) {
 	background-image: url('/img/mypgae_ing_next_bg.png');
@@ -183,6 +175,9 @@ input[type="text"], input[type="password"] {
     width: 380px;
 }
 
+.password_rule { font-size : 11px; padding : 10px; }
+#passwordCheck_error { font-size : 11px; display : none; }
+
 </style>
 </head>
 <body>
@@ -225,7 +220,10 @@ input[type="text"], input[type="password"] {
 												<td><input type="hidden" name="memId" value="${user_info.id}">${user_info.id}</td>
 											</tr>
 											<tr class="">
-												<th><span class="important">비밀번호</span></th>
+												<th>
+													<span class="important">비밀번호</span><br>
+													<p class="password_rule">특수문자를 하나 포함하여 영문자+숫자 최소8자 ~ 최대 30자</p>
+												</th>
 												<td class="member_password">
 
 													<div id="memberNewPw" class="member_pw_change">
@@ -250,6 +248,7 @@ input[type="text"], input[type="password"] {
 															<dd>
 																<div class="member_warning">
 																	<input type="password" id="newPasswordCheck">
+																	<span id="passwordCheck_error">입력하신 비밀번호와 다릅니다</span>
 																</div>
 															</dd>
 														</dl>
@@ -291,11 +290,12 @@ input[type="text"], input[type="password"] {
 												<td class="member_address">
 													<div class="address_input">
 														<div class="member_warning">
-															<input type="text" name="address1"
+															<input type="text" name="address1" id="address1"
 																value="${user_info.address1}">
 														</div>
 														<div class="member_warning js_address_sub">
-															<input type="text" name="address2" value="${user_info.address2}">
+															<input type="text" name="address2" id="address2"
+																 value="${user_info.address2}">
 														</div>
 													</div>
 												</td>
@@ -312,11 +312,11 @@ input[type="text"], input[type="password"] {
 								<button id="update_commit" class="btn_comfirm js_btn_join"
 									value="정보수정">정보수정</button>
 							</div>
-							<script>
+<!-- 							<script>
 								 document.getElementById('update_commit').addEventListener('click', function() {
 									alert("수정이 완료되었습니다."); 
 								 });
-							</script>
+							</script> -->
 							<!-- //btn_center_box -->
 						</form>
 					</div>
@@ -343,10 +343,14 @@ input[type="text"], input[type="password"] {
 		}
 		
 		if (pwdChk()) {
-			return true;	
-		}
+			if(valchk()){
+					alert('수정이 완료되었습니다.');
+					return true;
+				}
+			}
 		else {
 			alert('비밀번호가 다릅니다.');
+			$('#passwordCheck_error').css('display','block');			
 		}
 		return false;
 	}
@@ -357,6 +361,70 @@ input[type="text"], input[type="password"] {
 		const test = postAjax('/rest/pwdChk',data);
 		return (test == 1) ? true : false; 
 		
+	}
+	
+	function valchk() {
+		
+		const form 		= document.getElementById('formJoin');
+		const idregx 	= /^[a-z]+[a-z0-9]{6,19}$/g;
+		const pwdregx	= /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,30}$/;
+		const emailregx = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	
+		if (form.id.value == '' ) {
+			alert('아이디를 입력해주세요');
+			$('#memId').addClass('is-invalid');	//클래스추가
+			form.id.focus();					//해당부분 포커스
+			return false;
+		}
+		if (!idregx.test(form.id.value)) {
+			alert('아이디 형식을 지켜주세요.');
+			$('#memId').addClass('is-invalid');
+			form.id.focus();
+			return false;
+		}
+ 		/* id 부분 */		
+		if (form.currentPassword.value == '' ) {
+			alert('비밀번호를 입력해주세요');
+			$('#password').addClass('is-invalid');
+			form.password.focus();
+			return false;
+		}
+ 		
+		if (form.password.value == '' ) {
+			alert('새 비밀번호를 입력해주세요');
+			$('#password').addClass('is-invalid');
+			form.password.focus();
+			return false;
+		}
+ 		
+ 		
+		if (!pwdregx.test(form.password.value)) {
+			console.log(form.password)
+			alert('비밀번호 형식을 지켜주세요.');
+			$('#password').addClass('is-invalid');
+			form.password.focus();
+			return false;
+		}
+		$('#password').removeClass('is-invalid');
+		/* 비밀번호 부분 */
+		
+		if (form.email.value == '' ) {
+			alert('이메일을 입력해주세요');
+			$('#email').addClass('is-invalid');
+			form.email.focus();
+			return false;
+		}
+		if (!emailregx.test(form.email.value)) {
+			alert('이메일 형식을 지켜주세요.');
+			$('#email').addClass('is-invalid');
+			form.email.focus();
+			return false;
+		}
+		$('#email').removeClass('is-invalid');
+		
+		/* 이메일 부분 */
+		
+		return true;
 	}
 </script>
 </body>
