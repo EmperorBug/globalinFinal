@@ -111,25 +111,29 @@ public class KaplaRestController {
 	}
 	
 	@PostMapping("/ispwdcorrect_byquit")
-	public String toMemberQuit(@RequestBody UserVO userVO, Principal principal, Model model) throws Exception {
-		
+	public int toMemberQuit(@RequestBody UserVO userVO, Principal principal, Model model) throws Exception {
+		int result = 3;
 		String id = principal.getName();
 		userVO.setId(id);
 		
 		UserVO dbInfo = userService.userInfo(id);
 		String dbPwd = dbInfo.getPassword();
 		
-		System.out.println("테스트용" + userVO.getId() + "비밀번호 : " + userVO.getPassword());
-		System.out.println("테스트용 비밀번호 2 : " + dbPwd);
-		
+
 		BCryptPasswordEncoder b = new BCryptPasswordEncoder();
-		boolean ispwdcorrect = b.matches(userVO.getPassword(), dbPwd);
-		System.out.println("결과는? :" + ispwdcorrect);
-		
-		/* userService.unregister(userVO); */ 
-		// 회원 REG_YN을 TRUE->FALSE로 바꿔주는 역할
-		
-		return "/";
+
+		//비밀번호 일치여부 확인
+		if (b.matches(userVO.getPassword(), dbPwd)) {
+			//일치
+			result = 1;
+			// 회원 REG_YN을 TRUE->FALSE로 바꿔주는 역할
+			userService.unregister(userVO);
+		}
+		else {
+			//불일치
+			result = 2;
+		}
+		return result;
 	}
 	
 }

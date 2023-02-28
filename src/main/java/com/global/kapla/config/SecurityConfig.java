@@ -45,6 +45,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.usernameParameter("id")	//기본값 username을 id로 변경 jsp에서도 바꿔줘야함
 		.successHandler(customSuccessHandler)
 		.failureHandler(customFailureHandler);
+
+		http.logout()
+		.logoutSuccessUrl("/user/login")
+		.deleteCookies("JSESSIONID");
 	}
 
 	@Override
