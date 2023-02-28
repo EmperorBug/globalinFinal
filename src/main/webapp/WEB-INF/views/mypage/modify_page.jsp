@@ -22,22 +22,11 @@
 <script type="text/javascript" src="/js/aJax.js"></script>
 <style type="text/css">
 
-html, body {
-	height: 100%
-}
+html, body { height: 100% }
 
-.container {
-	overflow: hidden;
-	margin-top: 5em;
-	height: 100%
-}
+.container { overflow: hidden; margin-top: 5em; height: 100% }
 
-.my_page {
-    float: left;
-    width: 960px;
-    padding: 0 0 0 40px;
-    height : 100%;
-}
+.my_page { float: left; width: 960px; padding: 0 0 0 40px; height : 100%; }
 
 p { margin-top: -0.5em; }
 
@@ -54,129 +43,6 @@ p { margin-top: -0.5em; }
 	padding: 0 0 0 30px;
 	text-align: center;
 }
-
-.member_pw_change dl { display: flex; margin : 0; }
-.member_pw_change dt { padding : 5px; }
-.member_pw_change dd { padding : 5px; }
-
-.my_page .mypage_zone_tit {
-	margin: 0 0 50px 0;
-	padding: 0 0 10px 0;
-	font-size: 14px;
-	border-bottom: 1px solid #3c3c3c;
-}
-
-.base_info_sec table th:first-child, .base_info_sec table td:first-child
-	{
-	border-left: none;
-}
-.base_info_box { position : relative; }
-
-.base_info_sec table th {
-	text-align: left;
-	border-bottom: 1px solid #dcdcdc;
-	background: #fbfbfb;
-}
-
-.join_base_wrap table th {
-	padding: 10px 25px;
-}
-
-.base_info_sec table td {
-	padding: 15px 0 15px 15px;
-	border-bottom: 1px solid #dcdcdc;
-}
-
-.location_wrap {
-    position: relative;
-    width: 100%;
-    border-bottom: 1px solid #ededed;
-}
-
-#contents .member_address .address_postcode input {
-	float: left;
-	width: 190px;
-}
-
-input[type="text"], input[type="password"] {
-	padding: 0 10px;
-	outline: none;
-	font-size: 12px;
-}
-
-.join_base_wrap .member_cont h3 {
-    padding: 0 0 17px 0;
-    font-size: 18px;
-    color: #222222;
-}
-
-.base_info_box h3 {
-    display: inline-block;
-}
-
-.base_info_sec table {
-    width: 100%;
-}
-
-.base_info_box .base_info_sec {
-    border-top: 1px solid #999999;
-}
-
-.btn_member_cancel {
-    width: 150px;
-    height: 45px;
-    color: #3e3d3c;
-    font-weight: bold;
-    font-size: 13px;
-    border: 1px solid #cccccc;
-    background: #fff;
-    cursor: pointer;
-}
-
-.btn_comfirm {
-    width: 150px;
-    height: 45px;
-    margin: 0;
-    color: #ffffff;
-    font-size: 14px;
-    border: 1px solid #1a2e2d;
-    background: #1a2e2d;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.base_info_box > span {
-    float: right;
-    padding: 0 0 0 10px;
-    line-height: 40px;
-    color: #ab3e55;
-}
-
-.member_cont .btn_center_box, .member_warning + .btn_center_box {
-    margin: 35px 0 0 0;
-}
-.btn_center_box {
-    text-align: center;
-}
-
-.base_info_sec table td {
-    padding: 15px 0 15px 15px;
-    border-bottom: 1px solid #dcdcdc;
-}
-
-.mypage_main, .mypage_cont {
-    padding: 0 0 50px 0;
-}
-
-.member_address .address_input input {
-    margin: 10px 0 0 0;
-}
-.base_info_sec table input[type="text"] {
-    width: 380px;
-}
-
-.password_rule { font-size : 11px; padding : 10px; }
-#passwordCheck_error { font-size : 11px; display : none; }
 
 </style>
 </head>
@@ -306,17 +172,11 @@ input[type="text"], input[type="password"] {
 								<!-- //base_info_sec -->
 							</div>
 							<!-- //base_info_box -->
-
 							<div class="btn_center_box">
 								<button type="button" class="btn_member_cancel" onclick="history.back()">취소</button>
 								<button id="update_commit" class="btn_comfirm js_btn_join"
 									value="정보수정">정보수정</button>
 							</div>
-<!-- 							<script>
-								 document.getElementById('update_commit').addEventListener('click', function() {
-									alert("수정이 완료되었습니다."); 
-								 });
-							</script> -->
 							<!-- //btn_center_box -->
 						</form>
 					</div>
@@ -338,6 +198,7 @@ input[type="text"], input[type="password"] {
 		
 		if (!(newPwd == newPwdChk)){
 			alert('동일한비밀번호를 입력해주세요.');
+			$('#passwordCheck_error').css('display','block');	
 			$('#password').focus();
 			return false;	
 		}
@@ -350,7 +211,6 @@ input[type="text"], input[type="password"] {
 			}
 		else {
 			alert('비밀번호가 다릅니다.');
-			$('#passwordCheck_error').css('display','block');			
 		}
 		return false;
 	}
@@ -386,7 +246,7 @@ input[type="text"], input[type="password"] {
 		if (form.currentPassword.value == '' ) {
 			alert('비밀번호를 입력해주세요');
 			$('#password').addClass('is-invalid');
-			form.password.focus();
+			form.currentPassword.focus();
 			return false;
 		}
  		
