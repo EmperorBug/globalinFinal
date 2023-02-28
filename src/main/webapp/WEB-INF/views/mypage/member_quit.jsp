@@ -18,50 +18,34 @@
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
-	integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js"
-	integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- dayjs -->
-<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
 <style type="text/css">
 html, body {
 	height: 100%
 }
-
 .container {
 	overflow: hidden;
 	margin-top: 5em;
 	height: 100%
 }
-
 .my_page {
 	float: left;
 	width: 960px;
 	padding: 0 0 0 40px;
 	height: 100%;
 }
-
 p {
 	margin-top: -0.5em;
 }
-
 .menu_section {
 	margin: 0 0 30px 0;
 }
-
 .leftMenu ul {
 	width: 100%;
 }
-
 .menu_section li {
 	padding-left: 2em;
 }
-
 .contents_article li:not(:first-child) {
 	background-image: url('/img/mypgae_ing_next_bg.png');
 	background-repeat: no-repeat;
@@ -70,30 +54,25 @@ p {
 	text-align: center;
 }
 /* 고유 css */
-
 a { text-decoration:  none;}
-
 .hack_out .mypage_zone_tit {
     margin: 0 0 50px 0;
     padding: 0 0 10px 0;
     font-size: 14px;
     border-bottom: 1px solid #999999;
 }
-
 .hack_out .mypage_unregister .unregister_info {
     margin: 0 0 40px 0;
     padding: 15px 15px 15px 15px;
     color: #717171;
     border: 1px solid #dadada;
 }
-
 .hack_out .mypage_unregister .mypage_zone_tit {
     margin: 0;
     padding: 0 0 10px 0;
     font-size: 14px;
     border-bottom: none 0;
 }
-
 h2 {
     display: block;
     font-size: 1.5em;
@@ -103,7 +82,6 @@ h2 {
     margin-inline-end: 0px;
     font-weight: bold;
 }
-
 .mypage_zone_tit h3 {
     display: block;
     font-size: 1.17em;
@@ -113,16 +91,13 @@ h2 {
     margin-inline-end: 0px;
     font-weight: bold;
 }
-
 .hack_out .mypage_unregister .mypage_zone_tit {
     margin: 0;
     padding: 0 0 10px 0;
     font-size: 14px;
     border-bottom: none 0;
 }
-
 /* 테이블 */
-
 .mypage_table_type table {
     width: 100%;
     border: 0;
@@ -130,11 +105,9 @@ h2 {
     border-collapse: collapse;
     text-align: center;
 }
-
 .mypage_table_type .table_left {
     border-top: 1px solid #999999;
 }
-
 .mypage_table_type .table_left th {
     padding: 15px 10px 14px 20px;
     border-top: none 0;
@@ -146,19 +119,15 @@ h2 {
     padding: 12px 10px 11px 15px;
     text-align: left;
 }
-
 input[type="text"], input[type="password"] {
     padding: 0 10px;
     outline: none;
     font-size: 12px;
 }
-
 /* 버튼부 */
-
 .btn_center_box {
     text-align: center;
 }
-
 .btn_claim_cancel {
     display: inline-block;
     min-width: 80px;
@@ -171,12 +140,10 @@ input[type="text"], input[type="password"] {
     background: #ffffff;
     text-align: center;
 }
-
 .btn_claim_cancel:hover {
     color: #333333;
     border: 1px solid #bbbbbb;
 }
-
 .btn_claim_ok {
     min-width: 100px;
     height: 44px;
@@ -189,7 +156,6 @@ input[type="text"], input[type="password"] {
     text-align: center;
     vertical-align: top;
 }
-
 </style>
 </head>
 <body>
@@ -259,7 +225,6 @@ input[type="text"], input[type="password"] {
 						$(document).ready(function (){
 							
 							$("#formHackOut").submit(function(event) {
-								return false;
 								//prevendDefault()는 href로 연결해 주지 않고 
 								//단순히 click에 대한 처리를 하도록 해준다.
 								event.preventDefault();
@@ -269,23 +234,28 @@ input[type="text"], input[type="password"] {
 								let form={
 									password : password			
 								};
-
 								$.ajax({
 								    type : "POST",
-								    url : "rest/ispwdcorrect_byquit"
-								    cashe:false,
-								    contentType:'application/json; charset=UTF-8'
-								    data: JSON.stringify(form), 
+								    url : "/rest/ispwdcorrect_byquit",
+								    contentType:'application/json; charset=UTF-8',
+								    data: JSON.stringify(form),
+									data_type : 'json',
 								    success: function (result) {       
-								           console.log(result);
-								           $(location).attr('href', '/');
-								           alert("탈퇴가 완료되었습니다. 지금까지 kapla를 이용해주셔서 감사합니다."); 
+										   // 1 : 탈퇴완료, 2: 비밀번호틀림
+										if (result == 1) {
+											alert("탈퇴가 완료되었습니다. 지금까지 kapla를 이용해주셔서 감사합니다.");
+											location.href='/logout';
+										}
+										else if (result == 2) {
+											alert("비밀번호가 틀렸습니다.");
+										}
 								    },
 								    error: function (e) {
 								        console.log(e);
-								        alert("비밀번호가 틀렸습니다.");
+								        alert('서버오류');
 								    }
 								});
+								return false;
 							});
 						});
 						</script>
