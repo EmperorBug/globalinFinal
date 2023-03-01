@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.global.kapla.mapper.MyPageMapper">
+
+	<resultMap id="orderDetailMap" type="OrderDetailsVO">
+		<result property="detail_no" column="detail_no"/>
+		<result property="item_no" column="item_no"/>
+		<result property="sum_price" column="sum_price"/>
+		<result property="quantity" column="quantity"/>
+		<result property="item_name" column="name"/>
+		<result property="order_status" column="order_status"/>
+		<result property="item_url" column="url"/>
+	</resultMap>
+
+	<resultMap id="orderMap" type="OrderVO">
+		<result property="order_no" column="order_no"/>
+		<result property="payment_method" column="payment_method"/>
+		<result property="total_price" column="total_price"/>
+		<result property="receiver" column="receiver"/>
+		<result property="receiver_addr" column="receiver_addr"/>
+		<result property="receiver_phone" column="receiver_phone"/>
+		<result property="receiver_email" column="receiver_email"/>
+		<result property="comment" column="comment"/>
+		<result property="order_date" column="reg_date"/>
+		<collection property="order_list" resultMap="orderDetailMap"/>
+	</resultMap>
+	<!-- 마이페이지 - 메인 최근 30건의 주문내역 가져옴 -->
+    <!-- <select id="getList" resultType="OrderVO">
+    	<![CDATA[
+			SELECT * from(
+				SELECT rownum rnum, A.* FROM (
+					SELECT o.ORDER_NO, (SELECT NAME  FROM KAPLA_ITEM WHERE ITEM_NO=od.ITEM_NO) item_name, od.QUANTITY, od.SUM_PRICE total_price, decode(od.ORDER_STATUS,1,'결제완료',2,'상품준비중',3,'배송중',4,'배송완료',5,'구매확정') order_status, TO_CHAR( o.REG_DATE,'YYYY-MM-DD') order_date
+					FROM KAPLA_ORDER o, KAPLA_ORDER_DETAIL od
+					WHERE o.ORDER_NO = od.ORDER_NO AND o.user_no = (SELECT USER_NO FROM KAPLA_USER WHERE id=#{id})ORDER BY o.reg_date DESC, od.DETAIL_NO DESC
+				) A
+				WHERE rownum <= #{pageNum} * #{amount}
+			)WHERE rnum > (#{pageNum}-1) * #{amount}
+		]]>
+    </select> -->
+    <select id="getList" resultType="OrderVO">
+    	<![CDATA[
+					SELECT o.ORDER_NO, (SELECT NAME  FROM KAPLA_ITEM WHERE ITEM_NO=od.ITEM_NO) item_name, od.QUANTITY, od.SUM_PRICE total_price, decode(od.ORDER_STATUS,1,'결제완료',2,'상품준비중',3,'배송중',4,'배송완료',5,'구매확정') order_status, TO_CHAR( o.REG_DATE,'YYYY-MM-DD') order_date
+					FROM KAPLA_ORDER o, KAPLA_ORDER_DETAIL od
+					WHERE o.ORDER_NO = od.ORDER_NO AND o.user_no = (SELECT USER_NO FROM KAPLA_USER WHERE id=#{id}) AND TO_CHAR( o.REG_DATE,'YYYY-MM-DD') BETWEEN TO_CHAR(#{startDate}) AND TO_CHAR(#{endDate})  ORDER BY o.reg_date DESC, od.DETAIL_NO DESC
+		]]>
+    </select>
+
+	<select id="getOrderInfo" resultType="HashMap">
+		SELECT 
+			count(*) as info
+		FROM 
+			KAPLA_ORDER_DETAIL od, KAPLA_ORDER o  
+		WHERE 
+			od.ORDER_NO  = o.ORDER_NO AND o.USER_NO = (SELECT user_no FROM KAPLA_USER WHERE id=#{id})
+		AND
+		    o.REG_DATE between current_date-30 and current_date
+		GROUP BY 
+			ORDER_STATUS
+	</select>
+
+<!-- o = order, detail = order_detail, item = item, img = item_img	-->
+<!-- order는 예약어라  o로 사용	-->
+	<select id="getDetailList" resultMap="orderMap">
+		<![CDATA[
+			select
+				o.order_no, o.payment_method, o.total_price,o.receiver, o.receiver_addr,o.receiver_phone,o.receiver_email,o.order_comment, TO_CHAR( o.reg_date,'YYYY-MM-DD') reg_date
+				,detail.detail_no, detail.item_no, detail.sum_price, detail.quantity, item.name, img.url, decode(detail.order_status,1,'결제완료',2,'상품준비중',3,'배송중',4,'배송완료',5,'구매확정') order_status
+			from
+				KAPLA_ORDER o, KAPLA_ORDER_DETAIL detail, KAPLA_ITEM item, KAPLA_ITEM_IMAGE img
+			where
+				o.ORDER_NO = detail.ORDER_NO
+			  and detail.ITEM_NO = item.ITEM_NO
+			  and item.ITEM_NO = img.ITEM_NO
+			  and detail.ORDER_NO=#{order_no}
+			  and o.user_no = (select user_no from KAPLA_USER where id=#{id})
+		]]>
+	</select>
+</mapper>

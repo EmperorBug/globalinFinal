@@ -28,10 +28,11 @@
 	<div class="wrap">
 		<main class="loginMain">
 			<form action="/user/login" method="post">
-			testuser3
-			test123@
-			${error }
-			${exception }
+<!-- 			testuser3
+			test123@ <br>
+			testuser2
+			test123@ (ADMIN 계정) -->
+			<span style="color: red">${exception }</span>
 			<p>로그인</p>
 			  <div class="form-floating">
 				<input type="text" class="form-control" id="id" placeholder="name@example.com" name="id">
@@ -41,11 +42,11 @@
 				<input type="password" class="form-control" id="password" placeholder="Password" name="password">
 				<label for="password">Password</label>
 			  </div>
-			  <div class="checkbox mb-3">
+<!-- 			  <div class="checkbox mb-3">
 				<label>
 				  <input type="checkbox" value="remember-me"> Remember me
 				</label>
-			  </div>
+			  </div> -->
 			  <button class="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
 			  
 			  <!--카카오 로그인 버튼 작성 김도형  -->
@@ -54,9 +55,9 @@
 			  	카카오 로그인
 			  </button>      
 			</form>
-			<hr>
+			<!-- <hr>
 			<button type="button" class="btn btn-light loginFormBtn">아이디 찾기</button>
-			<button type="button" class="btn btn-light loginFormBtn">비밀번호 찾기</button>
+			<button type="button" class="btn btn-light loginFormBtn">비밀번호 찾기</button> -->
 		</main>
 	</div>
 	<script type="text/javascript">

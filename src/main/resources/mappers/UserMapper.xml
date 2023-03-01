@@ -9,10 +9,14 @@
 	id,
 	password,
 	name,
+	phone,
 	email,
-	address,
+	zip_code,
+	address1,
+	address2,
 	authority,
-	reg_date
+	reg_date,
+	reg_yn
 
 </sql>
 
@@ -25,13 +29,47 @@
     	select count(*) from KAPLA_USER where id=#{id}
     </select>
     
-    <!--  로그인 처리  -->
-    <select id="login" resultType="UserVO">
-    	select <include refid="user"/> from KAPLA_USER where id = #{id}
+    <select id="findUserPassword" resultType="String">
+    	select password from KAPLA_USER where id=#{id}
     </select>
     
+    <!--  로그인 처리  -->
+    <select id="login" resultType="UserVO">
+    	select * from KAPLA_USER where id = #{id}
+    </select>
+    
+    <select id="printUserName" resultType="UserVO">
+    	select <include refid="user"/> from KAPLA_USER where id = #{id}
+    </select>
     
     <insert id="insertUser">
     	insert into KAPLA_USER (user_no, id, password, email) values ( user_seq.nextval, #{id}, #{password}, #{email} )
     </insert>
+    
+    <update id="updateUser">
+    	update KAPLA_USER set name=#{name}, phone=#{phone}, email=#{email}, zip_code=#{zip_code}, address1=#{address1}, address2=#{address2} where id=#{id}
+    </update>
+    
+    <update id="updateUserInfo">
+    	update
+    		 KAPLA_USER 
+    	set 
+    		name=#{name}, password=#{password}, phone=#{phone}, email=#{email}, address1=#{address1}, address2=#{address2}
+    	where
+    		 id=#{id}
+    </update>
+    
+    <update id="unregister">
+    	update
+    		 KAPLA_USER 
+    	set 
+    		reg_yn='false'
+    	where
+    		 id=#{id}
+    </update>
+    
+    <!-- 비밀번호 확인 -->
+    <select id="pwdChk" resultType="int">
+    	SELECT count(*) FROM KAPLA_USER WHERE PASSWORD =#{password} AND id=#{id}
+    </select>
 </mapper>

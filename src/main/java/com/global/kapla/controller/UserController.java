@@ -30,9 +30,10 @@ public class UserController {
 	 * 로그인구현
 	 */
 	@GetMapping("/login")
-	public String loginForm( @RequestParam(value = "error", required = false) String error,
-            @RequestParam(value = "exception", required = false) String exception,
-            Model model) {
+	public String loginForm( @RequestParam(value = "error", required = false) String error, @RequestParam(value = "exception", required = false) String exception, Model model, HttpServletRequest request) {
+		log.info("이동전페이지"+request.getHeader("Referer"));
+		String referer = request.getHeader("Referer");
+		request.getSession().setAttribute("returnPage", referer); //이동전 페이지 기억
 		model.addAttribute("error",error);
         model.addAttribute("exception",exception);
 		return "user/login";

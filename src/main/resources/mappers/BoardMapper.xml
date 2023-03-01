@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.global.kapla.mapper.BoardMapper">
+    
+    <select id="getList" resultType="com.global.kapla.vo.BoardVO">
+       <![CDATA[
+           select * from kapla_board where type_no = 1 order by board_no desc 
+       ]]>
+    </select>  
+    
+    <select id="getNoticeList" resultType="com.global.kapla.vo.BoardVO">
+       <![CDATA[
+           select * from kapla_board where type_no = 2 order by board_no desc 
+       ]]>
+    </select>  
+    
+    <select id="readPost" resultType="BoardVO">
+		<![CDATA[
+        	select * from kapla_board where board_no = #{board_no} 
+    	]]>	
+	</select>
+   
+    
+</mapper>

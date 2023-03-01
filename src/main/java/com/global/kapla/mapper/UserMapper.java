@@ -14,5 +14,17 @@ public interface UserMapper {
 	
 	public int insertUser(UserVO vo);
 	
-	public UserVO getUser(String id);
+	public int updateUser(UserVO vo);
+	
+	public UserVO getUser(String userId);
+	
+	public UserVO printUserName(UserVO vo);
+	
+	public UserVO isPwdCorrect(UserVO vo);
+
+	public void updateUserInfo(UserVO vo);
+	
+	public void unregister(UserVO vo);
+	
+	public int pwdChk(UserVO vo);
 }

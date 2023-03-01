@@ -6,15 +6,35 @@
 
 	<select id="getList" resultType="com.global.kapla.vo.ItemVO">
 		<![CDATA[
-        	select * from kapla_item, kapla_item_image where kapla_item.item_no = kapla_item_image.item_no order by kapla_item.item_no
+        	select * from
+        		 kapla_item, kapla_item_image 
+        	where
+        		 kapla_item.item_no = kapla_item_image.item_no 
+        	and 
+        		 category_no = #{category_no} order by kapla_item.item_no
     	]]>	
 	</select>
 	
 	<select id="productView" resultType="com.global.kapla.vo.ItemVO">
 		<![CDATA[
-        	select * from kapla_item, kapla_item_image where kapla_item.item_no = kapla_item_image.item_no and kapla_item.item_no = #{item_no} 
+        	SELECT * FROM
+        		 kapla_item, kapla_item_image
+         	WHERE
+         		 kapla_item.item_no = kapla_item_image.item_no 
+         	and 
+         		 kapla_item.item_no = #{item_no} 
     	]]>	
 	</select>
+	
+ 	<insert id="insertItemToCart" >
+		MERGE INTO KAPLA_CART 
+		USING dual
+		ON (item_no =#{item_no})
+		WHEN MATCHED  THEN 
+			UPDATE SET QUANTITY = (SELECT QUANTITY FROM KAPLA_CART WHERE USER_NO = (select user_no from kapla_user where id=#{id} and item_no = #{item_no}))+#{quantity}
+		WHEN NOT MATCHED THEN
+		 	insert (cart_no, item_no, user_no, quantity) values (cart_no_seq.nextval, #{item_no}, (select user_no from kapla_user where id=#{id}), #{quantity})
+	</insert>
 	
 	
 </mapper>

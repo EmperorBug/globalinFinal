@@ -1,16 +1,17 @@
 package com.global.kapla.controller;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.global.kapla.service.ItemService;
+import com.global.kapla.vo.CartVO;
 import com.global.kapla.vo.ItemVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +24,13 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	
+	// http://localhost:8282/product/itemlist?category_no=1
 	@GetMapping("/itemlist")
-	public String itemListPage2(Model model) {
+	public String itemListPage2(ItemVO itemVO, Model model) {
 		log.info("데이터베이스에서 아이템 리스트를 불러왔습니다.");
-		model.addAttribute("products", itemService.getList());
+		
+		int category_num = itemVO.getCategory_num();
+		model.addAttribute("products", itemService.getList(category_num));
 		return "itemlist"; 
 	}
 	
@@ -41,5 +45,22 @@ public class ItemController {
 		
 		return "product_detail";
 	}
+	
+	@PostMapping("/cart")
+	public String insert_cart(CartVO cartVO, Model model, Principal principal) {
+		
+		int item_no = cartVO.getItem_no();
+		int quantity = cartVO.getQuantity();
+		String username = principal.getName();
+		
+		cartVO.setId(username);
+		itemService.insertItemToCart(cartVO);
+		log.info("데이터가 넘어가는지 테스트 중입니다." + item_no + "/" + quantity + "/" + username);
+		model.addAttribute("detail_to_cart");
+		
+		return "redirect:/cart";
+	}
+	
+	
 	
 }

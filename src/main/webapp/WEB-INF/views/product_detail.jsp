@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,18 +10,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kapla</title>
+<script src="https://kit.fontawesome.com/c179c056d7.js" crossorigin="anonymous"></script>
 <link href="/css/main.css" rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
 	rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
-	
+
 	.header button {
 		color : black;
 	}
-	
+
 	div.header {
 	position: relative;
 	top: 0;
@@ -30,7 +33,7 @@
 	.header span {
 		color : black;
 	}
-	
+
 	div.mainNav {
 	position: relative;
 	margin-top: 5em;
@@ -39,90 +42,31 @@
 	z-index: 3;
 	color : white;
 	text-align: center;
-	
+
 	}
-	
+
 	article {
 		margin-top : 5em;
 	}
-	
+
 	img {
 		max-width : 100%;
 		height : auto;
-	}	
+	}
 
 	span a {
 		margin: 2em;
 		text-decoration: none;
 		color : black;
 	}
-	
-	.section_line { 
-	
-		margin-top : 50px;
-		margin-bottom : 50px;
-		padding : 0px 200px 0px 200px;
-		position : relative;
-		flex-wrap : wrap;	
-		width : 100%;
-		display : flex;
-		
-	}
-	
-	.product_section {
-		width : 100%;
-		display : inline-block;
-	}
-	/* 제품 섹션 */
-
-	.image_section {
-		width : 50%;
-		text-align: center;
-	}
-	/* 이미지 섹션 */
-	
-	.detail_section {
-		width : 50%;
-		text-align: center;
-		font-family: sans-serif;
-		padding : 20px;
+	span{
+		display: inline-block;
 	}
 
-	.product_status { font-size : 16px; }
-		
-	.product_name  { font-size : large; font-weight: 700; }
-	
-	.product_buy_phase { margin-top: 20px; }
-	
-	.product_buy_phase_button {
-		color : black;
-		border-style: solid;
-		border-width : 1px 1px 1px 1px;
-		box-shadow: none;
-		padding : 10px;
-		margin : 10px;
-	}
-	
-	.populated_padding {
-		padding : 10px;
-	}
-	/* 각 div간 바깥쪽에 padding을 10씩 부여시켰다. */
-	
-	.spreadBtn { text-align: left; }
-	.spreadBtn p { text-align: left; }
-	.spreadBtn table { width : 100%; }
-	.spreadBtn table th { width : 25%; }
-	.spreadBtn table th,td { padding : 10px; }
-	.spreadBtn table th { border-width: 1px; }
-	.spreadBtn table td { border-width: 1px; }
-	
-	.product_detail_table { border : 1px solid black; border-collapse: collapse; }
-	
-	/* 세부정보를 펼치는 버튼 부분 + 첫번째 세부정보 테이블 부분 */
-	
-	.button_container { padding : 0; padding-top : 5em; }
-	
-	
+
+	.button_container { padding : 0; padding-top : 1em; }
+
+
 
 </style>
 <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -133,14 +77,14 @@
 	<div class="header">
 		<jsp:include page="./include/header.jsp"></jsp:include>
 	</div>
-	<!-- 네비게이터 include 부분 -->	
+	<!-- 네비게이터 include 부분 -->
 	<div class="mainNav">
 		<nav>
 			<jsp:include page="./include/nav.jsp"></jsp:include>
 		</nav>
 	</div>
 	<hr>
-	
+
 	<!-- 상품 설명 페이지 본문 내용 Article -->
 	<div class="product_detail">
 		<article>
@@ -151,14 +95,14 @@
 				<!-- 상품 이미지 div -->
 				<div class="product_section detail_section">
 					<div class="product_status populated_padding">
-						${product_view.item_status}					
+						${product_view.item_status}
 					</div>
 					<div class="product_name populated_padding">
-						${product_view.name}	
+						${product_view.name}
 					</div>
-					<div class="product_price populated_padding">
-						<h4>
-						<fmt:formatNumber value="${product_view.price}" pattern="#,###" /> 원		
+					<div class="product_price populated_padding" >
+						<h4 id="product_price" data-value="${product_view.price }">
+						<fmt:formatNumber value="${product_view.price}" pattern="#,###" /> 원
 						</h4>
 					</div>
 					<hr>
@@ -189,7 +133,7 @@
 								<td>설명4</td>
 							</tr>
 						</table>
-					</details>					
+					</details>
 					</div>
 					<!-- 제품 세부 정보 div -->
 					<hr>
@@ -203,28 +147,96 @@
 							<br>
 							배송기간 : 보통 1~3일 정도 소요
 							<br>
-							(지역 택배사 사정에 따라 약간의 지연 될 수 있음.) 
+							(지역 택배사 사정에 따라 약간의 지연 될 수 있음.)
 						</p>
 					</details>
 					</div>
 					<!-- 배송, 반품 설명 div -->
 					<hr>
+						<div class="product_quantity_select">
+							<form action="/order/order">
+							수량 : 
+							<button type="button" id="button_plus" onclick="plus()">
+									<i class="fa-solid fa-plus"></i>
+							</button>		
+								<input type="number" name="quantity" id="product_cnt" value="1"  readonly="readonly">			
+								<input type="hidden" name="item" id="product_number" value="${product_view.item_no}">
+							<button type ="button" id="button_plus" onclick="minus()">
+									<i class="fa-solid fa-minus"></i>
+							</button>	
+							<br><br>
+							총 금액 :
+							<input type="number" name="total_cost_js" id="total_cost_js" value="${product_view.price}"  readonly="readonly">	
+							</form>
+						</div>					
+					<hr>
+					<!-- plus / minus / 총금액 script 부분 -->
+					<script>
+					var cost = $('#product_price').data('value'); // 물건의 가격
+					
+						function plus() {
+							var count = document.getElementById("product_cnt").value; // 물건 갯수
+							var totalcost = document.getElementById("total_cost_js").value; // 총가격
+							document.getElementById("product_cnt").value = parseInt(count) + 1; // 물건 카운트 + 1
+							document.getElementById("total_quantity").value = parseInt(count) + 1; // 물건 카운트 + 1
+							document.getElementById("total_cost_js").value = parseInt(totalcost)+parseInt(cost); // 총 가격 재합산
+						}
+						function minus() {
+							var count = document.getElementById("product_cnt").value; // 물건 갯수
+							var totalcost = document.getElementById("total_cost_js").value; // 총가격
+							
+							if(count <= 1){
+								alert("수량을 1 미만으로 할수 없습니다.")
+								return;
+							}
+							
+							document.getElementById("product_cnt").value = parseInt(count) - 1; // 물건 카운트 - 1
+							document.getElementById("total_quantity").value = parseInt(count) - 1; // 물건 카운트 - 1
+							document.getElementById("total_cost_js").value = parseInt(totalcost)-parseInt(cost); // 총 가격 재합산
+							
+							
+						}
+					</script>
+					<!-- 제품 수량 설정 및 가격 나오는 곳 -->
 					<div class="product_buy_phase populated_padding button_container">
+						<form action="/product/cart" method="post" style="display:inline-block;">
+						<input type="hidden" name="item_no" id="product_number" value="${product_view.item_no}">
+						<!--  상품번호 -->
+						<input type="hidden" name="quantity" value="1" id="total_quantity">
+						
 						<span class="product_buy_phase_button">
-							<a href="/cart">
+							<a href="javascript:void(0)">
+	 							<button style="all:unset">
 	 							장바구니
-	 						</a>
-						</span> 
-						<span class="product_buy_phase_button">
-							<a href="/favorite">
-	 							찜하기
+	 							</button>
 	 						</a>
 						</span>
+						</form>
 						<span class="product_buy_phase_button">
-							<a href="/order">
+							<a href="/order/order" id="buylink">
 	 							바로구매
 	 						</a>
-						</span>  
+						</span>
+						<!-- 상품의 수량개수와 상품번호를 넘기는 javascript 함수 -->
+						<script>
+						  $(function() {
+							  $("#buylink").on("click", function(event) {
+							  	$(this).attr("href",function(i,val){
+							  		return val+"?quantity="+$("#product_cnt").val()+"&item="+$("#product_number").val();
+							  	});
+							  	});
+							  })
+						</script>
+						
+						<%--ADMIN 계정만 보이는 버튼 테스트--%>
+						<sec:authorize access="hasRole('ADMIN')">
+						<span class="product_buy_phase_button">
+							<a href="/order/order">
+	 							상품 변경
+	 						</a>
+						</span>
+						</sec:authorize>
+
 					</div>
 					<!-- 버튼 부분 div -->
 				</div>

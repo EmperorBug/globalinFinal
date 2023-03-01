@@ -20,8 +20,12 @@ public class UserVO {
 	private String 	id;
 	private String 	password;
 	private String 	name;
+	private String 	phone;
 	private String 	email;
-	private String 	address;
+	private String	zip_code;
+	private String 	address1;
+	private String 	address2;
 	private Date 	reg_date;
 	private String authority;
+	private Boolean reg_yn;
 }

@@ -11,6 +11,14 @@
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/aJax.js"></script>
+<style type="text/css">
+.join_placeholder {
+	font-size: 0.8em;
+	text-align: left;
+	margin-bottom: 0;
+}
+</style>
 </head>
 <body>
 	<!-- 헤더 include 부분 -->
@@ -19,18 +27,22 @@
 	<jsp:include page="../include/nav.jsp"></jsp:include>
 	<!-- 회원가입 article 부분 -->
 	<main class="loginMain">
+	<input type="hidden" id="idchk" value="false">
 		<form id="joinForm" action="/user/join" method="post" onsubmit="return valchk()"> 
 		  <div class="form-floating">
-			<input type="text" class="form-control" id="id" placeholder="id" name="id" maxlength="20">
+			<input type="text" class="form-control" id="id" placeholder="최소6자이상 최대 19자이하" name="id" maxlength="20">
 			<label for="id">ID</label>
+			<p class="join_placeholder">최소6자 ~ 최대19자</p>
 		  </div>
 		  <div class="form-floating">
 			<input type="password" class="form-control" id="password" placeholder="password" name="password" maxlength="30">
 			<label for="password">Password</label>
+			<p class="join_placeholder">특수문자를 하나 포함하여 영문자+숫자 최소8자 ~ 최대 30자</p>
 		  </div>
 		  <div class="form-floating">
 			<input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" maxlength="100">
 			<label for="email">Email address</label>
+			<!-- <p class="join_placeholder">비밀번호찾기시 이용됩니다</p> -->
 		  </div>
 		  <button class="w-100 btn btn-lg btn btn-dark">Sign up</button>
 		</form>
@@ -47,7 +59,20 @@
 	<!-- signUp.jsp 수정 : 김도형 -->
 	
 	<script type="text/javascript">
+	
+	$('#id').on('change', function() {
+		const id = this.value;
+		const data = {'id':id};
+		const result = postAjax('/rest/idchk',data);
+		if (result == 0) {
+			$('#idchk').val('');
+		} 
+		else {
+			$('#idchk').val('false');
+		}
+	});
 		function valchk() {
+			
 			const form 		= document.getElementById('joinForm');
 			const idregx 	= /^[a-z]+[a-z0-9]{6,19}$/g;
 			const pwdregx	= /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,30}$/;
@@ -63,6 +88,13 @@
 			}
 			if (!idregx.test(form.id.value)) {
 				alert('아이디 형식을 지켜주세요.');
+				$('#id').addClass('is-invalid');
+				form.id.focus();
+				return false;
+			}
+			//아이디 중복시
+			if ($('#idchk').val() == 'false') {
+				alert('중복된 아이디입니다. 다른아이디를 입력해주세요!');
 				$('#id').addClass('is-invalid');
 				form.id.focus();
 				return false;

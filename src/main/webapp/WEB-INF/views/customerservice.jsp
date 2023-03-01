@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,16 +8,29 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>고객센터</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/c179c056d7.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link href="/css/main.css" rel="stylesheet">
 <style>
 	
 	  a { color : #333; text-decoration: none; }
+
+	  .board_tit a:hover { text-decoration : underline;}
+	  
+	  .sub_menu li { display : block; }
+	  
+	  th, td, input, select, textarea, button {
+ 	    font-size: 12px;
+	    line-height: 1.5;
+	    color: #333;
+	}
 	
 	  .header button { color: black; }
 	
@@ -103,11 +117,26 @@
 	    padding: 13px 10px 15px 10px;
 	    border-bottom: 1px solid #dbdbdb;
 	}
+
 	.board_list_faq .board_list_table .board_tit { padding-left: 42px; }
 	.section1 { width : 10%; }
 	.section2 { width : 20%; }
 	.section3 { width : 70%; }
 
+	
+	.board_list_faq .board_list_table .board_tit { padding-left: 42px; text-align : left; }
+	
+	.faq_answer { display : none; }
+	
+	.icon {
+	    margin: 0 2px 0 2px;
+	    vertical-align: middle;
+	    padding : 0 10px 0 0 ;
+	    text-decoration: none;
+	}
+
+	
+	
   </style>
 </head>
 <body>
@@ -130,9 +159,9 @@
 			<div class ="sub_menu_box">
 				<h4>고객센터</h4>
 				<ul class="sub_menu">
-					<li><a href="../service/notice.jsp">공지사항</a></li>
-					<li><a href="../service/qa.jsp">1:1문의하기</a></li>
-			    	<li><a href="../service/faq.jsp">FAQ</a></li>
+					<li><a href="../customerservice/notice">공지사항</a></li>
+					<li><a href="../customerservice/qa">1:1문의하기</a></li>
+			    	<li><a href="../customerservice/faq">FAQ</a></li>
 		    	</ul>
 			</div>
 				<div class ="info_box">
@@ -176,7 +205,7 @@
                         		<div class="date_faq_txt">
                             		<p>
                                 	<strong>찾으시는 질문이 없다면?</strong>
-                                	<span class="btn_gray_list"><a href="qa.php" class="btn_gray_mid" target="_top"><span>1:1 문의하기</span></a></span>
+                                	<span class="btn_gray_list"><a href="qa" class="btn_gray_mid" target="_top"><span>1:1 문의하기</span></a></span>
                             		</p>
                         		</div>
 							</form>
@@ -185,16 +214,16 @@
 							<h4>	BEST FAQ </h4>
 						</div>
 						<div class ="board_list_faq">
-							<div class="board_hot_list">
+							<!-- <div class="board_hot_list">
 		                        <ul>
 		                            <li class="on"><a href="#"><span>전체</span></a></li>
 		                            <li><a href="#"><span>회원가입/정보</span></a></li>
 		                            <li><a href="#"><span>결제/배송</span></a></li>
 		                            <li><a href="#"><span>교환/반품/환불</span></a></li>
 		                            <li><a href=""><span>기타</span></a></li>
-		                            <!-- <li><a href="faq.php?category=03001005&amp;noheader=y&amp;isBest=y&amp;searchField=&amp;searchWord="><span>기타</span></a></li> -->
+		                            <li><a href="faq.php?category=03001005&amp;noheader=y&amp;isBest=y&amp;searchField=&amp;searchWord="><span>기타</span></a></li>
 		                        </ul>
-		                    </div>
+		                    </div> -->
 		                    <table id="faqList" class="board_list_table">
 				               <!--  <colgroup>
 		                            <col style="width:67px">
@@ -209,6 +238,7 @@
                             		</tr>
                         		</thead>
                         		<tbody>
+
                         			<tr class="toggle_faq">
                         				<td>1</td>
                         				<td>마일리지 적립</td>
@@ -258,6 +288,31 @@
                         					<p>Test 텍스트 3입니다.</p>
                         				</td>
                         			</tr>                        	                        			
+                        			<c:forEach var="board" items="${boards}">
+								    	<tr class="toggle_taq">
+											<td>${board.board_no}</td>
+											<!-- 글번호 -->
+											<%-- <td>${board.type_no}</td> --%>
+											<td>${board.writer}</td>
+											<!-- 고객센터 분류(일단은 string으로 된 writer 컬럼을 사용했음. 나중에 type_no로 수정할 예정)-->
+											<td class="board_tit">
+												<a href="javascript:void(0);" class="question"  id="que-${board.board_no}">
+													<span class="icon icon_qan">
+														<!-- <i class="fa-solid fa-q"></i> -->
+														<img src="../img/icon_qna_q.png">
+													</span>
+													${board.title}
+												</a>
+											</td>
+											<!-- 글제목 -->
+										</tr>
+										<tr class="faq_answer" id="ans-${board.board_no}">
+											<td colspan="3">
+							   					<div class="answer">${board.content}</div>
+							   				</td>
+							   			</tr>
+							   			<!-- 숨겨진 부분 : 내용 (밑 javascript에 의해 더보기<->접기 활성화됨. ) -->
+									</c:forEach>                                    			
                         		</tbody>
 		                    </table>
 						</div>
@@ -293,8 +348,30 @@ function toggleMenu() {
 	}
 }
 </script>	
+<!-- 긁어온 javascript 부분 -->
+<script>
+  const items = document.querySelectorAll('.question');
 
+  
+  function openCloseAnswer() {
+    const answerId = this.id.replace('que', 'ans');
+    if(document.getElementById(answerId).style.display === 'block') {
+      document.getElementById(answerId).style.display = 'none';
+    }
+    else if(document.getElementById(answerId).style.display === 'table-row') {
+        document.getElementById(answerId).style.display = 'none';
+      }
+    
+    else {
+    	$('.faq_answer').css('display','none');
+      $('.faq_answer').css('display','none');
+      document.getElementById(answerId).style.display = 'table-row';
+    }
+  }
 
+  items.forEach(item => item.addEventListener('click', openCloseAnswer));
+</script>
+<!-- 펼치고 접고 하게 해주는 script 부분. -->
 <hr>
 <!-- Footer include 부분  -->
 <div class="footer">

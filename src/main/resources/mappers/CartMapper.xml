@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.global.kapla.mapper.CartMapper">
+
+    <select id="getList" resultType="CartVO">
+       SELECT 
+       		item.item_no, item.NAME as item_name, cart.quantity , item.price, img.url
+       FROM 
+       		KAPLA_CART cart, KAPLA_ITEM item, KAPLA_ITEM_IMAGE img
+       WHERE
+       		cart.ITEM_NO  = item.ITEM_NO  
+		AND 
+			item.ITEM_NO  = img.ITEM_NO
+		AND
+			USER_NO =(SELECT user_no FROM KAPLA_USER WHERE id=#{id})
+    </select>
+
+	<update id="updateCart">
+		UPDATE
+			KAPLA_CART 
+		SET
+			QUANTITY = #{quantity}
+		WHERE
+			ITEM_NO = #{item_no}
+		AND
+			USER_NO = (SELECT user_no FROM KAPLA_USER WHERE id=#{id})
+	</update>
+	
+	<delete id="deleteCart">
+		DELETE FROM 
+			KAPLA_CART 
+		WHERE
+			ITEM_NO IN  
+			<foreach collection="cart_list" open="(" separator="," close=")" item="item">
+			 #{item.item_no} 
+			</foreach>
+		AND
+			USER_NO = (SELECT user_no FROM KAPLA_USER WHERE id=#{id})
+	</delete>
+</mapper>

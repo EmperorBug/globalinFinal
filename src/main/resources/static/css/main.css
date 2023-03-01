@@ -5,7 +5,7 @@ html, body {
 	margin: 0;
 }
 
-	dl, ol, ul, li  { list-style: none; padding : 0; }
+	dl, ol, ul, li  { list-style: none; padding : 0; display: inline-block;}
 	li a { text-decoration: none; }
 	em { font-style: normal; font-weight: normal; text-align: left;}
 	
@@ -13,6 +13,13 @@ html, body {
 	td {vertical-align: middle;}
 	/* 리스트 스타일 삭제, 링크 내 밑줄 삭제 */
 
+/* 각 div간 바깥쪽에 padding을 10씩 부여시키는 태그 */
+.populated_padding { padding : 10px; }
+
+/* 가운데 정렬 */
+.center {
+	margin: 0 auto;
+}
 /* header */
 .header {
 	position: relative;
@@ -131,17 +138,38 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .up {
-	background: url(/img/btn_count_up.png) no-repeat left top; 
+	background: url("/img/btn_count_up.png") no-repeat left top;
 }
 .down {
-	background: url(/img/btn_count_down.png) no-repeat left top;
+	background: url("/img/btn_count_down.png") no-repeat left top;
+}
+
+
+.itemimg {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+}
+
+.priceIcon {
+	display: inline-block;
+	position: relative;
+	top: -15px;
+	padding: 0 15px;
+}
+
+.priceIcon img {
+	width: 22px;
+	height: 22px;
 }
 /*
 	main.jsp
 	김도형
 	23.01.10
  */ 
-.#main_video {
+#main_video {
 	position: relative; 
 	top: 0; 
 	left: 0; 
@@ -163,8 +191,8 @@ input[type='number']::-webkit-inner-spin-button {
  }
  .orderMain {
 		margin: 0 auto;
-		width: 60%
-		
+		width: 60%;
+		padding-bottom: 2em;
 }
 
 .orderTable {
@@ -195,7 +223,7 @@ input[type='number']::-webkit-inner-spin-button {
 .totalPrice {
 	text-align: right;
 	border: solid #e4e4e4;
-	margin-top: 20px;
+	margin: 20px auto;
 	padding: 25px 30px 10px 15px;
 }
 
@@ -219,8 +247,8 @@ input[type='number']::-webkit-inner-spin-button {
 	width: 49%;
 }
 
-/************ customerservice ***************/
-
+/************ customerservice.jsp  ***************/
+/* 작성자 : 김형우 */
 	.contents { min-height: 400px; padding : 0 0 80px 0; }
 	/* 최상위 div class */
 	
@@ -233,6 +261,8 @@ input[type='number']::-webkit-inner-spin-button {
 	}
 	
 	.sub_menu { padding : 7px 0 6px 10px; font-size : 14px;}
+	.side_cont .sub_menu_box .sub_menu a { display: block; padding: 7px 0 6px 10px; font-size: 14px; }
+	
 	.sub_menu a:hover { background : #f8f8f8; color:#1a2e2d; font-weight: bold; }
 	
 	.sub_menu_box {
@@ -259,6 +289,7 @@ input[type='number']::-webkit-inner-spin-button {
 	
 	.board_zone_sec { position: relative; }
 	.board_zone_list { min-height : 500px; }
+	.board_zone_title { padding-bottom : 20px; }
 			
 	.date_check_box {
 	    margin: 0 0 35px 0;
@@ -293,3 +324,80 @@ input[type='number']::-webkit-inner-spin-button {
 	}
 	
 	/* 오른쪽 부분 css */
+
+/************ product_detail.jsp  ***************/
+/* 작성자 : 김형우 */	
+	.section_line { 
+	
+		margin-top : 50px;
+		margin-bottom : 50px;
+		padding : 0px 200px 0px 200px;
+		position : relative;
+		flex-wrap : wrap;	
+		width : 100%;
+		display : flex;
+		
+	}
+	
+	.product_section {
+		width : 100%;
+		display : inline-block;
+	}
+	/* 제품 섹션 */
+
+	.image_section {
+		width : 50%;
+		text-align: center;
+	}
+	/* 이미지 섹션 */
+	
+	.detail_section {
+		width : 50%;
+		text-align: center;
+		font-family: sans-serif;
+		padding : 20px;
+	}
+
+	.product_status { font-size : 16px; }
+		
+	.product_name  { font-size : large; font-weight: 700; }
+	
+	.product_buy_phase { margin-top: 20px; }
+	
+	.product_buy_phase_button {
+		color : black;
+		border-style: solid;
+		border-width : 1px 1px 1px 1px;
+		box-shadow: none;
+		padding : 10px;
+		margin : 10px;
+	}
+	
+	.spreadBtn { text-align: left; }
+	.spreadBtn p { text-align: left; }
+	.spreadBtn table { width : 100%; }
+	.spreadBtn table th { width : 25%; }
+	.spreadBtn table th,td { padding : 10px; }
+	.spreadBtn table th { border-width: 1px; }
+	.spreadBtn table td { border-width: 1px; }
+	
+	.product_detail_table { border : 1px solid black; border-collapse: collapse; }
+	
+	/* 세부정보를 펼치는 버튼 부분 + 첫번째 세부정보 테이블 부분 */
+	
+/* mypage */
+
+.leftMenu {
+    float: left;
+    width: 20%;
+    height: 100%;
+}
+.leftMenu li {
+	display: block;
+
+}
+.contents_article {
+	float: left;
+	margin: 0 0 0 2em;
+	width: 70%;
+}

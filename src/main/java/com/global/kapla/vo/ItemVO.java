@@ -5,17 +5,17 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class ItemVO {
 	
-//	id,
-//	category_num;
-//	name,
-//	quantity;
-//	price;
-//	content;
-// discount;
-// item_status;
-//	to_date(reg_date,'YY-MM-DD') reg_date
+public class ItemVO {
+//	id 상품번호
+//	category_num 카테고리 번호
+//	name 상품명
+//	quantity 현재 수량
+//	price 상품 가격
+//	content 상품 정보
+// discount 할인 정보
+// item_status 상품 상태
+//	to_date(reg_date,'YY-MM-DD') 등록된 날짜
 	private int 	   id;
 	private int     category_num;
 	private String name;

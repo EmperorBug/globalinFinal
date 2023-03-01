@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.global.kapla.mapper.OrderMapper">
+
+    <select id="getList" resultType="CartVO">
+       SELECT 
+       		item.item_no, item.NAME as item_name, item.discount, item.price, img.url
+       FROM 
+       		KAPLA_ITEM item, KAPLA_ITEM_IMAGE img
+       WHERE
+			item.ITEM_NO  = img.ITEM_NO
+		AND
+			item.ITEM_NO in
+			<foreach collection="itemList" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+    </select>
+
+	<!-- 밀리세컨드초 + 랜덤숫자3개로 주문번호 생성 -->
+	<select id="getOrderNo" resultType="String">
+		SELECT 
+			CONCAT( TO_CHAR(SYSTIMESTAMP,'YYYYMMDDHH24MISSFF3'), ( SELECT LPAD( TRUNC(DBMS_RANDOM.VALUE(1,125)), 3, 0) FROM dual) )
+		FROM 
+			dual
+	</select>
+
+	<!-- 주문정보 저장 -->
+	<insert id="insertOrder">
+		INSERT INTO KAPLA_ORDER	(
+			ORDER_NO, 
+			USER_NO, 
+			PAYMENT_METHOD, 
+			TOTAL_PRICE, 
+			RECEIVER, 
+			RECEIVER_ADDR, 
+			RECEIVER_PHONE, 
+			RECEIVER_EMAIL, 
+			ORDER_COMMENT
+		) 
+		VALUES( 
+			#{order_no}, 
+			(SELECT USER_NO FROM KAPLA_USER WHERE id=#{id}), 
+			#{payment_method}, 
+			#{total_price}, 
+			#{receiver}, 
+			#{receiver_addr}, 
+			#{receiver_phone}, 
+			#{receiver_email}, 
+			#{comment}
+		)
+	</insert>
+	
+	<!-- 주문상세 저장 -->
+	<insert id="insertOrderDetail" parameterType="OrderVO">
+		INSERT INTO KAPLA_ORDER_DETAIL (
+        	DETAIL_NO,
+			ORDER_NO,
+  			ITEM_NO,
+  			QUANTITY,
+  			SUM_PRICE
+		)
+		select order_seq.nextval, A.* from(
+		<foreach item="item" collection="cart_list" separator="UNION ALL ">
+			select #{order_no},
+			#{item.item_no},
+			#{item.quantity},
+			#{item.sum_price}
+			from dual
+		</foreach>
+		) A
+	</insert>
+	
+	<!-- 주문정보 -->
+	<select id="getOrder" resultType="OrderVO">
+		SELECT 
+			ORDER_NO, PAYMENT_METHOD, TOTAL_PRICE, TO_CHAR(reg_date,'YYYY-MM-DD') order_date, RECEIVER, RECEIVER_ADDR, RECEIVER_PHONE, RECEIVER_EMAIL, ORDER_COMMENT
+		FROM 
+			KAPLA_ORDER 
+		WHERE
+			 	ORDER_NO =#{order_no} 
+			AND 
+				USER_NO =(SELECT USER_NO FROM KAPLA_USER WHERE id=#{id})
+	</select>
+</mapper>
