@@ -16,7 +16,7 @@
 <link href="/css/main.css" rel="stylesheet">
 <style>
 	
-	  a { color : #333;}
+	  a { color : #333; text-decoration: none; }
 	
 	  .header button { color: black; }
 	
@@ -104,7 +104,9 @@
 	    border-bottom: 1px solid #dbdbdb;
 	}
 	.board_list_faq .board_list_table .board_tit { padding-left: 42px; }
-	
+	.section1 { width : 10%; }
+	.section2 { width : 20%; }
+	.section3 { width : 70%; }
 
   </style>
 </head>
@@ -194,24 +196,68 @@
 		                        </ul>
 		                    </div>
 		                    <table id="faqList" class="board_list_table">
-				                <colgroup>
+				               <!--  <colgroup>
 		                            <col style="width:67px">
 		                            <col style="width:144px">
 		                            <col>
-		                        </colgroup>
+		                        </colgroup> -->
 		                    	<thead>
                          			<tr>
-                                		<th>번호</th>
-                                		<th>분류</th>
-                                		<th>내용</th>
+                                		<th class="section1">번호</th>
+                                		<th class="section2">분류</th>
+                                		<th class="section3">내용</th>
                             		</tr>
                         		</thead>
                         		<tbody>
-                        			<tr class="toggle_taq">
+                        			<tr class="toggle_faq">
                         				<td>1</td>
                         				<td>마일리지 적립</td>
-                        				<td class="board_tit">마일리지 적립금은 어떻게 사용하나요?</td>
+                        				<td class="board_tit">
+                        				<a href="javascript:toggleMenu()">
+                        					마일리지 적립금은 어떻게 사용하나요?
+                        				</a>
+                        				</td>
                         			</tr>
+                        			<tr class="trCon trCon1" id="trCon">
+                        				<td colspan="3">
+                        					<div>
+												안녕하세요?                        					
+                        					</div>
+                        					<div>
+                        						반갑습니다.
+                        					</div>
+                        				</td>
+                        			</tr>
+                        			<!-- 구분선 -->
+									<tr class="toggle_faq">
+                        				<td>2</td>
+                        				<td>마일리지 적립</td>
+                        				<td class="board_tit">
+                        				<a href="javascript:toggleMenu()">
+											마일리지 적립 제도는 어떻게 되나요?
+                        				</a>
+                        				</td>
+                        			</tr>
+                        			<tr class="trCon" id="trCon">
+                        				<td colspan="3">
+                        					<p>Test 텍스트 2입니다. </p>
+                        				</td>
+                        			</tr>
+                        			<!-- 구분선 -->
+									<tr class="toggle_faq">
+                        				<td>3</td>
+                        				<td>마일리지 적립</td>
+                        				<td class="board_tit">
+                        				<a href="javascript:toggleMenu()">
+											생일 축하 쿠폰은 어떻게 받을 수 있나요?
+                        				</a>
+                        				</td>
+                        			</tr>
+                        			<tr class="trCon" id="trCon">
+                        				<td colspan="3">
+                        					<p>Test 텍스트 3입니다.</p>
+                        				</td>
+                        			</tr>                        	                        			
                         		</tbody>
 		                    </table>
 						</div>
@@ -223,7 +269,30 @@
 		<!-- 오른쪽 큰부분 메뉴 (메인 컨텐츠) div 부분 -->	
 	</div>
 </div>
+
+<script>
+
+window.onload = function(){
 	
+	const elements = document.getElementsByClassName('trCon');
+	
+	for(let i=0; i < elements.length; i++)  {
+			  elements[i].style.display = "none";	  
+		}
+};
+
+var con = document.getElementById("trCon");
+
+function toggleMenu() {
+
+	if(con.style.display == "none"){
+		con.style.display = "block";
+	}
+	else {
+		con.style.display = "none";
+	}
+}
+</script>	
 
 
 <hr>
